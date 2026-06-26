@@ -1,0 +1,13 @@
+{
+  "date": "2026-06-24",
+  "words": [
+    { "word": "limerence",   "pos": "noun",      "definition": "the state of being infatuated or obsessed with another person.", "example": "his limerence faded once they actually started dating." },
+    { "word": "sonorous",    "pos": "adjective", "definition": "(of sound) deep, full, and reverberating.", "example": "the sonorous tones of the cathedral organ filled the nave." },
+    { "word": "alacrity",    "pos": "noun",      "definition": "brisk and cheerful readiness.", "example": "she accepted the challenge with alacrity." },
+    { "word": "nebulous",    "pos": "adjective", "definition": "in the form of a cloud or haze; vague or ill-defined.", "example": "the plan was still nebulous and short on detail." },
+    { "word": "ebullient",   "pos": "adjective", "definition": "cheerful and full of energy.", "example": "the team was ebullient after the win." },
+    { "word": "perfunctory", "pos": "adjective", "definition": "carried out with minimum effort or reflection.", "example": "he gave a perfunctory nod and walked on." },
+    { "word": "sanguine",    "pos": "adjective", "definition": "optimistic or positive, especially in a difficult situation.", "example": "she remained sanguine about her chances." },
+    { "word": "winsome",     "pos": "adjective", "definition": "attractive or appealing in a fresh, innocent way.", "example": "a winsome smile won the crowd over." }
+  ]
+}

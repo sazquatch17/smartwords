@@ -36,7 +36,6 @@ import com.example.smartwords.ui.SavedScreen
 import com.example.smartwords.ui.SettingsScreen
 import com.example.smartwords.ui.Tab
 import com.example.smartwords.ui.TodayScreen
-import com.example.smartwords.ui.WordDetailScreen
 import com.example.smartwords.ui.Accents
 import com.example.smartwords.ui.resolvePalette
 import com.example.smartwords.widget.SmartWordsWidget
@@ -86,14 +85,11 @@ private fun RootApp(deepLinkIndex: Int, onDeepLinkConsumed: () -> Unit) {
     }
 
     var tab by remember { mutableStateOf(Tab.TODAY) }
-    // When non-null, the Today tab shows that word's detail instead of the list.
-    var detailIndex by remember { mutableStateOf<Int?>(null) }
 
-    // Handle deep link smartwords://word/<index>.
+    // Deep link smartwords://word/<index> just opens Today (the current word).
     LaunchedEffect(deepLinkIndex) {
-        if (deepLinkIndex in words.indices) {
+        if (deepLinkIndex >= 0) {
             tab = Tab.TODAY
-            detailIndex = deepLinkIndex
             onDeepLinkConsumed()
         }
     }
@@ -106,19 +102,7 @@ private fun RootApp(deepLinkIndex: Int, onDeepLinkConsumed: () -> Unit) {
         ) {
             Box(modifier = Modifier.weight(1f)) {
                 when (tab) {
-                    Tab.TODAY -> {
-                        val di = detailIndex
-                        if (di != null && di in words.indices) {
-                            WordDetailScreen(word = words[di], onBack = { detailIndex = null })
-                        } else {
-                            TodayScreen(
-                                word = currentWord,
-                                onOpenWord = {
-                                    detailIndex = WordStore.index(words, settings.rotationHours)
-                                },
-                            )
-                        }
-                    }
+                    Tab.TODAY -> TodayScreen(word = currentWord)
                     Tab.SAVED -> SavedScreen()
                     Tab.SETTINGS -> SettingsScreen(
                         state = settings,
@@ -147,13 +131,7 @@ private fun RootApp(deepLinkIndex: Int, onDeepLinkConsumed: () -> Unit) {
                     )
                 }
             }
-            BottomBar(
-                current = tab,
-                onSelect = { selected ->
-                    if (selected == Tab.TODAY && tab == Tab.TODAY) detailIndex = null
-                    tab = selected
-                },
-            )
+            BottomBar(current = tab, onSelect = { selected -> tab = selected })
         }
     }
 }

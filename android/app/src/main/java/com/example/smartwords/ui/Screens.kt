@@ -134,8 +134,11 @@ private fun TabIcon(tab: Tab, tint: Color) {
 
 // MARK: - Today
 
+// The single word page: Today's highlights (accent bar, bottom example panel)
+// merged with the full detail content (definition, synonyms/antonyms, origin).
+// Content scrolls in the upper region; the example panel is pinned at the bottom.
 @Composable
-fun TodayScreen(word: Word, onOpenWord: () -> Unit) {
+fun TodayScreen(word: Word) {
     val theme = LocalTheme.current
 
     val now = remember { Date() }
@@ -155,73 +158,109 @@ fun TodayScreen(word: Word, onOpenWord: () -> Unit) {
             .background(theme.palette.bg)
             .windowInsetsPadding(WindowInsets.systemBars.only(WindowInsetsSides.Top)),
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 26.dp).padding(top = 8.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-        ) {
-            Text(dateLine, fontFamily = Fonts.mono, fontSize = 10.5.sp, letterSpacing = 1.2.sp, color = theme.palette.muted)
-            Text(dayCount, fontFamily = Fonts.mono, fontSize = 10.5.sp, letterSpacing = 1.2.sp, color = theme.accent)
-        }
-
-        // Tapping the word opens Word Detail.
+        // Scrollable content fills the space above the pinned example panel.
         Column(
             modifier = Modifier
-                .padding(horizontal = 26.dp)
-                .padding(top = 28.dp)
-                .clip(RoundedCornerShape(8.dp))
-                .clickable(onClick = onOpenWord),
+                .weight(1f)
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState()),
         ) {
-            Text(
-                text = word.word,
-                fontFamily = Fonts.serif,
-                fontSize = 60.sp,
-                fontWeight = FontWeight.Medium,
-                letterSpacing = (-1.5).sp,
-                color = theme.palette.fg,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-            Box(
-                Modifier
-                    .padding(top = 16.dp)
-                    .fillMaxWidth()
-                    .height(4.dp)
-                    .clip(RoundedCornerShape(3.dp))
-                    .background(theme.accent),
-            )
             Row(
-                modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 26.dp).padding(top = 8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
+                Text(dateLine, fontFamily = Fonts.mono, fontSize = 10.5.sp, letterSpacing = 1.2.sp, color = theme.palette.muted)
+                Text(dayCount, fontFamily = Fonts.mono, fontSize = 10.5.sp, letterSpacing = 1.2.sp, color = theme.accent)
+            }
+
+            // Hero word + accent bar + pos/ipa (Today highlight)
+            Column(modifier = Modifier.padding(horizontal = 26.dp).padding(top = 26.dp)) {
                 Text(
-                    (word.pos ?: "").uppercase(Locale.getDefault()),
-                    fontFamily = Fonts.mono, fontSize = 11.sp, letterSpacing = 1.5.sp, color = theme.palette.muted,
+                    text = word.word,
+                    fontFamily = Fonts.serif,
+                    fontSize = 60.sp,
+                    fontWeight = FontWeight.Medium,
+                    letterSpacing = (-1.5).sp,
+                    color = theme.palette.fg,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
-                if (!word.ipa.isNullOrEmpty()) {
-                    Text(word.ipa, fontFamily = Fonts.mono, fontSize = 11.sp, color = theme.palette.muted)
+                Box(
+                    Modifier
+                        .padding(top = 16.dp)
+                        .fillMaxWidth()
+                        .height(4.dp)
+                        .clip(RoundedCornerShape(3.dp))
+                        .background(theme.accent),
+                )
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(
+                        (word.pos ?: "").uppercase(Locale.getDefault()),
+                        fontFamily = Fonts.mono, fontSize = 11.sp, letterSpacing = 1.5.sp, color = theme.palette.muted,
+                    )
+                    if (!word.ipa.isNullOrEmpty()) {
+                        Text(word.ipa, fontFamily = Fonts.mono, fontSize = 11.sp, color = theme.palette.muted)
+                    }
                 }
             }
-        }
 
-        Text(
-            text = word.definition,
-            fontFamily = Fonts.sans,
-            fontSize = 16.5.sp,
-            lineHeight = 24.sp,
-            color = theme.palette.fg,
-            modifier = Modifier.padding(horizontal = 26.dp).padding(top = 22.dp),
-        )
+            // Definition (detail content)
+            Text(
+                text = word.definition,
+                fontFamily = Fonts.sans,
+                fontSize = 16.5.sp,
+                lineHeight = 24.sp,
+                color = theme.palette.fg,
+                modifier = Modifier.padding(horizontal = 26.dp).padding(top = 22.dp),
+            )
 
-        if (!word.synonyms.isNullOrEmpty()) {
-            FlowRow(modifier = Modifier.padding(horizontal = 26.dp).padding(top = 20.dp)) {
-                word.synonyms.forEach { Chip(it) }
+            // Synonyms / antonyms
+            val hasSyn = !word.synonyms.isNullOrEmpty()
+            val hasAnt = !word.antonyms.isNullOrEmpty()
+            if (hasSyn || hasAnt) {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 26.dp).padding(top = 26.dp),
+                    horizontalArrangement = Arrangement.spacedBy(26.dp),
+                ) {
+                    if (hasSyn) {
+                        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(11.dp)) {
+                            SectionLabel("SYNONYMS")
+                            FlowRow { word.synonyms!!.forEach { Chip(it) } }
+                        }
+                    }
+                    if (hasAnt) {
+                        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(11.dp)) {
+                            SectionLabel("ANTONYMS")
+                            FlowRow { word.antonyms!!.forEach { Chip(it, dim = true) } }
+                        }
+                    }
+                }
             }
+
+            // Origin
+            if (!word.origin.isNullOrEmpty()) {
+                Box(
+                    Modifier
+                        .padding(horizontal = 26.dp).padding(vertical = 22.dp)
+                        .fillMaxWidth().height(1.dp).background(theme.palette.line),
+                )
+                SectionLabel("ORIGIN", modifier = Modifier.padding(horizontal = 26.dp))
+                Text(
+                    word.origin,
+                    fontFamily = Fonts.sans, fontSize = 14.sp, lineHeight = 22.sp,
+                    color = theme.palette.muted,
+                    modifier = Modifier.padding(horizontal = 26.dp).padding(top = 10.dp),
+                )
+            }
+
+            Spacer(Modifier.height(24.dp))
         }
 
-        Spacer(Modifier.weight(1f))
-
+        // Full-bleed accent-washed example panel pinned to the bottom (Today highlight).
         if (!word.example.isNullOrEmpty()) {
-            // Full-bleed accent-washed quote block pinned to the bottom.
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -247,145 +286,6 @@ fun TodayScreen(word: Word, onOpenWord: () -> Unit) {
             }
         }
     }
-}
-
-// MARK: - Word Detail
-
-@Composable
-fun WordDetailScreen(word: Word, onBack: () -> Unit) {
-    val theme = LocalTheme.current
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(theme.palette.bg)
-            .windowInsetsPadding(WindowInsets.systemBars.only(WindowInsetsSides.Top)),
-    ) {
-        // Custom nav row
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp, vertical = 8.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(
-                "‹  Today",
-                fontFamily = Fonts.mono, fontSize = 12.sp, color = theme.palette.muted,
-                modifier = Modifier.clip(RoundedCornerShape(6.dp)).clickable(onClick = onBack).padding(4.dp),
-            )
-            Text("SAVE", fontFamily = Fonts.mono, fontSize = 11.sp, letterSpacing = 1.1.sp, color = theme.accent)
-        }
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 26.dp)
-                .padding(bottom = 20.dp),
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.Top,
-            ) {
-                Column(verticalArrangement = Arrangement.spacedBy(9.dp)) {
-                    Text(
-                        (word.pos ?: "").uppercase(Locale.getDefault()),
-                        fontFamily = Fonts.mono, fontSize = 11.sp, letterSpacing = 1.6.sp, color = theme.accent,
-                    )
-                    if (!word.ipa.isNullOrEmpty()) {
-                        Text(word.ipa, fontFamily = Fonts.mono, fontSize = 12.sp, color = theme.palette.muted)
-                    }
-                }
-                // Decorative "play" button.
-                Box(
-                    modifier = Modifier.size(42.dp).clip(CircleShape).background(theme.accent),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    PlayTriangle()
-                }
-            }
-
-            Text(
-                word.word,
-                fontFamily = Fonts.serif,
-                fontSize = 50.sp,
-                fontWeight = FontWeight.Medium,
-                letterSpacing = (-1.25).sp,
-                color = theme.palette.fg,
-                modifier = Modifier.padding(top = 14.dp),
-            )
-
-            Divider()
-
-            SectionLabel("DEFINITION")
-            Text(
-                word.definition,
-                fontFamily = Fonts.sans, fontSize = 16.sp, lineHeight = 25.sp,
-                color = theme.palette.fg, modifier = Modifier.padding(top = 10.dp),
-            )
-
-            if (!word.example.isNullOrEmpty()) {
-                SectionLabel("EXAMPLE", modifier = Modifier.padding(top = 24.dp))
-                Text(
-                    "“${word.example}”",
-                    fontFamily = Fonts.serif, fontStyle = FontStyle.Italic, fontSize = 17.sp, lineHeight = 25.sp,
-                    color = theme.palette.fg, modifier = Modifier.padding(top = 10.dp),
-                )
-            }
-
-            val hasSyn = !word.synonyms.isNullOrEmpty()
-            val hasAnt = !word.antonyms.isNullOrEmpty()
-            if (hasSyn || hasAnt) {
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(top = 26.dp),
-                    horizontalArrangement = Arrangement.spacedBy(26.dp),
-                ) {
-                    if (hasSyn) {
-                        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(11.dp)) {
-                            SectionLabel("SYNONYMS")
-                            FlowRow { word.synonyms!!.forEach { Chip(it) } }
-                        }
-                    }
-                    if (hasAnt) {
-                        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(11.dp)) {
-                            SectionLabel("ANTONYMS")
-                            FlowRow { word.antonyms!!.forEach { Chip(it, dim = true) } }
-                        }
-                    }
-                }
-            }
-
-            if (!word.origin.isNullOrEmpty()) {
-                Divider()
-                SectionLabel("ORIGIN")
-                Text(
-                    word.origin,
-                    fontFamily = Fonts.sans, fontSize = 14.sp, lineHeight = 22.sp,
-                    color = theme.palette.muted, modifier = Modifier.padding(top = 10.dp),
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun PlayTriangle() {
-    // Tiny right-pointing triangle approximated with a rotated square corner is fussy;
-    // a simple centered glyph reads as a play button and needs no vector asset.
-    Text("▶", fontSize = 13.sp, color = Color.White)
-}
-
-@Composable
-private fun Divider() {
-    val theme = LocalTheme.current
-    Box(
-        Modifier
-            .padding(vertical = 22.dp)
-            .fillMaxWidth()
-            .height(1.dp)
-            .background(theme.palette.line),
-    )
 }
 
 // MARK: - Saved (placeholder)

@@ -4,6 +4,7 @@
 
 package com.example.smartwords.ui
 
+import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -30,6 +31,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,6 +39,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -140,9 +143,19 @@ private fun TabIcon(tab: Tab, tint: Color) {
 // The single word page: Today's highlights (accent bar, bottom example panel)
 // merged with the full detail content (definition, synonyms/antonyms, origin).
 // Content scrolls in the upper region; the example panel is pinned at the bottom.
+// A TextToSpeech bound to the composition; shut down on dispose.
+@Composable
+private fun rememberTts(): TextToSpeech {
+    val context = LocalContext.current
+    val tts = remember { TextToSpeech(context.applicationContext) {} }
+    DisposableEffect(Unit) { onDispose { tts.shutdown() } }
+    return tts
+}
+
 @Composable
 fun TodayScreen(word: Word, isSaved: Boolean, onToggleSave: () -> Unit) {
     val theme = LocalTheme.current
+    val tts = rememberTts()
 
     val now = remember { Date() }
     val dateLine = remember {
@@ -190,18 +203,32 @@ fun TodayScreen(word: Word, isSaved: Boolean, onToggleSave: () -> Unit) {
                 }
             }
 
-            // Hero word + accent bar + pos/ipa (Today highlight)
+            // Hero word + pronounce + accent bar + pos/ipa (Today highlight)
             Column(modifier = Modifier.padding(horizontal = 26.dp).padding(top = 26.dp)) {
-                Text(
-                    text = word.word,
-                    fontFamily = Fonts.serif,
-                    fontSize = 60.sp,
-                    fontWeight = FontWeight.Medium,
-                    letterSpacing = (-1.5).sp,
-                    color = theme.palette.fg,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = word.word,
+                        fontFamily = Fonts.serif,
+                        fontSize = 60.sp,
+                        fontWeight = FontWeight.Medium,
+                        letterSpacing = (-1.5).sp,
+                        color = theme.palette.fg,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.weight(1f),
+                    )
+                    Spacer(Modifier.width(12.dp))
+                    Box(
+                        modifier = Modifier
+                            .size(42.dp)
+                            .clip(CircleShape)
+                            .clickable { tts.speak(word.word, TextToSpeech.QUEUE_FLUSH, null, "word") }
+                            .background(theme.accent),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text("▶", fontSize = 13.sp, color = Color.White)
+                    }
+                }
                 Box(
                     Modifier
                         .padding(top = 16.dp)

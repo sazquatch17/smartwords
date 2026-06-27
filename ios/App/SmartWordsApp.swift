@@ -3,10 +3,22 @@
 
 import SwiftUI
 import WidgetKit
+import AVFoundation
 
 @main
 struct SmartWordsApp: App {
     var body: some Scene { WindowGroup { RootView() } }
+}
+
+// Speaks a word aloud. Synthesizer is retained so speech isn't cut off.
+enum Speaker {
+    private static let synth = AVSpeechSynthesizer()
+    static func speak(_ text: String) {
+        let u = AVSpeechUtterance(string: text)
+        u.rate = AVSpeechUtteranceDefaultSpeechRate
+        synth.stopSpeaking(at: .immediate)
+        synth.speak(u)
+    }
 }
 
 // MARK: - Fonts (system equivalents of the design's Google fonts)
@@ -164,12 +176,22 @@ struct TodayView: View {
                     }
                     .padding(.top, 8)
 
-                    // Hero word + accent bar + pos/ipa (Today highlight)
-                    Text(word.word)
-                        .font(serif(60, .medium)).tracking(-1.5)
-                        .lineLimit(1).minimumScaleFactor(0.5)
-                        .foregroundStyle(theme.palette.fg)
-                        .padding(.top, 26)
+                    // Hero word + pronounce + accent bar + pos/ipa (Today highlight)
+                    HStack(alignment: .center, spacing: 12) {
+                        Text(word.word)
+                            .font(serif(60, .medium)).tracking(-1.5)
+                            .lineLimit(1).minimumScaleFactor(0.5)
+                            .foregroundStyle(theme.palette.fg)
+                        Spacer(minLength: 0)
+                        Button { Speaker.speak(word.word) } label: {
+                            Circle().fill(theme.accent).frame(width: 42, height: 42)
+                                .overlay(Image(systemName: "play.fill")
+                                    .font(.system(size: 14)).foregroundStyle(.white).offset(x: 1))
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel("Pronounce \(word.word)")
+                    }
+                    .padding(.top, 26)
                     RoundedRectangle(cornerRadius: 3).fill(theme.accent)
                         .frame(height: 4).padding(.top, 16)
                     HStack {

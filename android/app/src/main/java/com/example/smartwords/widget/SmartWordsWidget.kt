@@ -9,6 +9,7 @@ package com.example.smartwords.widget
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -19,7 +20,7 @@ import androidx.glance.GlanceModifier
 import androidx.glance.GlanceTheme
 import androidx.glance.LocalContext
 import androidx.glance.LocalSize
-import androidx.glance.action.actionStartActivity
+import androidx.glance.appwidget.action.actionStartActivity
 import androidx.glance.action.clickable
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.GlanceAppWidgetReceiver
@@ -67,18 +68,25 @@ class SmartWordsWidget : GlanceAppWidget() {
         val index = WordStore.index(words, settings.rotationHours)
         val word = words[index]
         val accent = Accents.by(settings.accentId).color
-        val mode = settings.mode
+        // Resolve light/dark to a single palette (Glance 1.1 ColorProvider takes one color).
+        val dark = when (settings.mode) {
+            ThemeMode.LIGHT -> false
+            ThemeMode.DARK -> true
+            ThemeMode.AUTO -> (context.resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+        }
+        val palette = if (dark) Palette.Dark else Palette.Light
 
         provideContent {
             GlanceTheme {
-                WidgetContent(word = word, index = index, accent = accent, mode = mode)
+                WidgetContent(word = word, index = index, accent = accent, palette = palette)
             }
         }
     }
 }
 
 @Composable
-private fun WidgetContent(word: Word, index: Int, accent: Color, mode: ThemeMode) {
+private fun WidgetContent(word: Word, index: Int, accent: Color, palette: Palette) {
     val context = LocalContext.current
     val size = LocalSize.current
     val wide = size.width >= 220.dp
@@ -91,26 +99,25 @@ private fun WidgetContent(word: Word, index: Int, accent: Color, mode: ThemeMode
         MainActivity::class.java,
     )
     val openAction = actionStartActivity(openIntent)
-
-    val accentProvider = ColorProvider(accent, accent)
+    val accentProvider = ColorProvider(accent)
 
     Box(
         modifier = GlanceModifier
             .fillMaxSize()
-            .background(themed(mode, Palette.Light.surface, Palette.Dark.surface))
+            .background(ColorProvider(palette.surface))
             .cornerRadius(26.dp)
             .padding(if (wide) 16.dp else 14.dp)
             .clickable(openAction),
     ) {
-        if (wide) MediumLayout(word, accentProvider, mode)
-        else SmallLayout(word, accentProvider, mode)
+        if (wide) MediumLayout(word, accentProvider, palette)
+        else SmallLayout(word, accentProvider, palette)
     }
 }
 
 @Composable
-private fun SmallLayout(word: Word, accent: ColorProvider, mode: ThemeMode) {
-    val fg = themed(mode, Palette.Light.fg, Palette.Dark.fg)
-    val muted = themed(mode, Palette.Light.muted, Palette.Dark.muted)
+private fun SmallLayout(word: Word, accent: ColorProvider, palette: Palette) {
+    val fg = ColorProvider(palette.fg)
+    val muted = ColorProvider(palette.muted)
 
     Column(modifier = GlanceModifier.fillMaxSize()) {
         Row(
@@ -148,9 +155,9 @@ private fun SmallLayout(word: Word, accent: ColorProvider, mode: ThemeMode) {
 }
 
 @Composable
-private fun MediumLayout(word: Word, accent: ColorProvider, mode: ThemeMode) {
-    val fg = themed(mode, Palette.Light.fg, Palette.Dark.fg)
-    val muted = themed(mode, Palette.Light.muted, Palette.Dark.muted)
+private fun MediumLayout(word: Word, accent: ColorProvider, palette: Palette) {
+    val fg = ColorProvider(palette.fg)
+    val muted = ColorProvider(palette.muted)
     val date = SimpleDateFormat("MMM d", Locale.getDefault())
         .format(Date()).uppercase(Locale.getDefault())
 
@@ -197,15 +204,6 @@ private fun MediumLayout(word: Word, accent: ColorProvider, mode: ThemeMode) {
         }
     }
 }
-
-// day/night ColorProvider honoring an explicit theme mode. AUTO provides distinct
-// day/night colors (system decides); LIGHT/DARK pin both sides.
-private fun themed(mode: ThemeMode, lightColor: Color, darkColor: Color): ColorProvider =
-    when (mode) {
-        ThemeMode.LIGHT -> ColorProvider(lightColor, lightColor)
-        ThemeMode.DARK -> ColorProvider(darkColor, darkColor)
-        ThemeMode.AUTO -> ColorProvider(day = lightColor, night = darkColor)
-    }
 
 class SmartWordsReceiver : GlanceAppWidgetReceiver() {
     override val glanceAppWidget: GlanceAppWidget = SmartWordsWidget()

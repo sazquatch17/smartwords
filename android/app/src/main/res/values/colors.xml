@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light palette (mirrors Theme.swift / Lexica design tokens). -->
+    <color name="bg">#f6f3ee</color>
+    <color name="surface">#ffffff</color>
+    <color name="fg">#1b1714</color>
+</resources>

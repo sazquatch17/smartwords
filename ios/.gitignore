@@ -2,5 +2,7 @@
 SmartWords.xcodeproj/
 App/Info.plist
 Widget/Info.plist
+App/SmartWords.entitlements
+Widget/SmartWordsWidget.entitlements
 build/
 DerivedData/

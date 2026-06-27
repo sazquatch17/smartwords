@@ -8,7 +8,7 @@ options:
 settings:
   base:
     SWIFT_VERSION: "5.0"   # skip Swift 6 strict concurrency for the skeleton
-    CODE_SIGNING_ALLOWED: "NO"   # simulator builds need no signing
+    CODE_SIGN_IDENTITY: "-"   # ad-hoc sign so App Group entitlement is embedded on the simulator
     MARKETING_VERSION: "0.1"
     CURRENT_PROJECT_VERSION: "1"
 targets:
@@ -17,10 +17,20 @@ targets:
     platform: iOS
     sources:
       - App
+      - Shared
+      - path: ../shared/seed-words.json   # app reads the same seed for word detail
+        buildPhase: resources
     info:
       path: App/Info.plist
       properties:
         UILaunchScreen: {}
+        CFBundleURLTypes:
+          - CFBundleURLSchemes: [smartwords]   # deep link from the widget tap
+    entitlements:
+      path: App/SmartWords.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.example.smartwords
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.example.smartwords
@@ -32,6 +42,7 @@ targets:
     type: app-extension
     platform: iOS
     sources:
+      - Shared
       - path: Widget/SmartWordsWidget.swift
       - path: ../shared/seed-words.json   # bundled into the widget; read at render
         buildPhase: resources
@@ -41,6 +52,11 @@ targets:
         CFBundleDisplayName: SmartWords
         NSExtension:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: Widget/SmartWordsWidget.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.example.smartwords
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.example.smartwords.widget

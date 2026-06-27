@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,12..72,400;0,12..72,500;0,12..72,600;1,12..72,400;1,12..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#f6f3ee; --surface:#ffffff; --fg:#1b1714; --muted:#8c837b; --line:rgba(27,23,20,0.09); --line2:rgba(27,23,20,0.17); --accent:#c87d2a; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font-family:'Hanken Grotesk',sans-serif; -webkit-font-smoothing:antialiased; }
+  ::-webkit-scrollbar{ width:0; height:0; }
+</style>
+</helmet>
+
+<div style="position:absolute; left:60px; top:40px; width:820px;">
+  <div style="font-family:'Newsreader',serif; font-size:34px; font-weight:500; color:#211d18; letter-spacing:-.015em;">Lexica <span style="font-style:italic; color:#8c837b;">— word of the day</span></div>
+  <div style="font-family:'Spline Sans Mono',monospace; font-size:11.5px; letter-spacing:.03em; color:#6f675e; margin-top:9px; line-height:1.5;">iOS &amp; Android — Today, Word Detail, Settings, and home-screen widgets (both themes).<br>Open either <b style="color:#211d18;">Settings</b> screen to switch theme &amp; accent — every frame recolors live.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ============================ iOS ============================ -->
+<!-- ============================================================ -->
+<div style="position:absolute; left:60px; top:132px; display:flex; align-items:baseline; gap:14px;">
+  <span style="font-family:'Newsreader',serif; font-size:25px; font-weight:500; color:#211d18;">iOS</span>
+  <span style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.14em; color:#8c837b;">IPHONE · APP + WIDGETS</span>
+</div>
+
+<!-- ---------- iOS · TODAY ---------- -->
+<div style="position:absolute; left:60px; top:178px;">
+  <div data-drags-parent="1" style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; color:#6f675e; margin-bottom:13px; cursor:grab;">TODAY</div>
+  <div style="position:relative; width:344px; height:718px; background:linear-gradient(150deg,#2c2a25,#0c0b0a); border-radius:54px; padding:11px; box-shadow:0 28px 56px -22px rgba(0,0,0,.5), 0 0 0 2px rgba(255,255,255,.05) inset;">
+    <div style="position:relative; width:322px; height:696px; border-radius:44px; overflow:hidden; background:var(--bg); color:var(--fg); display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif;">
+      <div style="position:absolute; top:11px; left:50%; transform:translateX(-50%); width:86px; height:25px; background:#08070a; border-radius:14px; z-index:7;"></div>
+      <div style="height:52px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:0 24px 0 30px; position:relative; z-index:6;">
+        <span style="font-size:14px; font-weight:600; letter-spacing:-.01em;">9:41</span>
+        <div style="display:flex; align-items:center; gap:7px;">
+          <div style="display:flex; align-items:flex-end; gap:2px; height:11px;"><div style="width:3px;height:5px;background:currentColor;border-radius:1px;"></div><div style="width:3px;height:7px;background:currentColor;border-radius:1px;"></div><div style="width:3px;height:9px;background:currentColor;border-radius:1px;"></div><div style="width:3px;height:11px;background:currentColor;border-radius:1px;opacity:.4;"></div></div>
+          <span style="font-size:11px;font-weight:700;">5G</span>
+          <div style="display:flex;align-items:center;gap:2px;"><div style="width:22px;height:11px;border:1px solid currentColor;border-radius:3px;padding:1.5px;opacity:.9;"><div style="width:72%;height:100%;background:currentColor;border-radius:1px;"></div></div><div style="width:1.5px;height:4px;background:currentColor;border-radius:0 1px 1px 0;opacity:.9;"></div></div>
+        </div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; padding:6px 26px 0; overflow:hidden;">
+        <div style="display:flex; justify-content:space-between; font-family:'Spline Sans Mono',monospace; font-size:10.5px; letter-spacing:.12em; color:var(--muted); padding-top:2px;"><span>JUNE 2026</span><span style="color:var(--accent);">142 / 365</span></div>
+        <div style="margin-top:28px;">
+          <div style="font-family:'Newsreader',serif; font-size:62px; line-height:1; font-weight:500; letter-spacing:-.03em;">ephemeral</div>
+          <div style="height:4px; background:var(--accent); border-radius:3px; margin-top:16px;"></div>
+          <div style="display:flex; justify-content:space-between; margin-top:12px; font-family:'Spline Sans Mono',monospace; font-size:11px; color:var(--muted);"><span style="text-transform:uppercase; letter-spacing:.14em;">adjective</span><span>/əˈfem(ə)rəl/</span></div>
+        </div>
+        <div style="font-size:16.5px; line-height:1.5; color:var(--fg); margin-top:22px;">Lasting for a markedly brief time; fleeting and destined to fade.</div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;">
+          <span style="padding:6px 13px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px;">fleeting</span>
+          <span style="padding:6px 13px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px;">transient</span>
+          <span style="padding:6px 13px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px;">momentary</span>
+        </div>
+        <div style="margin-top:auto; margin-left:-26px; margin-right:-26px; background:color-mix(in oklab, var(--accent) 13%, var(--surface)); padding:20px 26px 22px;">
+          <div style="font-family:'Newsreader',serif; font-size:46px; line-height:0.4; color:var(--accent); height:22px;">“</div>
+          <div style="font-family:'Newsreader',serif; font-style:italic; font-size:17px; line-height:1.45; color:var(--fg); margin-top:8px;">The ephemeral beauty of cherry blossom draws crowds each spring.</div>
+        </div>
+      </div>
+      <div style="flex:none; height:54px; border-top:1px solid var(--line); display:flex; align-items:center; justify-content:space-around; font-family:'Spline Sans Mono',monospace; font-size:9.5px; letter-spacing:.14em;"><span style="color:var(--accent);">TODAY</span><span style="color:var(--muted);">SAVED</span><span style="color:var(--muted);">SETTINGS</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- iOS · WORD DETAIL ---------- -->
+<div style="position:absolute; left:484px; top:178px;">
+  <div data-drags-parent="1" style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; color:#6f675e; margin-bottom:13px; cursor:grab;">WORD DETAIL</div>
+  <div style="position:relative; width:344px; height:718px; background:linear-gradient(150deg,#2c2a25,#0c0b0a); border-radius:54px; padding:11px; box-shadow:0 28px 56px -22px rgba(0,0,0,.5), 0 0 0 2px rgba(255,255,255,.05) inset;">
+    <div style="position:relative; width:322px; height:696px; border-radius:44px; overflow:hidden; background:var(--bg); color:var(--fg); display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif;">
+      <div style="position:absolute; top:11px; left:50%; transform:translateX(-50%); width:86px; height:25px; background:#08070a; border-radius:14px; z-index:7;"></div>
+      <div style="height:52px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:0 24px 0 30px; position:relative; z-index:6;">
+        <span style="font-size:14px; font-weight:600; letter-spacing:-.01em;">9:41</span>
+        <div style="display:flex; align-items:center; gap:7px;">
+          <div style="display:flex; align-items:flex-end; gap:2px; height:11px;"><div style="width:3px;height:5px;background:currentColor;border-radius:1px;"></div><div style="width:3px;height:7px;background:currentColor;border-radius:1px;"></div><div style="width:3px;height:9px;background:currentColor;border-radius:1px;"></div><div style="width:3px;height:11px;background:currentColor;border-radius:1px;opacity:.4;"></div></div>
+          <span style="font-size:11px;font-weight:700;">5G</span>
+          <div style="display:flex;align-items:center;gap:2px;"><div style="width:22px;height:11px;border:1px solid currentColor;border-radius:3px;padding:1.5px;opacity:.9;"><div style="width:72%;height:100%;background:currentColor;border-radius:1px;"></div></div><div style="width:1.5px;height:4px;background:currentColor;border-radius:0 1px 1px 0;opacity:.9;"></div></div>
+        </div>
+      </div>
+      <div style="flex:none; display:flex; align-items:center; justify-content:space-between; padding:2px 24px 8px;">
+        <span style="font-family:'Spline Sans Mono',monospace; font-size:12px; color:var(--muted);">‹&nbsp; Today</span>
+        <span style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; color:var(--accent);">SAVE</span>
+      </div>
+      <div style="flex:1; overflow-y:auto; padding:6px 26px 20px;">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+          <div>
+            <div style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent);">adjective</div>
+            <div style="font-family:'Spline Sans Mono',monospace; font-size:12px; color:var(--muted); margin-top:9px;">/əˈfem(ə)rəl/</div>
+          </div>
+          <div style="width:42px; height:42px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; flex:none;">
+            <div style="width:0;height:0;border-style:solid;border-width:6px 0 6px 11px;border-color:transparent transparent transparent #fff; margin-left:2px;"></div>
+          </div>
+        </div>
+        <div style="font-family:'Newsreader',serif; font-size:50px; font-weight:500; letter-spacing:-.025em; line-height:1.02; margin-top:14px;">ephemeral</div>
+        <div style="height:1px; background:var(--line); margin:22px 0;"></div>
+        <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted);">DEFINITION</div>
+        <div style="font-size:16px; line-height:1.55; margin-top:10px;">Lasting for a markedly brief time. <span style="color:var(--muted);">Used especially of things whose beauty or relevance is brief.</span></div>
+        <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted); margin-top:24px;">EXAMPLE</div>
+        <div style="font-family:'Newsreader',serif; font-style:italic; font-size:17px; line-height:1.45; margin-top:10px;">“The ephemeral beauty of cherry blossom draws crowds each spring.”</div>
+        <div style="display:flex; gap:26px; margin-top:26px;">
+          <div style="flex:1;">
+            <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted);">SYNONYMS</div>
+            <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:11px;">
+              <span style="padding:5px 11px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px;">fleeting</span>
+              <span style="padding:5px 11px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px;">transient</span>
+              <span style="padding:5px 11px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px;">passing</span>
+            </div>
+          </div>
+          <div style="flex:1;">
+            <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted);">ANTONYMS</div>
+            <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:11px;">
+              <span style="padding:5px 11px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px; opacity:.7;">permanent</span>
+              <span style="padding:5px 11px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px; opacity:.7;">enduring</span>
+              <span style="padding:5px 11px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px; opacity:.7;">lasting</span>
+            </div>
+          </div>
+        </div>
+        <div style="height:1px; background:var(--line); margin:24px 0;"></div>
+        <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted);">ORIGIN</div>
+        <div style="font-size:14px; line-height:1.55; color:var(--muted); margin-top:10px;">Mid 16th century: from Greek <span style="font-style:italic; color:var(--fg);">ephēmeros</span> ‘lasting only a day’.</div>
+      </div>
+      <div style="flex:none; height:54px; border-top:1px solid var(--line); display:flex; align-items:center; justify-content:space-around; font-family:'Spline Sans Mono',monospace; font-size:9.5px; letter-spacing:.14em;"><span style="color:var(--accent);">TODAY</span><span style="color:var(--muted);">SAVED</span><span style="color:var(--muted);">SETTINGS</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- iOS · SETTINGS ---------- -->
+<div style="position:absolute; left:908px; top:178px;">
+  <div data-drags-parent="1" style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; color:#6f675e; margin-bottom:13px; cursor:grab;">SETTINGS — THEME &amp; ACCENT (LIVE)</div>
+  <div style="position:relative; width:344px; height:718px; background:linear-gradient(150deg,#2c2a25,#0c0b0a); border-radius:54px; padding:11px; box-shadow:0 28px 56px -22px rgba(0,0,0,.5), 0 0 0 2px rgba(255,255,255,.05) inset;">
+    <div style="position:relative; width:322px; height:696px; border-radius:44px; overflow:hidden; background:var(--bg); color:var(--fg); display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif;">
+      <div style="position:absolute; top:11px; left:50%; transform:translateX(-50%); width:86px; height:25px; background:#08070a; border-radius:14px; z-index:7;"></div>
+      <div style="height:52px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:0 24px 0 30px; position:relative; z-index:6;">
+        <span style="font-size:14px; font-weight:600; letter-spacing:-.01em;">9:41</span>
+        <div style="display:flex; align-items:center; gap:7px;">
+          <div style="display:flex; align-items:flex-end; gap:2px; height:11px;"><div style="width:3px;height:5px;background:currentColor;border-radius:1px;"></div><div style="width:3px;height:7px;background:currentColor;border-radius:1px;"></div><div style="width:3px;height:9px;background:currentColor;border-radius:1px;"></div><div style="width:3px;height:11px;background:currentColor;border-radius:1px;opacity:.4;"></div></div>
+          <span style="font-size:11px;font-weight:700;">5G</span>
+          <div style="display:flex;align-items:center;gap:2px;"><div style="width:22px;height:11px;border:1px solid currentColor;border-radius:3px;padding:1.5px;opacity:.9;"><div style="width:72%;height:100%;background:currentColor;border-radius:1px;"></div></div><div style="width:1.5px;height:4px;background:currentColor;border-radius:0 1px 1px 0;opacity:.9;"></div></div>
+        </div>
+      </div>
+      <div style="flex:1; overflow-y:auto; padding:8px 26px 20px;">
+        <div style="font-family:'Newsreader',serif; font-size:32px; font-weight:500; letter-spacing:-.02em; margin-top:6px;">Settings</div>
+        <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted); margin-top:30px;">APPEARANCE</div>
+        <div style="display:flex; background:var(--line); border-radius:13px; padding:4px; margin-top:12px; gap:4px;">
+          <button onClick="{{ setLight }}" style="flex:1; border:none; cursor:pointer; border-radius:10px; padding:10px 0; font-family:'Hanken Grotesk',sans-serif; font-size:13px; font-weight:600; {{ segLight }}">Light</button>
+          <button onClick="{{ setDark }}" style="flex:1; border:none; cursor:pointer; border-radius:10px; padding:10px 0; font-family:'Hanken Grotesk',sans-serif; font-size:13px; font-weight:600; {{ segDark }}">Dark</button>
+          <button onClick="{{ setAuto }}" style="flex:1; border:none; cursor:pointer; border-radius:10px; padding:10px 0; font-family:'Hanken Grotesk',sans-serif; font-size:13px; font-weight:600; {{ segAuto }}">Auto</button>
+        </div>
+        <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted); margin-top:30px;">ACCENT COLOR</div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:8px;">
+          <span style="font-size:14px; color:var(--muted);">Selected</span>
+          <span style="font-size:14px; font-weight:600; color:var(--accent);">{{ accentName }}</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-top:15px;">
+          <sc-for list="{{ accentList }}" as="sw" hint-placeholder-count="6">
+            <button onClick="{{ sw.pick }}" style="width:40px; height:40px; border-radius:50%; border:none; cursor:pointer; background:{{ sw.hex }}; {{ sw.ringStyle }}"></button>
+          </sc-for>
+        </div>
+        <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted); margin-top:30px;">DAILY WORD</div>
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:15px 0; border-bottom:1px solid var(--line); margin-top:4px;">
+          <div>
+            <div style="font-size:15px; font-weight:500;">Daily notification</div>
+            <div style="font-size:12.5px; color:var(--muted); margin-top:3px;">Delivered at 9:00 AM</div>
+          </div>
+          <button onClick="{{ toggleNotif }}" style="width:46px; height:28px; border-radius:999px; border:none; cursor:pointer; position:relative; flex:none; transition:background .2s; {{ trackStyle }}">
+            <span style="position:absolute; top:3px; left:3px; width:22px; height:22px; border-radius:50%; box-shadow:0 1px 3px rgba(0,0,0,.3); transition:transform .2s; {{ knobStyle }}"></span>
+          </button>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:15px 0;">
+          <div>
+            <div style="font-size:15px; font-weight:500;">Widgets</div>
+            <div style="font-size:12.5px; color:var(--muted); margin-top:3px;">Small &amp; Medium · on Home</div>
+          </div>
+          <div style="width:78px; height:48px; border-radius:12px; background:color-mix(in oklab, var(--accent) 10%, var(--surface)); border:1px solid var(--line); display:flex; flex-direction:column; justify-content:center; padding:0 11px; flex:none;">
+            <div style="font-family:'Newsreader',serif; font-size:14px; font-weight:600; line-height:1;">ephemeral</div>
+            <div style="font-family:'Spline Sans Mono',monospace; font-size:7px; letter-spacing:.12em; color:var(--accent); margin-top:4px;">ADJECTIVE</div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:none; height:54px; border-top:1px solid var(--line); display:flex; align-items:center; justify-content:space-around; font-family:'Spline Sans Mono',monospace; font-size:9.5px; letter-spacing:.14em;"><span style="color:var(--muted);">TODAY</span><span style="color:var(--muted);">SAVED</span><span style="color:var(--accent);">SETTINGS</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- iOS · HOME LIGHT ---------- -->
+<div style="position:absolute; left:1332px; top:178px;">
+  <div data-drags-parent="1" style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; color:#6f675e; margin-bottom:13px; cursor:grab;">HOME — WIDGETS · LIGHT</div>
+  <div style="position:relative; width:344px; height:718px; background:linear-gradient(150deg,#2c2a25,#0c0b0a); border-radius:54px; padding:11px; box-shadow:0 28px 56px -22px rgba(0,0,0,.5), 0 0 0 2px rgba(255,255,255,.05) inset;">
+    <div style="position:relative; width:322px; height:696px; border-radius:44px; overflow:hidden; color:#1b1714; display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif; background:linear-gradient(165deg,#efe1cf 0%, #f5ebde 45%, #ecdccb 100%);">
+      <div style="position:absolute; top:11px; left:50%; transform:translateX(-50%); width:86px; height:25px; background:#08070a; border-radius:14px; z-index:7;"></div>
+      <div style="height:52px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:0 24px 0 30px; position:relative; z-index:6;">
+        <span style="font-size:14px; font-weight:600; letter-spacing:-.01em;">9:41</span>
+        <div style="display:flex; align-items:center; gap:7px;">
+          <div style="display:flex; align-items:flex-end; gap:2px; height:11px;"><div style="width:3px;height:5px;background:currentColor;border-radius:1px;"></div><div style="width:3px;height:7px;background:currentColor;border-radius:1px;"></div><div style="width:3px;height:9px;background:currentColor;border-radius:1px;"></div><div style="width:3px;height:11px;background:currentColor;border-radius:1px;opacity:.4;"></div></div>
+          <span style="font-size:11px;font-weight:700;">5G</span>
+          <div style="display:flex;align-items:center;gap:2px;"><div style="width:22px;height:11px;border:1px solid currentColor;border-radius:3px;padding:1.5px;opacity:.9;"><div style="width:72%;height:100%;background:currentColor;border-radius:1px;"></div></div><div style="width:1.5px;height:4px;background:currentColor;border-radius:0 1px 1px 0;opacity:.9;"></div></div>
+        </div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; padding:50px 18px 0;">
+        <div style="background:rgba(255,255,255,.78); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-radius:24px; padding:16px 18px; box-shadow:0 10px 26px -12px rgba(60,40,20,.35); border:1px solid rgba(255,255,255,.6);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Spline Sans Mono',monospace; font-size:8.5px; letter-spacing:.2em; color:#9a8d7d;">WORD OF THE DAY</span>
+            <span style="font-family:'Spline Sans Mono',monospace; font-size:8.5px; letter-spacing:.08em; color:#9a8d7d;">JUN 24</span>
+          </div>
+          <div style="display:flex; align-items:baseline; gap:10px; margin-top:8px;">
+            <span style="font-family:'Newsreader',serif; font-size:30px; font-weight:600; letter-spacing:-.02em; line-height:1;">ephemeral</span>
+            <span style="font-family:'Spline Sans Mono',monospace; font-size:9px; color:#9a8d7d;">/əˈfem(ə)rəl/</span>
+          </div>
+          <div style="display:flex; gap:8px; margin-top:9px;">
+            <div style="width:2px; background:var(--accent); border-radius:2px; flex:none;"></div>
+            <div>
+              <div style="font-size:11.5px; line-height:1.4; color:#3a342d;">Lasting for a markedly brief time; fleeting and soon vanishing.</div>
+              <div style="font-family:'Newsreader',serif; font-style:italic; font-size:11px; line-height:1.35; color:#8c7f6f; margin-top:5px;">“The ephemeral beauty of cherry blossom…”</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; gap:16px; margin-top:18px; align-items:flex-start;">
+          <div style="width:132px; height:132px; flex:none; background:rgba(255,255,255,.78); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-radius:24px; padding:14px; box-shadow:0 10px 26px -12px rgba(60,40,20,.35); border:1px solid rgba(255,255,255,.6); display:flex; flex-direction:column;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <span style="font-family:'Spline Sans Mono',monospace; font-size:8px; letter-spacing:.16em; color:#9a8d7d;">WORD</span>
+              <span style="width:7px; height:7px; border-radius:50%; background:var(--accent);"></span>
+            </div>
+            <div style="font-family:'Newsreader',serif; font-size:27px; font-weight:600; letter-spacing:-.02em; line-height:1; margin-top:14px;">halcyon</div>
+            <div style="font-family:'Spline Sans Mono',monospace; font-size:7.5px; letter-spacing:.14em; color:var(--accent); margin-top:8px;">ADJECTIVE</div>
+            <div style="font-size:10px; line-height:1.35; color:#6f675c; margin-top:6px;">Idyllically calm, peaceful and happy.</div>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:6px; margin-top:2px;">
+            <div style="width:60px; height:60px; border-radius:15px; background:linear-gradient(150deg, color-mix(in oklab, var(--accent) 78%, #fff), var(--accent)); box-shadow:0 6px 16px -6px rgba(60,40,20,.5); display:flex; align-items:center; justify-content:center;">
+              <span style="font-family:'Newsreader',serif; font-size:38px; color:#fff; line-height:1; margin-top:14px;">“</span>
+            </div>
+            <span style="font-size:11px; color:#4a443c; font-weight:500;">Lexica</span>
+          </div>
+        </div>
+        <div style="flex:1;"></div>
+        <div style="display:flex; gap:6px; justify-content:center; margin-bottom:14px;">
+          <span style="width:6px; height:6px; border-radius:50%; background:#3a342d;"></span>
+          <span style="width:6px; height:6px; border-radius:50%; background:rgba(58,52,45,.3);"></span>
+        </div>
+        <div style="height:84px; background:rgba(255,255,255,.5); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border-radius:32px; margin:0 4px 16px; display:flex; align-items:center; justify-content:space-around; padding:0 16px; border:1px solid rgba(255,255,255,.4);">
+          <span style="width:52px; height:52px; border-radius:13px; background:linear-gradient(150deg,#fff,#e7ddcd);"></span>
+          <span style="width:52px; height:52px; border-radius:13px; background:linear-gradient(150deg,#e9ddc9,#d9c9af);"></span>
+          <span style="width:52px; height:52px; border-radius:13px; background:linear-gradient(150deg,#f0e6d6,#ddd0bb);"></span>
+          <span style="width:52px; height:52px; border-radius:13px; background:linear-gradient(150deg,#fff,#e2d6c2);"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- iOS · HOME DARK ---------- -->
+<div style="position:absolute; left:1756px; top:178px;">
+  <div data-drags-parent="1" style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; color:#6f675e; margin-bottom:13px; cursor:grab;">HOME — WIDGETS · DARK</div>
+  <div style="position:relative; width:344px; height:718px; background:linear-gradient(150deg,#2c2a25,#0c0b0a); border-radius:54px; padding:11px; box-shadow:0 28px 56px -22px rgba(0,0,0,.5), 0 0 0 2px rgba(255,255,255,.05) inset;">
+    <div style="position:relative; width:322px; height:696px; border-radius:44px; overflow:hidden; color:#f1ece4; display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif; background:linear-gradient(165deg,#2a201a 0%, #1a1510 55%, #110d0a 100%);">
+      <div style="position:absolute; top:11px; left:50%; transform:translateX(-50%); width:86px; height:25px; background:#08070a; border-radius:14px; z-index:7;"></div>
+      <div style="height:52px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:0 24px 0 30px; position:relative; z-index:6;">
+        <span style="font-size:14px; font-weight:600; letter-spacing:-.01em;">9:41</span>
+        <div style="display:flex; align-items:center; gap:7px;">
+          <div style="display:flex; align-items:flex-end; gap:2px; height:11px;"><div style="width:3px;height:5px;background:currentColor;border-radius:1px;"></div><div style="width:3px;height:7px;background:currentColor;border-radius:1px;"></div><div style="width:3px;height:9px;background:currentColor;border-radius:1px;"></div><div style="width:3px;height:11px;background:currentColor;border-radius:1px;opacity:.4;"></div></div>
+          <span style="font-size:11px;font-weight:700;">5G</span>
+          <div style="display:flex;align-items:center;gap:2px;"><div style="width:22px;height:11px;border:1px solid currentColor;border-radius:3px;padding:1.5px;opacity:.9;"><div style="width:72%;height:100%;background:currentColor;border-radius:1px;"></div></div><div style="width:1.5px;height:4px;background:currentColor;border-radius:0 1px 1px 0;opacity:.9;"></div></div>
+        </div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; padding:50px 18px 0;">
+        <div style="background:rgba(48,40,32,.55); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-radius:24px; padding:16px 18px; box-shadow:0 12px 28px -14px rgba(0,0,0,.6); border:1px solid rgba(255,255,255,.08);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Spline Sans Mono',monospace; font-size:8.5px; letter-spacing:.2em; color:#a99e8f;">WORD OF THE DAY</span>
+            <span style="font-family:'Spline Sans Mono',monospace; font-size:8.5px; letter-spacing:.08em; color:#a99e8f;">JUN 24</span>
+          </div>
+          <div style="display:flex; align-items:baseline; gap:10px; margin-top:8px;">
+            <span style="font-family:'Newsreader',serif; font-size:30px; font-weight:600; letter-spacing:-.02em; line-height:1;">ephemeral</span>
+            <span style="font-family:'Spline Sans Mono',monospace; font-size:9px; color:#a99e8f;">/əˈfem(ə)rəl/</span>
+          </div>
+          <div style="display:flex; gap:8px; margin-top:9px;">
+            <div style="width:2px; background:var(--accent); border-radius:2px; flex:none;"></div>
+            <div>
+              <div style="font-size:11.5px; line-height:1.4; color:#e3dbcf;">Lasting for a markedly brief time; fleeting and soon vanishing.</div>
+              <div style="font-family:'Newsreader',serif; font-style:italic; font-size:11px; line-height:1.35; color:#a99e8f; margin-top:5px;">“The ephemeral beauty of cherry blossom…”</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; gap:16px; margin-top:18px; align-items:flex-start;">
+          <div style="width:132px; height:132px; flex:none; background:rgba(48,40,32,.55); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-radius:24px; padding:14px; box-shadow:0 12px 28px -14px rgba(0,0,0,.6); border:1px solid rgba(255,255,255,.08); display:flex; flex-direction:column;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <span style="font-family:'Spline Sans Mono',monospace; font-size:8px; letter-spacing:.16em; color:#a99e8f;">WORD</span>
+              <span style="width:7px; height:7px; border-radius:50%; background:var(--accent);"></span>
+            </div>
+            <div style="font-family:'Newsreader',serif; font-size:27px; font-weight:600; letter-spacing:-.02em; line-height:1; margin-top:14px;">halcyon</div>
+            <div style="font-family:'Spline Sans Mono',monospace; font-size:7.5px; letter-spacing:.14em; color:var(--accent); margin-top:8px;">ADJECTIVE</div>
+            <div style="font-size:10px; line-height:1.35; color:#b3a99b; margin-top:6px;">Idyllically calm, peaceful and happy.</div>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:6px; margin-top:2px;">
+            <div style="width:60px; height:60px; border-radius:15px; background:linear-gradient(150deg, color-mix(in oklab, var(--accent) 78%, #fff), var(--accent)); box-shadow:0 6px 16px -6px rgba(0,0,0,.6); display:flex; align-items:center; justify-content:center;">
+              <span style="font-family:'Newsreader',serif; font-size:38px; color:#fff; line-height:1; margin-top:14px;">“</span>
+            </div>
+            <span style="font-size:11px; color:#d8d0c4; font-weight:500;">Lexica</span>
+          </div>
+        </div>
+        <div style="flex:1;"></div>
+        <div style="display:flex; gap:6px; justify-content:center; margin-bottom:14px;">
+          <span style="width:6px; height:6px; border-radius:50%; background:#f1ece4;"></span>
+          <span style="width:6px; height:6px; border-radius:50%; background:rgba(241,236,228,.3);"></span>
+        </div>
+        <div style="height:84px; background:rgba(48,40,32,.5); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border-radius:32px; margin:0 4px 16px; display:flex; align-items:center; justify-content:space-around; padding:0 16px; border:1px solid rgba(255,255,255,.07);">
+          <span style="width:52px; height:52px; border-radius:13px; background:linear-gradient(150deg,#4a4036,#322a22);"></span>
+          <span style="width:52px; height:52px; border-radius:13px; background:linear-gradient(150deg,#564a3a,#3a3026);"></span>
+          <span style="width:52px; height:52px; border-radius:13px; background:linear-gradient(150deg,#463c30,#2e261e);"></span>
+          <span style="width:52px; height:52px; border-radius:13px; background:linear-gradient(150deg,#4a4036,#322a22);"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- ============================ ANDROID =========================== -->
+<!-- ================================================================ -->
+<div style="position:absolute; left:60px; top:984px; display:flex; align-items:baseline; gap:14px;">
+  <span style="font-family:'Newsreader',serif; font-size:25px; font-weight:500; color:#211d18;">Android</span>
+  <span style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.14em; color:#8c837b;">MATERIAL · APP + WIDGETS</span>
+</div>
+
+<!-- ---------- ANDROID · TODAY ---------- -->
+<div style="position:absolute; left:60px; top:1030px;">
+  <div data-drags-parent="1" style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; color:#6f675e; margin-bottom:13px; cursor:grab;">TODAY</div>
+  <div style="position:relative; width:340px; height:720px; background:linear-gradient(150deg,#23211d,#0a0a0b); border-radius:40px; padding:7px; box-shadow:0 28px 56px -22px rgba(0,0,0,.5), 0 0 0 2px rgba(255,255,255,.04) inset;">
+    <div style="position:relative; width:326px; height:706px; border-radius:34px; overflow:hidden; background:var(--bg); color:var(--fg); display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif;">
+      <div style="position:absolute; top:11px; left:50%; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; background:#08070a; z-index:9;"></div>
+      <div style="height:30px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:0 18px; position:relative; z-index:6; font-size:12px;">
+        <span style="font-weight:600;">9:41</span>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <div style="display:flex; align-items:flex-end; gap:1.5px; height:9px;"><div style="width:2.5px;height:4px;background:currentColor;border-radius:1px;"></div><div style="width:2.5px;height:6px;background:currentColor;border-radius:1px;"></div><div style="width:2.5px;height:9px;background:currentColor;border-radius:1px;"></div></div>
+          <div style="width:14px;height:9px;border:1.4px solid currentColor;border-radius:2px;padding:1px;"><div style="width:80%;height:100%;background:currentColor;border-radius:0.5px;"></div></div>
+          <span style="font-size:10px;font-weight:600;">84%</span>
+        </div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; padding:8px 24px 0; overflow:hidden;">
+        <div style="display:flex; justify-content:space-between; font-family:'Spline Sans Mono',monospace; font-size:10.5px; letter-spacing:.12em; color:var(--muted); padding-top:2px;"><span>JUNE 2026</span><span style="color:var(--accent);">142 / 365</span></div>
+        <div style="margin-top:26px;">
+          <div style="font-family:'Newsreader',serif; font-size:60px; line-height:1; font-weight:500; letter-spacing:-.03em;">ephemeral</div>
+          <div style="height:4px; background:var(--accent); border-radius:3px; margin-top:16px;"></div>
+          <div style="display:flex; justify-content:space-between; margin-top:12px; font-family:'Spline Sans Mono',monospace; font-size:11px; color:var(--muted);"><span style="text-transform:uppercase; letter-spacing:.14em;">adjective</span><span>/əˈfem(ə)rəl/</span></div>
+        </div>
+        <div style="font-size:16.5px; line-height:1.5; color:var(--fg); margin-top:22px;">Lasting for a markedly brief time; fleeting and destined to fade.</div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;">
+          <span style="padding:6px 13px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px;">fleeting</span>
+          <span style="padding:6px 13px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px;">transient</span>
+          <span style="padding:6px 13px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px;">momentary</span>
+        </div>
+        <div style="margin-top:auto; margin-left:-24px; margin-right:-24px; background:color-mix(in oklab, var(--accent) 13%, var(--surface)); padding:18px 24px 20px;">
+          <div style="font-family:'Newsreader',serif; font-size:46px; line-height:0.4; color:var(--accent); height:22px;">“</div>
+          <div style="font-family:'Newsreader',serif; font-style:italic; font-size:17px; line-height:1.45; color:var(--fg); margin-top:8px;">The ephemeral beauty of cherry blossom draws crowds each spring.</div>
+        </div>
+      </div>
+      <div style="flex:none; background:var(--surface); border-top:1px solid var(--line); padding:8px 6px 12px; display:flex; justify-content:space-around;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:3px; width:80px;">
+          <div style="width:60px; height:30px; border-radius:999px; background:color-mix(in oklab, var(--accent) 18%, transparent); display:flex; align-items:center; justify-content:center;"><div style="width:15px;height:15px;border:1.7px solid var(--accent);border-radius:4px;"></div></div>
+          <span style="font-size:10px; font-weight:600; color:var(--accent);">Today</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:3px; width:80px;">
+          <div style="width:60px; height:30px; display:flex; align-items:center; justify-content:center;"><div style="width:12px;height:15px;background:var(--muted);clip-path:polygon(0 0,100% 0,100% 100%,50% 76%,0 100%);"></div></div>
+          <span style="font-size:10px; color:var(--muted);">Saved</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:3px; width:80px;">
+          <div style="width:60px; height:30px; display:flex; align-items:center; justify-content:center; color:var(--muted);"><div style="width:16px; height:14px; display:flex; flex-direction:column; justify-content:space-between;"><div style="position:relative; height:2px; background:currentColor; border-radius:2px;"><span style="position:absolute; top:-2px; left:3px; width:6px; height:6px; border-radius:50%; background:currentColor; box-shadow:0 0 0 1.5px var(--surface);"></span></div><div style="position:relative; height:2px; background:currentColor; border-radius:2px;"><span style="position:absolute; top:-2px; right:3px; width:6px; height:6px; border-radius:50%; background:currentColor; box-shadow:0 0 0 1.5px var(--surface);"></span></div></div></div>
+          <span style="font-size:10px; color:var(--muted);">Settings</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- ANDROID · WORD DETAIL ---------- -->
+<div style="position:absolute; left:484px; top:1030px;">
+  <div data-drags-parent="1" style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; color:#6f675e; margin-bottom:13px; cursor:grab;">WORD DETAIL</div>
+  <div style="position:relative; width:340px; height:720px; background:linear-gradient(150deg,#23211d,#0a0a0b); border-radius:40px; padding:7px; box-shadow:0 28px 56px -22px rgba(0,0,0,.5), 0 0 0 2px rgba(255,255,255,.04) inset;">
+    <div style="position:relative; width:326px; height:706px; border-radius:34px; overflow:hidden; background:var(--bg); color:var(--fg); display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif;">
+      <div style="position:absolute; top:11px; left:50%; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; background:#08070a; z-index:9;"></div>
+      <div style="height:30px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:0 18px; position:relative; z-index:6; font-size:12px;">
+        <span style="font-weight:600;">9:41</span>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <div style="display:flex; align-items:flex-end; gap:1.5px; height:9px;"><div style="width:2.5px;height:4px;background:currentColor;border-radius:1px;"></div><div style="width:2.5px;height:6px;background:currentColor;border-radius:1px;"></div><div style="width:2.5px;height:9px;background:currentColor;border-radius:1px;"></div></div>
+          <div style="width:14px;height:9px;border:1.4px solid currentColor;border-radius:2px;padding:1px;"><div style="width:80%;height:100%;background:currentColor;border-radius:0.5px;"></div></div>
+          <span style="font-size:10px;font-weight:600;">84%</span>
+        </div>
+      </div>
+      <div style="flex:none; display:flex; align-items:center; justify-content:space-between; padding:6px 22px 8px;">
+        <div style="width:20px; height:20px; position:relative;"><span style="position:absolute; top:50%; left:2px; width:11px; height:1.8px; background:var(--fg); border-radius:2px;"></span><span style="position:absolute; top:50%; left:2px; width:8px; height:1.8px; background:var(--fg); border-radius:2px; transform:rotate(-45deg); transform-origin:left;"></span><span style="position:absolute; top:50%; left:2px; width:8px; height:1.8px; background:var(--fg); border-radius:2px; transform:rotate(45deg); transform-origin:left;"></span></div>
+        <span style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; color:var(--accent);">SAVE</span>
+      </div>
+      <div style="flex:1; overflow-y:auto; padding:4px 24px 20px;">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+          <div>
+            <div style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent);">adjective</div>
+            <div style="font-family:'Spline Sans Mono',monospace; font-size:12px; color:var(--muted); margin-top:9px;">/əˈfem(ə)rəl/</div>
+          </div>
+          <div style="width:42px; height:42px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; flex:none;">
+            <div style="width:0;height:0;border-style:solid;border-width:6px 0 6px 11px;border-color:transparent transparent transparent #fff; margin-left:2px;"></div>
+          </div>
+        </div>
+        <div style="font-family:'Newsreader',serif; font-size:50px; font-weight:500; letter-spacing:-.025em; line-height:1.02; margin-top:14px;">ephemeral</div>
+        <div style="height:1px; background:var(--line); margin:22px 0;"></div>
+        <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted);">DEFINITION</div>
+        <div style="font-size:16px; line-height:1.55; margin-top:10px;">Lasting for a markedly brief time. <span style="color:var(--muted);">Used especially of things whose beauty or relevance is brief.</span></div>
+        <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted); margin-top:24px;">EXAMPLE</div>
+        <div style="font-family:'Newsreader',serif; font-style:italic; font-size:17px; line-height:1.45; margin-top:10px;">“The ephemeral beauty of cherry blossom draws crowds each spring.”</div>
+        <div style="display:flex; gap:26px; margin-top:26px;">
+          <div style="flex:1;">
+            <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted);">SYNONYMS</div>
+            <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:11px;">
+              <span style="padding:5px 11px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px;">fleeting</span>
+              <span style="padding:5px 11px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px;">transient</span>
+              <span style="padding:5px 11px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px;">passing</span>
+            </div>
+          </div>
+          <div style="flex:1;">
+            <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted);">ANTONYMS</div>
+            <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:11px;">
+              <span style="padding:5px 11px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px; opacity:.7;">permanent</span>
+              <span style="padding:5px 11px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px; opacity:.7;">enduring</span>
+              <span style="padding:5px 11px; border:1px solid var(--line2); border-radius:999px; font-size:12.5px; opacity:.7;">lasting</span>
+            </div>
+          </div>
+        </div>
+        <div style="height:1px; background:var(--line); margin:24px 0;"></div>
+        <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted);">ORIGIN</div>
+        <div style="font-size:14px; line-height:1.55; color:var(--muted); margin-top:10px;">Mid 16th century: from Greek <span style="font-style:italic; color:var(--fg);">ephēmeros</span> ‘lasting only a day’.</div>
+      </div>
+      <div style="flex:none; background:var(--surface); border-top:1px solid var(--line); padding:8px 6px 12px; display:flex; justify-content:space-around;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:3px; width:80px;">
+          <div style="width:60px; height:30px; border-radius:999px; background:color-mix(in oklab, var(--accent) 18%, transparent); display:flex; align-items:center; justify-content:center;"><div style="width:15px;height:15px;border:1.7px solid var(--accent);border-radius:4px;"></div></div>
+          <span style="font-size:10px; font-weight:600; color:var(--accent);">Today</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:3px; width:80px;">
+          <div style="width:60px; height:30px; display:flex; align-items:center; justify-content:center;"><div style="width:12px;height:15px;background:var(--muted);clip-path:polygon(0 0,100% 0,100% 100%,50% 76%,0 100%);"></div></div>
+          <span style="font-size:10px; color:var(--muted);">Saved</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:3px; width:80px;">
+          <div style="width:60px; height:30px; display:flex; align-items:center; justify-content:center; color:var(--muted);"><div style="width:16px; height:14px; display:flex; flex-direction:column; justify-content:space-between;"><div style="position:relative; height:2px; background:currentColor; border-radius:2px;"><span style="position:absolute; top:-2px; left:3px; width:6px; height:6px; border-radius:50%; background:currentColor; box-shadow:0 0 0 1.5px var(--surface);"></span></div><div style="position:relative; height:2px; background:currentColor; border-radius:2px;"><span style="position:absolute; top:-2px; right:3px; width:6px; height:6px; border-radius:50%; background:currentColor; box-shadow:0 0 0 1.5px var(--surface);"></span></div></div></div>
+          <span style="font-size:10px; color:var(--muted);">Settings</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- ANDROID · SETTINGS ---------- -->
+<div style="position:absolute; left:908px; top:1030px;">
+  <div data-drags-parent="1" style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; color:#6f675e; margin-bottom:13px; cursor:grab;">SETTINGS — THEME &amp; ACCENT (LIVE)</div>
+  <div style="position:relative; width:340px; height:720px; background:linear-gradient(150deg,#23211d,#0a0a0b); border-radius:40px; padding:7px; box-shadow:0 28px 56px -22px rgba(0,0,0,.5), 0 0 0 2px rgba(255,255,255,.04) inset;">
+    <div style="position:relative; width:326px; height:706px; border-radius:34px; overflow:hidden; background:var(--bg); color:var(--fg); display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif;">
+      <div style="position:absolute; top:11px; left:50%; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; background:#08070a; z-index:9;"></div>
+      <div style="height:30px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:0 18px; position:relative; z-index:6; font-size:12px;">
+        <span style="font-weight:600;">9:41</span>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <div style="display:flex; align-items:flex-end; gap:1.5px; height:9px;"><div style="width:2.5px;height:4px;background:currentColor;border-radius:1px;"></div><div style="width:2.5px;height:6px;background:currentColor;border-radius:1px;"></div><div style="width:2.5px;height:9px;background:currentColor;border-radius:1px;"></div></div>
+          <div style="width:14px;height:9px;border:1.4px solid currentColor;border-radius:2px;padding:1px;"><div style="width:80%;height:100%;background:currentColor;border-radius:0.5px;"></div></div>
+          <span style="font-size:10px;font-weight:600;">84%</span>
+        </div>
+      </div>
+      <div style="flex:1; overflow-y:auto; padding:10px 24px 20px;">
+        <div style="font-family:'Newsreader',serif; font-size:32px; font-weight:500; letter-spacing:-.02em; margin-top:6px;">Settings</div>
+        <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted); margin-top:28px;">APPEARANCE</div>
+        <div style="display:flex; background:var(--line); border-radius:13px; padding:4px; margin-top:12px; gap:4px;">
+          <button onClick="{{ setLight }}" style="flex:1; border:none; cursor:pointer; border-radius:10px; padding:10px 0; font-family:'Hanken Grotesk',sans-serif; font-size:13px; font-weight:600; {{ segLight }}">Light</button>
+          <button onClick="{{ setDark }}" style="flex:1; border:none; cursor:pointer; border-radius:10px; padding:10px 0; font-family:'Hanken Grotesk',sans-serif; font-size:13px; font-weight:600; {{ segDark }}">Dark</button>
+          <button onClick="{{ setAuto }}" style="flex:1; border:none; cursor:pointer; border-radius:10px; padding:10px 0; font-family:'Hanken Grotesk',sans-serif; font-size:13px; font-weight:600; {{ segAuto }}">Auto</button>
+        </div>
+        <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted); margin-top:28px;">ACCENT COLOR</div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:8px;">
+          <span style="font-size:14px; color:var(--muted);">Selected</span>
+          <span style="font-size:14px; font-weight:600; color:var(--accent);">{{ accentName }}</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-top:15px;">
+          <sc-for list="{{ accentList }}" as="sw" hint-placeholder-count="6">
+            <button onClick="{{ sw.pick }}" style="width:40px; height:40px; border-radius:50%; border:none; cursor:pointer; background:{{ sw.hex }}; {{ sw.ringStyle }}"></button>
+          </sc-for>
+        </div>
+        <div style="font-family:'Spline Sans Mono',monospace; font-size:10px; letter-spacing:.16em; color:var(--muted); margin-top:28px;">DAILY WORD</div>
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:15px 0; border-bottom:1px solid var(--line); margin-top:4px;">
+          <div>
+            <div style="font-size:15px; font-weight:500;">Daily notification</div>
+            <div style="font-size:12.5px; color:var(--muted); margin-top:3px;">Delivered at 9:00 AM</div>
+          </div>
+          <button onClick="{{ toggleNotif }}" style="width:46px; height:28px; border-radius:999px; border:none; cursor:pointer; position:relative; flex:none; transition:background .2s; {{ trackStyle }}">
+            <span style="position:absolute; top:3px; left:3px; width:22px; height:22px; border-radius:50%; box-shadow:0 1px 3px rgba(0,0,0,.3); transition:transform .2s; {{ knobStyle }}"></span>
+          </button>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:15px 0;">
+          <div>
+            <div style="font-size:15px; font-weight:500;">Widgets</div>
+            <div style="font-size:12.5px; color:var(--muted); margin-top:3px;">Small &amp; Medium · on Home</div>
+          </div>
+          <div style="width:78px; height:48px; border-radius:12px; background:color-mix(in oklab, var(--accent) 10%, var(--surface)); border:1px solid var(--line); display:flex; flex-direction:column; justify-content:center; padding:0 11px; flex:none;">
+            <div style="font-family:'Newsreader',serif; font-size:14px; font-weight:600; line-height:1;">ephemeral</div>
+            <div style="font-family:'Spline Sans Mono',monospace; font-size:7px; letter-spacing:.12em; color:var(--accent); margin-top:4px;">ADJECTIVE</div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:none; background:var(--surface); border-top:1px solid var(--line); padding:8px 6px 12px; display:flex; justify-content:space-around;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:3px; width:80px;">
+          <div style="width:60px; height:30px; display:flex; align-items:center; justify-content:center; color:var(--muted);"><div style="width:15px;height:15px;border:1.7px solid currentColor;border-radius:4px;"></div></div>
+          <span style="font-size:10px; color:var(--muted);">Today</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:3px; width:80px;">
+          <div style="width:60px; height:30px; display:flex; align-items:center; justify-content:center;"><div style="width:12px;height:15px;background:var(--muted);clip-path:polygon(0 0,100% 0,100% 100%,50% 76%,0 100%);"></div></div>
+          <span style="font-size:10px; color:var(--muted);">Saved</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:3px; width:80px;">
+          <div style="width:60px; height:30px; border-radius:999px; background:color-mix(in oklab, var(--accent) 18%, transparent); display:flex; align-items:center; justify-content:center; color:var(--accent);"><div style="width:16px; height:14px; display:flex; flex-direction:column; justify-content:space-between;"><div style="position:relative; height:2px; background:currentColor; border-radius:2px;"><span style="position:absolute; top:-2px; left:3px; width:6px; height:6px; border-radius:50%; background:currentColor; box-shadow:0 0 0 1.5px color-mix(in oklab, var(--accent) 18%, var(--surface));"></span></div><div style="position:relative; height:2px; background:currentColor; border-radius:2px;"><span style="position:absolute; top:-2px; right:3px; width:6px; height:6px; border-radius:50%; background:currentColor; box-shadow:0 0 0 1.5px color-mix(in oklab, var(--accent) 18%, var(--surface));"></span></div></div></div>
+          <span style="font-size:10px; font-weight:600; color:var(--accent);">Settings</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- ANDROID · HOME LIGHT ---------- -->
+<div style="position:absolute; left:1332px; top:1030px;">
+  <div data-drags-parent="1" style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; color:#6f675e; margin-bottom:13px; cursor:grab;">HOME — WIDGETS · LIGHT</div>
+  <div style="position:relative; width:340px; height:720px; background:linear-gradient(150deg,#23211d,#0a0a0b); border-radius:40px; padding:7px; box-shadow:0 28px 56px -22px rgba(0,0,0,.5), 0 0 0 2px rgba(255,255,255,.04) inset;">
+    <div style="position:relative; width:326px; height:706px; border-radius:34px; overflow:hidden; color:#1b1714; display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif; background:linear-gradient(165deg,#efe1cf 0%, #f5ebde 45%, #ecdccb 100%);">
+      <div style="position:absolute; top:11px; left:50%; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; background:#08070a; z-index:9;"></div>
+      <div style="height:30px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:0 18px; position:relative; z-index:6; font-size:12px;">
+        <span style="font-weight:600;">9:41</span>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <div style="display:flex; align-items:flex-end; gap:1.5px; height:9px;"><div style="width:2.5px;height:4px;background:currentColor;border-radius:1px;"></div><div style="width:2.5px;height:6px;background:currentColor;border-radius:1px;"></div><div style="width:2.5px;height:9px;background:currentColor;border-radius:1px;"></div></div>
+          <div style="width:14px;height:9px;border:1.4px solid currentColor;border-radius:2px;padding:1px;"><div style="width:80%;height:100%;background:currentColor;border-radius:0.5px;"></div></div>
+          <span style="font-size:10px;font-weight:600;">84%</span>
+        </div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; padding:34px 16px 0;">
+        <div style="background:rgba(255,255,255,.78); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-radius:26px; padding:16px 18px; box-shadow:0 10px 26px -12px rgba(60,40,20,.35); border:1px solid rgba(255,255,255,.6);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Spline Sans Mono',monospace; font-size:8.5px; letter-spacing:.2em; color:#9a8d7d;">WORD OF THE DAY</span>
+            <span style="font-family:'Spline Sans Mono',monospace; font-size:8.5px; letter-spacing:.08em; color:#9a8d7d;">JUN 24</span>
+          </div>
+          <div style="display:flex; align-items:baseline; gap:10px; margin-top:8px;">
+            <span style="font-family:'Newsreader',serif; font-size:30px; font-weight:600; letter-spacing:-.02em; line-height:1;">ephemeral</span>
+            <span style="font-family:'Spline Sans Mono',monospace; font-size:9px; color:#9a8d7d;">/əˈfem(ə)rəl/</span>
+          </div>
+          <div style="display:flex; gap:8px; margin-top:9px;">
+            <div style="width:2px; background:var(--accent); border-radius:2px; flex:none;"></div>
+            <div>
+              <div style="font-size:11.5px; line-height:1.4; color:#3a342d;">Lasting for a markedly brief time; fleeting and soon vanishing.</div>
+              <div style="font-family:'Newsreader',serif; font-style:italic; font-size:11px; line-height:1.35; color:#8c7f6f; margin-top:5px;">“The ephemeral beauty of cherry blossom…”</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; gap:16px; margin-top:16px; align-items:flex-start;">
+          <div style="width:130px; height:130px; flex:none; background:rgba(255,255,255,.78); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-radius:26px; padding:14px; box-shadow:0 10px 26px -12px rgba(60,40,20,.35); border:1px solid rgba(255,255,255,.6); display:flex; flex-direction:column;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <span style="font-family:'Spline Sans Mono',monospace; font-size:8px; letter-spacing:.16em; color:#9a8d7d;">WORD</span>
+              <span style="width:7px; height:7px; border-radius:50%; background:var(--accent);"></span>
+            </div>
+            <div style="font-family:'Newsreader',serif; font-size:26px; font-weight:600; letter-spacing:-.02em; line-height:1; margin-top:14px;">halcyon</div>
+            <div style="font-family:'Spline Sans Mono',monospace; font-size:7.5px; letter-spacing:.14em; color:var(--accent); margin-top:8px;">ADJECTIVE</div>
+            <div style="font-size:10px; line-height:1.35; color:#6f675c; margin-top:6px;">Idyllically calm, peaceful and happy.</div>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:6px; margin-top:2px;">
+            <div style="width:58px; height:58px; border-radius:50%; background:linear-gradient(150deg, color-mix(in oklab, var(--accent) 78%, #fff), var(--accent)); box-shadow:0 6px 16px -6px rgba(60,40,20,.5); display:flex; align-items:center; justify-content:center;">
+              <span style="font-family:'Newsreader',serif; font-size:36px; color:#fff; line-height:1; margin-top:13px;">“</span>
+            </div>
+            <span style="font-size:11px; color:#4a443c; font-weight:500;">Lexica</span>
+          </div>
+        </div>
+        <div style="flex:1;"></div>
+        <div style="display:flex; justify-content:center; gap:22px; margin-bottom:16px;">
+          <span style="width:50px; height:50px; border-radius:50%; background:linear-gradient(150deg,#fff,#e7ddcd);"></span>
+          <span style="width:50px; height:50px; border-radius:50%; background:linear-gradient(150deg,#e9ddc9,#d9c9af);"></span>
+          <span style="width:50px; height:50px; border-radius:50%; background:linear-gradient(150deg,#f0e6d6,#ddd0bb);"></span>
+          <span style="width:50px; height:50px; border-radius:50%; background:linear-gradient(150deg,#fff,#e2d6c2);"></span>
+        </div>
+        <div style="height:46px; background:rgba(255,255,255,.62); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-radius:999px; margin:0 6px; display:flex; align-items:center; gap:11px; padding:0 16px; border:1px solid rgba(255,255,255,.5); box-shadow:0 6px 18px -10px rgba(60,40,20,.35);">
+          <div style="position:relative; width:15px; height:15px; flex:none;"><div style="width:11px;height:11px;border:1.6px solid #8c7f6f;border-radius:50%;"></div><div style="position:absolute; bottom:0; right:0; width:6px; height:1.6px; background:#8c7f6f; border-radius:2px; transform:rotate(45deg); transform-origin:right;"></div></div>
+          <span style="flex:1; font-size:13px; color:#8c7f6f;">Search dictionary</span>
+          <span style="width:13px; height:13px; border-radius:50%; background:#c9bba8;"></span>
+        </div>
+        <div style="width:120px; height:4px; border-radius:999px; background:rgba(58,52,45,.4); margin:14px auto 12px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- ANDROID · HOME DARK ---------- -->
+<div style="position:absolute; left:1756px; top:1030px;">
+  <div data-drags-parent="1" style="font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; color:#6f675e; margin-bottom:13px; cursor:grab;">HOME — WIDGETS · DARK</div>
+  <div style="position:relative; width:340px; height:720px; background:linear-gradient(150deg,#23211d,#0a0a0b); border-radius:40px; padding:7px; box-shadow:0 28px 56px -22px rgba(0,0,0,.5), 0 0 0 2px rgba(255,255,255,.04) inset;">
+    <div style="position:relative; width:326px; height:706px; border-radius:34px; overflow:hidden; color:#f1ece4; display:flex; flex-direction:column; font-family:'Hanken Grotesk',sans-serif; background:linear-gradient(165deg,#2a201a 0%, #1a1510 55%, #110d0a 100%);">
+      <div style="position:absolute; top:11px; left:50%; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; background:#08070a; z-index:9;"></div>
+      <div style="height:30px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:0 18px; position:relative; z-index:6; font-size:12px;">
+        <span style="font-weight:600;">9:41</span>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <div style="display:flex; align-items:flex-end; gap:1.5px; height:9px;"><div style="width:2.5px;height:4px;background:currentColor;border-radius:1px;"></div><div style="width:2.5px;height:6px;background:currentColor;border-radius:1px;"></div><div style="width:2.5px;height:9px;background:currentColor;border-radius:1px;"></div></div>
+          <div style="width:14px;height:9px;border:1.4px solid currentColor;border-radius:2px;padding:1px;"><div style="width:80%;height:100%;background:currentColor;border-radius:0.5px;"></div></div>
+          <span style="font-size:10px;font-weight:600;">84%</span>
+        </div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; padding:34px 16px 0;">
+        <div style="background:rgba(48,40,32,.55); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-radius:26px; padding:16px 18px; box-shadow:0 12px 28px -14px rgba(0,0,0,.6); border:1px solid rgba(255,255,255,.08);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Spline Sans Mono',monospace; font-size:8.5px; letter-spacing:.2em; color:#a99e8f;">WORD OF THE DAY</span>
+            <span style="font-family:'Spline Sans Mono',monospace; font-size:8.5px; letter-spacing:.08em; color:#a99e8f;">JUN 24</span>
+          </div>
+          <div style="display:flex; align-items:baseline; gap:10px; margin-top:8px;">
+            <span style="font-family:'Newsreader',serif; font-size:30px; font-weight:600; letter-spacing:-.02em; line-height:1;">ephemeral</span>
+            <span style="font-family:'Spline Sans Mono',monospace; font-size:9px; color:#a99e8f;">/əˈfem(ə)rəl/</span>
+          </div>
+          <div style="display:flex; gap:8px; margin-top:9px;">
+            <div style="width:2px; background:var(--accent); border-radius:2px; flex:none;"></div>
+            <div>
+              <div style="font-size:11.5px; line-height:1.4; color:#e3dbcf;">Lasting for a markedly brief time; fleeting and soon vanishing.</div>
+              <div style="font-family:'Newsreader',serif; font-style:italic; font-size:11px; line-height:1.35; color:#a99e8f; margin-top:5px;">“The ephemeral beauty of cherry blossom…”</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; gap:16px; margin-top:16px; align-items:flex-start;">
+          <div style="width:130px; height:130px; flex:none; background:rgba(48,40,32,.55); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-radius:26px; padding:14px; box-shadow:0 12px 28px -14px rgba(0,0,0,.6); border:1px solid rgba(255,255,255,.08); display:flex; flex-direction:column;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <span style="font-family:'Spline Sans Mono',monospace; font-size:8px; letter-spacing:.16em; color:#a99e8f;">WORD</span>
+              <span style="width:7px; height:7px; border-radius:50%; background:var(--accent);"></span>
+            </div>
+            <div style="font-family:'Newsreader',serif; font-size:26px; font-weight:600; letter-spacing:-.02em; line-height:1; margin-top:14px;">halcyon</div>
+            <div style="font-family:'Spline Sans Mono',monospace; font-size:7.5px; letter-spacing:.14em; color:var(--accent); margin-top:8px;">ADJECTIVE</div>
+            <div style="font-size:10px; line-height:1.35; color:#b3a99b; margin-top:6px;">Idyllically calm, peaceful and happy.</div>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:6px; margin-top:2px;">
+            <div style="width:58px; height:58px; border-radius:50%; background:linear-gradient(150deg, color-mix(in oklab, var(--accent) 78%, #fff), var(--accent)); box-shadow:0 6px 16px -6px rgba(0,0,0,.6); display:flex; align-items:center; justify-content:center;">
+              <span style="font-family:'Newsreader',serif; font-size:36px; color:#fff; line-height:1; margin-top:13px;">“</span>
+            </div>
+            <span style="font-size:11px; color:#d8d0c4; font-weight:500;">Lexica</span>
+          </div>
+        </div>
+        <div style="flex:1;"></div>
+        <div style="display:flex; justify-content:center; gap:22px; margin-bottom:16px;">
+          <span style="width:50px; height:50px; border-radius:50%; background:linear-gradient(150deg,#4a4036,#322a22);"></span>
+          <span style="width:50px; height:50px; border-radius:50%; background:linear-gradient(150deg,#564a3a,#3a3026);"></span>
+          <span style="width:50px; height:50px; border-radius:50%; background:linear-gradient(150deg,#463c30,#2e261e);"></span>
+          <span style="width:50px; height:50px; border-radius:50%; background:linear-gradient(150deg,#4a4036,#322a22);"></span>
+        </div>
+        <div style="height:46px; background:rgba(48,40,32,.6); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-radius:999px; margin:0 6px; display:flex; align-items:center; gap:11px; padding:0 16px; border:1px solid rgba(255,255,255,.08); box-shadow:0 8px 20px -12px rgba(0,0,0,.6);">
+          <div style="position:relative; width:15px; height:15px; flex:none;"><div style="width:11px;height:11px;border:1.6px solid #a99e8f;border-radius:50%;"></div><div style="position:absolute; bottom:0; right:0; width:6px; height:1.6px; background:#a99e8f; border-radius:2px; transform:rotate(45deg); transform-origin:right;"></div></div>
+          <span style="flex:1; font-size:13px; color:#a99e8f;">Search dictionary</span>
+          <span style="width:13px; height:13px; border-radius:50%; background:#5a4f43;"></span>
+        </div>
+        <div style="width:120px; height:4px; border-radius:999px; background:rgba(241,236,228,.4); margin:14px auto 12px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light'|'dark'&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;amber&quot;,&quot;gold&quot;,&quot;coral&quot;,&quot;terracotta&quot;,&quot;rose&quot;,&quot;plum&quot;],&quot;default&quot;:&quot;amber&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { theme: 'light', accent: 'amber', notif: true };
+
+  accents = {
+    amber:      { name: 'Amber',  hex: '#c87d2a' },
+    gold:       { name: 'Gold',   hex: '#b8862a' },
+    coral:      { name: 'Coral',  hex: '#d96b52' },
+    terracotta: { name: 'Clay',   hex: '#c25e3a' },
+    rose:       { name: 'Rose',   hex: '#c25a73' },
+    plum:       { name: 'Plum',   hex: '#a85a86' },
+  };
+
+  themes = {
+    light: { bg:'#f6f3ee', surface:'#ffffff', fg:'#1b1714', muted:'#8c837b', line:'rgba(27,23,20,0.09)', line2:'rgba(27,23,20,0.17)' },
+    dark:  { bg:'#15120f', surface:'#1f1b17', fg:'#f1ece4', muted:'#9a9088', line:'rgba(255,255,255,0.10)', line2:'rgba(255,255,255,0.20)' },
+  };
+
+  componentDidMount() {
+    const ns = {};
+    if (this.props.theme)  ns.theme  = this.props.theme;
+    if (this.props.accent) ns.accent = this.props.accent;
+    if (Object.keys(ns).length) this.setState(ns, () => this.apply());
+    else this.apply();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.accent !== this.props.accent && this.props.accent && this.props.accent !== this.state.accent) {
+      this.setState({ accent: this.props.accent }, () => this.apply());
+    }
+    if (prevProps.theme !== this.props.theme && this.props.theme && this.props.theme !== this.state.theme) {
+      this.setState({ theme: this.props.theme }, () => this.apply());
+    }
+  }
+
+  apply() {
+    const root = document.documentElement;
+    const a = this.accents[this.state.accent] || this.accents.amber;
+    root.style.setProperty('--accent', a.hex);
+    const t = this.themes[this.state.theme] || this.themes.light;
+    root.style.setProperty('--bg', t.bg);
+    root.style.setProperty('--surface', t.surface);
+    root.style.setProperty('--fg', t.fg);
+    root.style.setProperty('--muted', t.muted);
+    root.style.setProperty('--line', t.line);
+    root.style.setProperty('--line2', t.line2);
+  }
+
+  setTheme(t)  { this.setState({ theme: t },  () => this.apply()); }
+  setAccent(k) { this.setState({ accent: k }, () => this.apply()); }
+
+  renderVals() {
+    const accentList = Object.keys(this.accents).map(k => {
+      const sel = k === this.state.accent;
+      return {
+        key: k,
+        hex: this.accents[k].hex,
+        ringStyle: sel
+          ? `box-shadow:0 0 0 2.5px var(--bg), 0 0 0 4.5px ${this.accents[k].hex};`
+          : 'box-shadow:none;',
+        pick: () => this.setAccent(k),
+      };
+    });
+    const seg = (t) => this.state.theme === t
+      ? 'background:var(--surface); color:var(--fg); box-shadow:0 1px 3px rgba(0,0,0,.14);'
+      : 'background:transparent; color:var(--muted);';
+    return {
+      accentName: (this.accents[this.state.accent] || {}).name,
+      accentList,
+      segLight: seg('light'),
+      segDark:  seg('dark'),
+      segAuto:  seg('auto'),
+      setLight: () => this.setTheme('light'),
+      setDark:  () => this.setTheme('dark'),
+      setAuto:  () => this.setTheme('auto'),
+      toggleNotif: () => this.setState(s => ({ notif: !s.notif })),
+      trackStyle: this.state.notif ? 'background:var(--accent);' : 'background:var(--line2);',
+      knobStyle:  this.state.notif ? 'transform:translateX(18px); background:#fff;' : 'transform:translateX(0); background:#fff;',
+    };
+  }
+}
+</script>
+</body>
+</html>

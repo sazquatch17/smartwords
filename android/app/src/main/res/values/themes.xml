@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base app theme. The activity draws edge-to-edge with a transparent system
+         bar; Compose paints the actual background so light/dark/auto stays in sync. -->
+    <style name="Theme.SmartWords" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

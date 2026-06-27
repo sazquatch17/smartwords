@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark palette. -->
+    <color name="bg">#15120f</color>
+    <color name="surface">#1f1b17</color>
+    <color name="fg">#f1ece4</color>
+</resources>

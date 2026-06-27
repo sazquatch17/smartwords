@@ -33,21 +33,19 @@ struct RootView: View {
     @StateObject private var settings = AppSettings.shared
     @Environment(\.colorScheme) private var scheme
     @State private var tab: Tab = .today
-    @State private var todayPath: [Word] = []
+    private let words = WordStore.words()
 
     private var resolved: ResolvedTheme {
         ResolvedTheme(palette: settings.palette(for: scheme), accent: settings.accent.color)
     }
+    // Today is the single word page; it shows the current word of the day.
+    private var todayWord: Word { words[WordStore.index(at: Date(), in: words)] }
 
     var body: some View {
         VStack(spacing: 0) {
             Group {
                 switch tab {
-                case .today:
-                    NavigationStack(path: $todayPath) {
-                        TodayView()
-                            .navigationDestination(for: Word.self) { WordDetailView(word: $0) }
-                    }
+                case .today:    TodayView(word: todayWord)
                 case .saved:    SavedView()
                 case .settings: SettingsView()
                 }
@@ -61,13 +59,9 @@ struct RootView: View {
         .environmentObject(settings)
         .preferredColorScheme(settings.preferredScheme)
         .tint(resolved.accent)
+        // Widget tap opens the app to Today (which is this word).
         .onOpenURL { url in
-            guard url.scheme == "smartwords", url.host == "word",
-                  let i = Int(url.lastPathComponent) else { return }
-            let words = WordStore.words()
-            guard words.indices.contains(i) else { return }
-            tab = .today
-            todayPath = [words[i]]
+            if url.scheme == "smartwords", url.host == "word" { tab = .today }
         }
     }
 }
@@ -129,9 +123,11 @@ private struct SectionLabel: View {
 
 // MARK: - Today
 
+// The single word page: Today's highlights (accent bar, bottom example panel)
+// merged with the full detail content (definition, synonyms/antonyms, origin).
 struct TodayView: View {
+    let word: Word
     @Environment(\.theme) private var theme
-    private let word = WordStore.word(at: Date(), in: WordStore.words())
 
     private var dateLine: String {
         let f = DateFormatter(); f.dateFormat = "MMMM yyyy"
@@ -141,22 +137,30 @@ struct TodayView: View {
         let d = Calendar.current.ordinality(of: .day, in: .year, for: Date()) ?? 1
         return "\(d) / 365"
     }
+    private var hasSynAnt: Bool {
+        !(word.synonyms ?? []).isEmpty || !(word.antonyms ?? []).isEmpty
+    }
+    private var divider: some View {
+        Rectangle().fill(theme.palette.line).frame(height: 1).padding(.vertical, 22)
+    }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack {
-                Text(dateLine).font(mono(10.5)).tracking(1.2).foregroundStyle(theme.palette.muted)
-                Spacer()
-                Text(dayCount).font(mono(10.5)).tracking(1.2).foregroundStyle(theme.accent)
-            }
-            .padding(.top, 8)
-
-            NavigationLink(value: word) {
+        GeometryReader { geo in
+            ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
+                    HStack {
+                        Text(dateLine).font(mono(10.5)).tracking(1.2).foregroundStyle(theme.palette.muted)
+                        Spacer()
+                        Text(dayCount).font(mono(10.5)).tracking(1.2).foregroundStyle(theme.accent)
+                    }
+                    .padding(.top, 8)
+
+                    // Hero word + accent bar + pos/ipa (Today highlight)
                     Text(word.word)
                         .font(serif(60, .medium)).tracking(-1.5)
                         .lineLimit(1).minimumScaleFactor(0.5)
                         .foregroundStyle(theme.palette.fg)
+                        .padding(.top, 26)
                     RoundedRectangle(cornerRadius: 3).fill(theme.accent)
                         .frame(height: 4).padding(.top, 16)
                     HStack {
@@ -165,38 +169,59 @@ struct TodayView: View {
                         if let ipa = word.ipa, !ipa.isEmpty { Text(ipa).font(mono(11)) }
                     }
                     .foregroundStyle(theme.palette.muted).padding(.top, 12)
+
+                    // Definition (detail content)
+                    Text(word.definition)
+                        .font(.system(size: 16.5)).lineSpacing(4)
+                        .foregroundStyle(theme.palette.fg).padding(.top, 22)
+
+                    // Synonyms / antonyms
+                    if hasSynAnt {
+                        HStack(alignment: .top, spacing: 26) {
+                            if let syn = word.synonyms, !syn.isEmpty {
+                                VStack(alignment: .leading, spacing: 11) {
+                                    SectionLabel(text: "SYNONYMS"); FlowChips(items: syn)
+                                }.frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            if let ant = word.antonyms, !ant.isEmpty {
+                                VStack(alignment: .leading, spacing: 11) {
+                                    SectionLabel(text: "ANTONYMS"); FlowChips(items: ant, dim: true)
+                                }.frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                        }.padding(.top, 26)
+                    }
+
+                    // Origin
+                    if let origin = word.origin, !origin.isEmpty {
+                        divider
+                        SectionLabel(text: "ORIGIN")
+                        Text(origin).font(.system(size: 14)).lineSpacing(4)
+                            .foregroundStyle(theme.palette.muted).padding(.top, 10)
+                    }
+
+                    // Push the example panel to the bottom when content is short.
+                    Spacer(minLength: 28)
+
+                    // Example panel (Today highlight) — full-bleed accent wash
+                    if let ex = word.example, !ex.isEmpty {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("\u{201C}").font(serif(46)).foregroundStyle(theme.accent)
+                                .frame(height: 22, alignment: .top)
+                            Text(ex).font(serif(17, italic: true)).lineSpacing(3)
+                                .foregroundStyle(theme.palette.fg)
+                        }
+                        .padding(.horizontal, 26).padding(.top, 20).padding(.bottom, 22)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(AccentWash(palette: theme.palette, accent: theme.accent))
+                        .padding(.horizontal, -26)
+                    }
                 }
-                .padding(.top, 28)
-            }
-            .buttonStyle(.plain)
-
-            Text(word.definition)
-                .font(.system(size: 16.5)).lineSpacing(4)
-                .foregroundStyle(theme.palette.fg).padding(.top, 22)
-
-            if let syn = word.synonyms, !syn.isEmpty {
-                FlowChips(items: syn).padding(.top, 20)
-            }
-
-            Spacer(minLength: 16)
-
-            if let ex = word.example, !ex.isEmpty {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("\u{201C}").font(serif(46)).foregroundStyle(theme.accent)
-                        .frame(height: 22, alignment: .top)
-                    Text(ex).font(serif(17, italic: true)).lineSpacing(3)
-                        .foregroundStyle(theme.palette.fg)
-                }
-                .padding(.horizontal, 26).padding(.top, 20).padding(.bottom, 22)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(AccentWash(palette: theme.palette, accent: theme.accent))
-                .padding(.horizontal, -26)
+                .padding(.horizontal, 26)
+                .frame(minHeight: geo.size.height, alignment: .top)
             }
         }
-        .padding(.horizontal, 26)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(theme.palette.bg)
-        .toolbar(.hidden, for: .navigationBar)
     }
 }
 
@@ -240,94 +265,6 @@ struct FlowLayout: Layout {
             s.place(at: CGPoint(x: bounds.minX + x, y: bounds.minY + y), proposal: .unspecified)
             x += sz.width + spacing; rowH = max(rowH, sz.height)
         }
-    }
-}
-
-// MARK: - Word Detail
-
-struct WordDetailView: View {
-    let word: Word
-    @Environment(\.theme) private var theme
-    @Environment(\.dismiss) private var dismiss
-
-    var body: some View {
-        VStack(spacing: 0) {
-            // Custom nav row
-            HStack {
-                Button { dismiss() } label: {
-                    Text("\u{2039}  Today").font(mono(12)).foregroundStyle(theme.palette.muted)
-                }
-                Spacer()
-                Text("SAVE").font(mono(11)).tracking(1.1).foregroundStyle(theme.accent)
-            }
-            .padding(.horizontal, 24).padding(.top, 2).padding(.bottom, 8)
-
-            ScrollView {
-                VStack(alignment: .leading, spacing: 0) {
-                    HStack(alignment: .top) {
-                        VStack(alignment: .leading, spacing: 9) {
-                            Text((word.pos ?? "").uppercased())
-                                .font(mono(11)).tracking(1.6).foregroundStyle(theme.accent)
-                            if let ipa = word.ipa, !ipa.isEmpty {
-                                Text(ipa).font(mono(12)).foregroundStyle(theme.palette.muted)
-                            }
-                        }
-                        Spacer()
-                        Circle().fill(theme.accent).frame(width: 42, height: 42)
-                            .overlay(Image(systemName: "play.fill").font(.system(size: 14)).foregroundStyle(.white).offset(x: 1))
-                    }
-
-                    Text(word.word).font(serif(50, .medium)).tracking(-1.25)
-                        .foregroundStyle(theme.palette.fg).padding(.top, 14)
-
-                    divider
-
-                    SectionLabel(text: "DEFINITION")
-                    Text(word.definition).font(.system(size: 16)).lineSpacing(4)
-                        .foregroundStyle(theme.palette.fg).padding(.top, 10)
-
-                    if let ex = word.example, !ex.isEmpty {
-                        SectionLabel(text: "EXAMPLE").padding(.top, 24)
-                        Text("\u{201C}\(ex)\u{201D}").font(serif(17, italic: true)).lineSpacing(3)
-                            .foregroundStyle(theme.palette.fg).padding(.top, 10)
-                    }
-
-                    if hasSynAnt {
-                        HStack(alignment: .top, spacing: 26) {
-                            if let syn = word.synonyms, !syn.isEmpty {
-                                VStack(alignment: .leading, spacing: 11) {
-                                    SectionLabel(text: "SYNONYMS"); FlowChips(items: syn)
-                                }.frame(maxWidth: .infinity, alignment: .leading)
-                            }
-                            if let ant = word.antonyms, !ant.isEmpty {
-                                VStack(alignment: .leading, spacing: 11) {
-                                    SectionLabel(text: "ANTONYMS"); FlowChips(items: ant, dim: true)
-                                }.frame(maxWidth: .infinity, alignment: .leading)
-                            }
-                        }.padding(.top, 26)
-                    }
-
-                    if let origin = word.origin, !origin.isEmpty {
-                        divider
-                        SectionLabel(text: "ORIGIN")
-                        Text(origin).font(.system(size: 14)).lineSpacing(4)
-                            .foregroundStyle(theme.palette.muted).padding(.top, 10)
-                    }
-                }
-                .padding(.horizontal, 26).padding(.bottom, 20)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(theme.palette.bg)
-        .toolbar(.hidden, for: .navigationBar)
-    }
-
-    private var hasSynAnt: Bool {
-        !(word.synonyms ?? []).isEmpty || !(word.antonyms ?? []).isEmpty
-    }
-    private var divider: some View {
-        Rectangle().fill(theme.palette.line).frame(height: 1).padding(.vertical, 22)
     }
 }
 

@@ -92,14 +92,23 @@ final class AppSettings: ObservableObject {
     @Published var mode: ThemeMode { didSet { store?.set(mode.rawValue, forKey: "theme"); reloadWidgets() } }
     @Published var accentID: String { didSet { store?.set(accentID, forKey: "accent"); reloadWidgets() } }
     @Published var notifications: Bool { didSet { store?.set(notifications, forKey: "notif") } }
+    // Saved word indices (into WordStore.words()), most-recent first.
+    @Published var savedIDs: [Int] { didSet { store?.set(savedIDs, forKey: "saved") } }
 
     init() {
         mode = ThemeMode(rawValue: UserDefaults(suiteName: WordStore.appGroup)?.string(forKey: "theme") ?? "") ?? .auto
         accentID = UserDefaults(suiteName: WordStore.appGroup)?.string(forKey: "accent") ?? "amber"
         notifications = UserDefaults(suiteName: WordStore.appGroup)?.object(forKey: "notif") as? Bool ?? true
+        savedIDs = UserDefaults(suiteName: WordStore.appGroup)?.array(forKey: "saved") as? [Int] ?? []
     }
 
     var accent: Accent { Accents.by(accentID) }
+
+    func isSaved(_ index: Int) -> Bool { savedIDs.contains(index) }
+    func toggleSaved(_ index: Int) {
+        if let i = savedIDs.firstIndex(of: index) { savedIDs.remove(at: i) }
+        else { savedIDs.insert(index, at: 0) }
+    }
 
     func palette(for scheme: ColorScheme) -> Palette {
         switch mode {

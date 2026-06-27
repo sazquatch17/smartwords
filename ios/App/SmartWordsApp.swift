@@ -39,13 +39,13 @@ struct RootView: View {
         ResolvedTheme(palette: settings.palette(for: scheme), accent: settings.accent.color)
     }
     // Today is the single word page; it shows the current word of the day.
-    private var todayWord: Word { words[WordStore.index(at: Date(), in: words)] }
+    private var todayIndex: Int { WordStore.index(at: Date(), in: words) }
 
     var body: some View {
         VStack(spacing: 0) {
             Group {
                 switch tab {
-                case .today:    TodayView(word: todayWord)
+                case .today:    TodayView(word: words[todayIndex], index: todayIndex)
                 case .saved:    SavedView()
                 case .settings: SettingsView()
                 }
@@ -127,7 +127,9 @@ private struct SectionLabel: View {
 // merged with the full detail content (definition, synonyms/antonyms, origin).
 struct TodayView: View {
     let word: Word
+    let index: Int
     @Environment(\.theme) private var theme
+    @EnvironmentObject private var settings: AppSettings
 
     private var dateLine: String {
         let f = DateFormatter(); f.dateFormat = "MMMM yyyy"
@@ -148,10 +150,17 @@ struct TodayView: View {
         GeometryReader { geo in
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    HStack {
+                    HStack(spacing: 14) {
                         Text(dateLine).font(mono(10.5)).tracking(1.2).foregroundStyle(theme.palette.muted)
                         Spacer()
                         Text(dayCount).font(mono(10.5)).tracking(1.2).foregroundStyle(theme.accent)
+                        Button { settings.toggleSaved(index) } label: {
+                            Image(systemName: settings.isSaved(index) ? "bookmark.fill" : "bookmark")
+                                .font(.system(size: 15))
+                                .foregroundStyle(settings.isSaved(index) ? theme.accent : theme.palette.muted)
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel(settings.isSaved(index) ? "Saved" : "Save word")
                     }
                     .padding(.top, 8)
 
@@ -416,14 +425,54 @@ private struct ToggleSwitch: View {
 // MARK: - Saved (placeholder — feature out of scope)
 
 struct SavedView: View {
+    @EnvironmentObject private var settings: AppSettings
     @Environment(\.theme) private var theme
+    private let words = WordStore.words()
+
     var body: some View {
-        VStack(spacing: 10) {
-            Text("Saved").font(serif(32, .medium)).foregroundStyle(theme.palette.fg)
-            Text("Words you save will appear here.")
-                .font(.system(size: 14)).foregroundStyle(theme.palette.muted)
+        let saved = settings.savedIDs.filter { words.indices.contains($0) }
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
+                Text("Saved").font(serif(32, .medium)).tracking(-0.6)
+                    .foregroundStyle(theme.palette.fg).padding(.top, 6).padding(.bottom, 8)
+
+                if saved.isEmpty {
+                    Text("Words you save will appear here.")
+                        .font(.system(size: 14)).foregroundStyle(theme.palette.muted).padding(.top, 14)
+                } else {
+                    ForEach(saved, id: \.self) { i in
+                        savedRow(words[i], index: i)
+                        Rectangle().fill(theme.palette.line).frame(height: 1)
+                    }
+                }
+            }
+            .padding(.horizontal, 26).padding(.bottom, 20)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(theme.palette.bg)
+    }
+
+    private func savedRow(_ w: Word, index: Int) -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: 12) {
+            VStack(alignment: .leading, spacing: 5) {
+                Text(w.word).font(serif(20, .semibold)).foregroundStyle(theme.palette.fg)
+                HStack(spacing: 8) {
+                    if let pos = w.pos, !pos.isEmpty {
+                        Text(pos.uppercased()).font(mono(9.5)).tracking(1.2).foregroundStyle(theme.accent)
+                    }
+                    if let s = w.short, !s.isEmpty {
+                        Text(s).font(.system(size: 13)).foregroundStyle(theme.palette.muted)
+                    }
+                }
+            }
+            Spacer()
+            Button { settings.toggleSaved(index) } label: {
+                Image(systemName: "xmark").font(.system(size: 12, weight: .semibold))
+                    .foregroundStyle(theme.palette.muted)
+            }
+            .buttonStyle(.plain).accessibilityLabel("Remove \(w.word)")
+        }
+        .padding(.vertical, 14)
     }
 }

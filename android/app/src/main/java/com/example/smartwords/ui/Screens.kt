@@ -4,6 +4,7 @@
 
 package com.example.smartwords.ui
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -37,6 +38,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -138,7 +141,7 @@ private fun TabIcon(tab: Tab, tint: Color) {
 // merged with the full detail content (definition, synonyms/antonyms, origin).
 // Content scrolls in the upper region; the example panel is pinned at the bottom.
 @Composable
-fun TodayScreen(word: Word) {
+fun TodayScreen(word: Word, isSaved: Boolean, onToggleSave: () -> Unit) {
     val theme = LocalTheme.current
 
     val now = remember { Date() }
@@ -168,9 +171,23 @@ fun TodayScreen(word: Word) {
             Row(
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 26.dp).padding(top = 8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(dateLine, fontFamily = Fonts.mono, fontSize = 10.5.sp, letterSpacing = 1.2.sp, color = theme.palette.muted)
-                Text(dayCount, fontFamily = Fonts.mono, fontSize = 10.5.sp, letterSpacing = 1.2.sp, color = theme.accent)
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(dayCount, fontFamily = Fonts.mono, fontSize = 10.5.sp, letterSpacing = 1.2.sp, color = theme.accent)
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(6.dp))
+                            .clickable(onClick = onToggleSave)
+                            .padding(4.dp),
+                    ) {
+                        BookmarkIcon(filled = isSaved, tint = if (isSaved) theme.accent else theme.palette.muted)
+                    }
+                }
             }
 
             // Hero word + accent bar + pos/ipa (Today highlight)
@@ -288,18 +305,73 @@ fun TodayScreen(word: Word) {
     }
 }
 
-// MARK: - Saved (placeholder)
+// Bookmark glyph drawn with Canvas so no icon dependency is needed.
+@Composable
+private fun BookmarkIcon(filled: Boolean, tint: Color) {
+    Canvas(modifier = Modifier.size(width = 13.dp, height = 17.dp)) {
+        val path = Path().apply {
+            moveTo(0f, 0f)
+            lineTo(size.width, 0f)
+            lineTo(size.width, size.height)
+            lineTo(size.width / 2f, size.height * 0.62f)
+            lineTo(0f, size.height)
+            close()
+        }
+        if (filled) drawPath(path, tint)
+        else drawPath(path, tint, style = Stroke(width = 1.6.dp.toPx()))
+    }
+}
+
+// MARK: - Saved
 
 @Composable
-fun SavedScreen() {
+fun SavedScreen(saved: List<Pair<Int, Word>>, onRemove: (Int) -> Unit) {
     val theme = LocalTheme.current
     Column(
-        modifier = Modifier.fillMaxSize().background(theme.palette.bg),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxSize()
+            .background(theme.palette.bg)
+            .windowInsetsPadding(WindowInsets.systemBars.only(WindowInsetsSides.Top))
+            .verticalScroll(rememberScrollState())
+            .padding(horizontal = 26.dp)
+            .padding(bottom = 20.dp),
     ) {
-        Text("Saved", fontFamily = Fonts.serif, fontSize = 32.sp, fontWeight = FontWeight.Medium, color = theme.palette.fg)
-        Spacer(Modifier.height(10.dp))
-        Text("Words you save will appear here.", fontFamily = Fonts.sans, fontSize = 14.sp, color = theme.palette.muted)
+        Text(
+            "Saved", fontFamily = Fonts.serif, fontSize = 32.sp, fontWeight = FontWeight.Medium,
+            letterSpacing = (-0.6).sp, color = theme.palette.fg,
+            modifier = Modifier.padding(top = 6.dp, bottom = 8.dp),
+        )
+        if (saved.isEmpty()) {
+            Text(
+                "Words you save will appear here.",
+                fontFamily = Fonts.sans, fontSize = 14.sp, color = theme.palette.muted,
+                modifier = Modifier.padding(top = 14.dp),
+            )
+        } else {
+            saved.forEach { (i, w) ->
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 14.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.Top,
+                ) {
+                    Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(5.dp)) {
+                        Text(w.word, fontFamily = Fonts.serif, fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = theme.palette.fg)
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            if (!w.pos.isNullOrEmpty()) {
+                                Text(w.pos.uppercase(Locale.getDefault()), fontFamily = Fonts.mono, fontSize = 9.5.sp, letterSpacing = 1.2.sp, color = theme.accent)
+                            }
+                            if (!w.short.isNullOrEmpty()) {
+                                Text(w.short, fontFamily = Fonts.sans, fontSize = 13.sp, color = theme.palette.muted)
+                            }
+                        }
+                    }
+                    Text(
+                        "✕", fontSize = 14.sp, color = theme.palette.muted,
+                        modifier = Modifier.clip(RoundedCornerShape(6.dp)).clickable { onRemove(i) }.padding(4.dp),
+                    )
+                }
+                Box(Modifier.fillMaxWidth().height(1.dp).background(theme.palette.line))
+            }
+        }
     }
 }

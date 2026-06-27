@@ -80,9 +80,10 @@ private fun RootApp(deepLinkIndex: Int, onDeepLinkConsumed: () -> Unit) {
 
     // Words + current word are derived from the persisted rotation speed.
     val words = remember { WordStore.words(context) }
-    val currentWord = remember(settings.rotationHours) {
-        WordStore.word(words, settings.rotationHours)
+    val currentIndex = remember(settings.rotationHours) {
+        WordStore.index(words, settings.rotationHours)
     }
+    val currentWord = words[currentIndex]
 
     var tab by remember { mutableStateOf(Tab.TODAY) }
 
@@ -102,8 +103,17 @@ private fun RootApp(deepLinkIndex: Int, onDeepLinkConsumed: () -> Unit) {
         ) {
             Box(modifier = Modifier.weight(1f)) {
                 when (tab) {
-                    Tab.TODAY -> TodayScreen(word = currentWord)
-                    Tab.SAVED -> SavedScreen()
+                    Tab.TODAY -> TodayScreen(
+                        word = currentWord,
+                        isSaved = settings.savedIds.contains(currentIndex),
+                        onToggleSave = {
+                            scope.launch { SettingsRepository.toggleSaved(context, currentIndex) }
+                        },
+                    )
+                    Tab.SAVED -> SavedScreen(
+                        saved = settings.savedIds.filter { it in words.indices }.map { it to words[it] },
+                        onRemove = { i -> scope.launch { SettingsRepository.toggleSaved(context, i) } },
+                    )
                     Tab.SETTINGS -> SettingsScreen(
                         state = settings,
                         previewWord = currentWord,

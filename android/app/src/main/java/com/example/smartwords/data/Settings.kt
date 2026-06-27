@@ -24,6 +24,7 @@ data class AppSettingsState(
     val accentId: String = "amber",
     val notifications: Boolean = true,
     val rotationHours: Int = WordStore.DEFAULT_ROTATION_HOURS,
+    val savedIds: List<Int> = emptyList(),   // word indices, most-recent first
 )
 
 object SettingsRepository {
@@ -31,6 +32,7 @@ object SettingsRepository {
     private val KEY_ACCENT = stringPreferencesKey("accent")
     private val KEY_NOTIF = booleanPreferencesKey("notif")
     private val KEY_ROTATION = intPreferencesKey("rotationHours")
+    private val KEY_SAVED = stringPreferencesKey("saved")   // CSV of indices, order preserved
 
     fun flow(ctx: Context): Flow<AppSettingsState> = ctx.dataStore.data.map { p ->
         AppSettingsState(
@@ -40,6 +42,7 @@ object SettingsRepository {
             notifications = p[KEY_NOTIF] ?: true,
             rotationHours = (p[KEY_ROTATION] ?: WordStore.DEFAULT_ROTATION_HOURS)
                 .takeIf { it > 0 } ?: WordStore.DEFAULT_ROTATION_HOURS,
+            savedIds = (p[KEY_SAVED] ?: "").split(",").mapNotNull { it.toIntOrNull() },
         )
     }
 
@@ -57,4 +60,12 @@ object SettingsRepository {
 
     suspend fun setRotationHours(ctx: Context, hours: Int) =
         ctx.dataStore.edit { it[KEY_ROTATION] = hours }
+
+    suspend fun toggleSaved(ctx: Context, index: Int) {
+        ctx.dataStore.edit { p ->
+            val cur = (p[KEY_SAVED] ?: "").split(",").mapNotNull { it.toIntOrNull() }.toMutableList()
+            if (cur.contains(index)) cur.remove(index) else cur.add(0, index)
+            p[KEY_SAVED] = cur.joinToString(",")
+        }
+    }
 }

@@ -5,10 +5,12 @@
 package com.example.smartwords.ui
 
 import android.speech.tts.TextToSpeech
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -40,9 +42,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -153,9 +158,17 @@ private fun rememberTts(): TextToSpeech {
 }
 
 @Composable
-fun TodayScreen(word: Word, isSaved: Boolean, onToggleSave: () -> Unit) {
+fun TodayScreen(
+    word: Word,
+    isSaved: Boolean,
+    onToggleSave: () -> Unit,
+    isToday: Boolean = true,            // false when reused to show a browsed/searched word
+    onSearch: (() -> Unit)? = null,
+    onBack: (() -> Unit)? = null,
+) {
     val theme = LocalTheme.current
     val tts = rememberTts()
+    if (onBack != null) BackHandler(onBack = onBack)
 
     val now = remember { Date() }
     val dateLine = remember {
@@ -186,12 +199,26 @@ fun TodayScreen(word: Word, isSaved: Boolean, onToggleSave: () -> Unit) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                Text(dateLine, fontFamily = Fonts.mono, fontSize = 10.5.sp, letterSpacing = 1.2.sp, color = theme.palette.muted)
+                when {
+                    onBack != null -> Text(
+                        "‹  Back", fontFamily = Fonts.mono, fontSize = 12.sp, color = theme.palette.muted,
+                        modifier = Modifier.clip(RoundedCornerShape(6.dp)).clickable(onClick = onBack).padding(4.dp),
+                    )
+                    isToday -> Text(dateLine, fontFamily = Fonts.mono, fontSize = 10.5.sp, letterSpacing = 1.2.sp, color = theme.palette.muted)
+                    else -> Spacer(Modifier.width(1.dp))
+                }
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Text(dayCount, fontFamily = Fonts.mono, fontSize = 10.5.sp, letterSpacing = 1.2.sp, color = theme.accent)
+                    if (isToday) {
+                        Text(dayCount, fontFamily = Fonts.mono, fontSize = 10.5.sp, letterSpacing = 1.2.sp, color = theme.accent)
+                    }
+                    if (onSearch != null) {
+                        Box(
+                            modifier = Modifier.clip(RoundedCornerShape(6.dp)).clickable(onClick = onSearch).padding(4.dp),
+                        ) { SearchIcon(theme.palette.muted) }
+                    }
                     Box(
                         modifier = Modifier
                             .clip(RoundedCornerShape(6.dp))
@@ -346,6 +373,114 @@ private fun BookmarkIcon(filled: Boolean, tint: Color) {
         }
         if (filled) drawPath(path, tint)
         else drawPath(path, tint, style = Stroke(width = 1.6.dp.toPx()))
+    }
+}
+
+// Magnifier glyph drawn with Canvas.
+@Composable
+private fun SearchIcon(tint: Color) {
+    Canvas(modifier = Modifier.size(16.dp)) {
+        val r = size.minDimension * 0.32f
+        val c = Offset(size.width * 0.42f, size.height * 0.42f)
+        val sw = 1.6.dp.toPx()
+        drawCircle(color = tint, radius = r, center = c, style = Stroke(width = sw))
+        drawLine(
+            color = tint,
+            start = Offset(c.x + r * 0.72f, c.y + r * 0.72f),
+            end = Offset(size.width * 0.92f, size.height * 0.92f),
+            strokeWidth = sw,
+        )
+    }
+}
+
+// MARK: - Search
+
+@Composable
+fun SearchScreen(words: List<Word>, onPick: (Int) -> Unit, onClose: () -> Unit) {
+    val theme = LocalTheme.current
+    var query by remember { mutableStateOf("") }
+    BackHandler(onBack = onClose)
+
+    val results = remember(query) {
+        val q = query.trim().lowercase(Locale.getDefault())
+        if (q.isEmpty()) emptyList()
+        else words.indices.mapNotNull { i ->
+            val w = words[i].word.lowercase(Locale.getDefault())
+            val rank = when {
+                w.startsWith(q) -> 0
+                w.contains(q) -> 1
+                words[i].definition.lowercase(Locale.getDefault()).contains(q) -> 2
+                else -> return@mapNotNull null
+            }
+            i to rank
+        }.sortedBy { it.second }.take(60).map { it.first }
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(theme.palette.bg)
+            .windowInsetsPadding(WindowInsets.systemBars.only(WindowInsetsSides.Top)),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 10.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                "Cancel", fontFamily = Fonts.sans, fontSize = 15.sp, color = theme.accent,
+                modifier = Modifier.clip(RoundedCornerShape(6.dp)).clickable(onClick = onClose).padding(4.dp),
+            )
+            Spacer(Modifier.weight(1f))
+            Text("Search", fontFamily = Fonts.serif, fontSize = 17.sp, fontWeight = FontWeight.Medium, color = theme.palette.fg)
+            Spacer(Modifier.weight(1f))
+            Spacer(Modifier.width(52.dp))
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth().padding(horizontal = 20.dp, vertical = 4.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .background(theme.palette.surface)
+                .border(1.dp, theme.palette.line, RoundedCornerShape(12.dp))
+                .padding(horizontal = 12.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            SearchIcon(theme.palette.muted)
+            Box(Modifier.weight(1f)) {
+                if (query.isEmpty()) {
+                    Text("Search words", fontFamily = Fonts.sans, fontSize = 16.sp, color = theme.palette.muted)
+                }
+                BasicTextField(
+                    value = query, onValueChange = { query = it }, singleLine = true,
+                    textStyle = TextStyle(color = theme.palette.fg, fontSize = 16.sp, fontFamily = Fonts.sans),
+                    cursorBrush = SolidColor(theme.accent),
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+            if (query.isNotEmpty()) {
+                Text(
+                    "✕", fontSize = 14.sp, color = theme.palette.muted,
+                    modifier = Modifier.clip(RoundedCornerShape(6.dp)).clickable { query = "" }.padding(2.dp),
+                )
+            }
+        }
+        Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
+            results.forEach { i ->
+                val w = words[i]
+                Column(
+                    modifier = Modifier.fillMaxWidth().clickable { onPick(i) }
+                        .padding(horizontal = 20.dp, vertical = 12.dp),
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                ) {
+                    Text(w.word, fontFamily = Fonts.serif, fontSize = 19.sp, fontWeight = FontWeight.SemiBold, color = theme.palette.fg)
+                    Text(
+                        w.short ?: w.definition, fontFamily = Fonts.sans, fontSize = 13.sp, color = theme.palette.muted,
+                        maxLines = 1, overflow = TextOverflow.Ellipsis,
+                    )
+                }
+                Box(Modifier.fillMaxWidth().height(1.dp).background(theme.palette.line))
+            }
+        }
     }
 }
 

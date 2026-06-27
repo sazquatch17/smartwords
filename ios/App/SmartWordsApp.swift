@@ -45,6 +45,7 @@ struct RootView: View {
     @StateObject private var settings = AppSettings.shared
     @Environment(\.colorScheme) private var scheme
     @State private var tab: Tab = .today
+    @State private var searchOpen = false
     private let words = WordStore.words()
 
     private var resolved: ResolvedTheme {
@@ -57,7 +58,7 @@ struct RootView: View {
         VStack(spacing: 0) {
             Group {
                 switch tab {
-                case .today:    TodayView(word: words[todayIndex], index: todayIndex)
+                case .today:    TodayView(word: words[todayIndex], index: todayIndex, onSearch: { searchOpen = true })
                 case .saved:    SavedView()
                 case .settings: SettingsView()
                 }
@@ -71,10 +72,92 @@ struct RootView: View {
         .environmentObject(settings)
         .preferredColorScheme(settings.preferredScheme)
         .tint(resolved.accent)
+        .sheet(isPresented: $searchOpen) {
+            SearchView()
+                .environmentObject(settings)
+                .environment(\.theme, resolved)
+                .preferredColorScheme(settings.preferredScheme)
+        }
         // Widget tap opens the app to Today (which is this word).
         .onOpenURL { url in
             if url.scheme == "smartwords", url.host == "word" { tab = .today }
         }
+    }
+}
+
+// MARK: - Search
+
+struct SearchView: View {
+    @Environment(\.theme) private var theme
+    @Environment(\.dismiss) private var dismiss
+    @State private var query = ""
+    private let words = WordStore.words()
+
+    private var results: [Int] {
+        let q = query.lowercased().trimmingCharacters(in: .whitespaces)
+        guard !q.isEmpty else { return [] }
+        // Prefix matches first, then other word matches, then definition matches.
+        let scored = words.indices.compactMap { i -> (Int, Int)? in
+            let w = words[i].word.lowercased()
+            if w.hasPrefix(q) { return (i, 0) }
+            if w.contains(q) { return (i, 1) }
+            if words[i].definition.lowercased().contains(q) { return (i, 2) }
+            return nil
+        }
+        return scored.sorted { $0.1 < $1.1 }.prefix(60).map { $0.0 }
+    }
+
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 0) {
+                HStack(spacing: 10) {
+                    Image(systemName: "magnifyingglass").foregroundStyle(theme.palette.muted)
+                    TextField("Search words", text: $query)
+                        .font(.system(size: 16)).foregroundStyle(theme.palette.fg)
+                        .autocorrectionDisabled().textInputAutocapitalization(.never)
+                    if !query.isEmpty {
+                        Button { query = "" } label: {
+                            Image(systemName: "xmark.circle.fill").foregroundStyle(theme.palette.muted)
+                        }.buttonStyle(.plain)
+                    }
+                }
+                .padding(12)
+                .background(RoundedRectangle(cornerRadius: 12).fill(theme.palette.surface)
+                    .overlay(RoundedRectangle(cornerRadius: 12).stroke(theme.palette.line, lineWidth: 1)))
+                .padding(.horizontal, 20).padding(.top, 8)
+
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 0) {
+                        ForEach(results, id: \.self) { i in
+                            NavigationLink(value: i) { resultRow(words[i]) }.buttonStyle(.plain)
+                            Rectangle().fill(theme.palette.line).frame(height: 1).padding(.leading, 20)
+                        }
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(theme.palette.bg)
+            .navigationDestination(for: Int.self) { i in
+                TodayView(word: words[i], index: i, isToday: false)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Cancel") { dismiss() }.tint(theme.accent)
+                }
+            }
+            .navigationTitle("Search").navigationBarTitleDisplayMode(.inline)
+        }
+    }
+
+    private func resultRow(_ w: Word) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(w.word).font(serif(19, .semibold)).foregroundStyle(theme.palette.fg)
+            Text(w.short ?? w.definition).font(.system(size: 13)).foregroundStyle(theme.palette.muted)
+                .lineLimit(1)
+        }
+        .padding(.vertical, 12).padding(.horizontal, 20)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .contentShape(Rectangle())
     }
 }
 
@@ -140,6 +223,8 @@ private struct SectionLabel: View {
 struct TodayView: View {
     let word: Word
     let index: Int
+    var isToday: Bool = true            // false when reused to show a browsed/searched word
+    var onSearch: (() -> Void)? = nil   // shows a search button when provided
     @Environment(\.theme) private var theme
     @EnvironmentObject private var settings: AppSettings
 
@@ -163,9 +248,20 @@ struct TodayView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(spacing: 14) {
-                        Text(dateLine).font(mono(10.5)).tracking(1.2).foregroundStyle(theme.palette.muted)
-                        Spacer()
-                        Text(dayCount).font(mono(10.5)).tracking(1.2).foregroundStyle(theme.accent)
+                        if isToday {
+                            Text(dateLine).font(mono(10.5)).tracking(1.2).foregroundStyle(theme.palette.muted)
+                            Spacer()
+                            Text(dayCount).font(mono(10.5)).tracking(1.2).foregroundStyle(theme.accent)
+                        } else {
+                            Spacer()
+                        }
+                        if let onSearch {
+                            Button { onSearch() } label: {
+                                Image(systemName: "magnifyingglass").font(.system(size: 15))
+                                    .foregroundStyle(theme.palette.muted)
+                            }
+                            .buttonStyle(.plain).accessibilityLabel("Search words")
+                        }
                         Button { settings.toggleSaved(index) } label: {
                             Image(systemName: settings.isSaved(index) ? "bookmark.fill" : "bookmark")
                                 .font(.system(size: 15))

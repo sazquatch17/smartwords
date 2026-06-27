@@ -33,6 +33,7 @@ import com.example.smartwords.ui.BottomBar
 import com.example.smartwords.ui.LexicaTheme
 import com.example.smartwords.ui.ResolvedTheme
 import com.example.smartwords.ui.SavedScreen
+import com.example.smartwords.ui.SearchScreen
 import com.example.smartwords.ui.SettingsScreen
 import com.example.smartwords.ui.Tab
 import com.example.smartwords.ui.TodayScreen
@@ -86,6 +87,8 @@ private fun RootApp(deepLinkIndex: Int, onDeepLinkConsumed: () -> Unit) {
     val currentWord = words[currentIndex]
 
     var tab by remember { mutableStateOf(Tab.TODAY) }
+    var searchOpen by remember { mutableStateOf(false) }
+    var browseIndex by remember { mutableStateOf<Int?>(null) }
 
     // Deep link smartwords://word/<index> just opens Today (the current word).
     LaunchedEffect(deepLinkIndex) {
@@ -102,13 +105,28 @@ private fun RootApp(deepLinkIndex: Int, onDeepLinkConsumed: () -> Unit) {
                 .background(theme.palette.bg),
         ) {
             Box(modifier = Modifier.weight(1f)) {
-                when (tab) {
+                val bi = browseIndex
+                when {
+                    bi != null && bi in words.indices -> TodayScreen(
+                        word = words[bi],
+                        isSaved = settings.savedIds.contains(bi),
+                        onToggleSave = { scope.launch { SettingsRepository.toggleSaved(context, bi) } },
+                        isToday = false,
+                        onBack = { browseIndex = null },
+                    )
+                    searchOpen -> SearchScreen(
+                        words = words,
+                        onPick = { browseIndex = it },
+                        onClose = { searchOpen = false },
+                    )
+                    else -> when (tab) {
                     Tab.TODAY -> TodayScreen(
                         word = currentWord,
                         isSaved = settings.savedIds.contains(currentIndex),
                         onToggleSave = {
                             scope.launch { SettingsRepository.toggleSaved(context, currentIndex) }
                         },
+                        onSearch = { searchOpen = true },
                     )
                     Tab.SAVED -> SavedScreen(
                         saved = settings.savedIds.filter { it in words.indices }.map { it to words[it] },
@@ -139,9 +157,14 @@ private fun RootApp(deepLinkIndex: Int, onDeepLinkConsumed: () -> Unit) {
                             }
                         },
                     )
+                    }
                 }
             }
-            BottomBar(current = tab, onSelect = { selected -> tab = selected })
+            BottomBar(current = tab, onSelect = { selected ->
+                searchOpen = false
+                browseIndex = null
+                tab = selected
+            })
         }
     }
 }

@@ -4,10 +4,46 @@
 import SwiftUI
 import WidgetKit
 import AVFoundation
+import UserNotifications
 
 @main
 struct SmartWordsApp: App {
     var body: some Scene { WindowGroup { RootView() } }
+}
+
+// Daily 9 AM word-of-the-day notifications. Schedules a rolling 14-day window,
+// each with that day's word (local notifications need no server/push).
+enum Notifier {
+    static func apply(enabled: Bool) {
+        let center = UNUserNotificationCenter.current()
+        guard enabled else { center.removeAllPendingNotificationRequests(); return }
+        center.requestAuthorization(options: [.alert, .sound]) { granted, _ in
+            if granted { DispatchQueue.main.async { schedule() } }
+        }
+    }
+
+    /// Refresh the rolling window (safe to call on launch; never prompts).
+    static func schedule() {
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests()
+        let words = WordStore.words()
+        let cal = Calendar.current
+        for offset in 0..<14 {
+            guard let day = cal.date(byAdding: .day, value: offset, to: Date()) else { continue }
+            var comps = cal.dateComponents([.year, .month, .day], from: day)
+            comps.hour = 9; comps.minute = 0
+            guard let fire = cal.date(from: comps), fire > Date() else { continue }
+            let word = WordStore.word(at: fire, in: words)
+            let content = UNMutableNotificationContent()
+            content.title = word.word
+            content.body = word.short ?? word.definition
+            content.sound = .default
+            let trigger = UNCalendarNotificationTrigger(
+                dateMatching: cal.dateComponents([.year, .month, .day, .hour, .minute], from: fire),
+                repeats: false)
+            center.add(UNNotificationRequest(identifier: "word-\(offset)", content: content, trigger: trigger))
+        }
+    }
 }
 
 // Speaks a word aloud. Synthesizer is retained so speech isn't cut off.
@@ -82,6 +118,8 @@ struct RootView: View {
         .onOpenURL { url in
             if url.scheme == "smartwords", url.host == "word" { tab = .today }
         }
+        .onChange(of: settings.notifications) { _, on in Notifier.apply(enabled: on) }
+        .task { if settings.notifications { Notifier.apply(enabled: true) } }
     }
 }
 

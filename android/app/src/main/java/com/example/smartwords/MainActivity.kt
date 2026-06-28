@@ -5,11 +5,17 @@
 
 package com.example.smartwords
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,6 +35,7 @@ import com.example.smartwords.data.AppSettingsState
 import com.example.smartwords.data.SettingsRepository
 import com.example.smartwords.data.ThemeMode
 import com.example.smartwords.data.WordStore
+import com.example.smartwords.notify.Notifications
 import com.example.smartwords.ui.BottomBar
 import com.example.smartwords.ui.LexicaTheme
 import com.example.smartwords.ui.ResolvedTheme
@@ -95,6 +102,25 @@ private fun RootApp(deepLinkIndex: Int, onDeepLinkConsumed: () -> Unit) {
         if (deepLinkIndex >= 0) {
             tab = Tab.TODAY
             onDeepLinkConsumed()
+        }
+    }
+
+    // Daily reminder: schedule/cancel with the toggle, asking for the Android 13+
+    // notification permission the first time it's turned on.
+    val needsPerm = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+    val permLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted -> Notifications.apply(context, granted) }
+    LaunchedEffect(settings.notifications) {
+        if (!settings.notifications) {
+            Notifications.apply(context, false)
+        } else if (!needsPerm || ContextCompat.checkSelfPermission(
+                context, Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            Notifications.apply(context, true)
+        } else {
+            permLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
     }
 

@@ -33,9 +33,9 @@ struct Provider: TimelineProvider {
 // MARK: - Fonts
 
 private func wSerif(_ s: CGFloat, _ w: Font.Weight = .semibold, italic: Bool = false) -> Font {
-    let f = Font.system(size: s, weight: w, design: .serif); return italic ? f.italic() : f
+    let f = Font.custom("Newsreader", size: s).weight(w); return italic ? f.italic() : f
 }
-private func wMono(_ s: CGFloat) -> Font { .system(size: s, design: .monospaced) }
+private func wMono(_ s: CGFloat) -> Font { Font.custom("Spline Sans Mono", size: s) }
 
 // MARK: - View
 

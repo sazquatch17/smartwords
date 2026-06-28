@@ -10,7 +10,12 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontVariation
+import androidx.compose.ui.text.font.FontWeight
+import com.example.smartwords.R
 import com.example.smartwords.data.ThemeMode
 
 // MARK: - Accents
@@ -102,12 +107,32 @@ fun isDark(mode: ThemeMode): Boolean = when (mode) {
     ThemeMode.AUTO -> isSystemInDarkTheme()
 }
 
-// MARK: - Fonts (system equivalents of the design's Google fonts)
-// serif = Newsreader, sans = Hanken Grotesk (default), mono = Spline Sans Mono.
+// MARK: - Fonts (bundled Lexica design fonts — variable; wght axis per weight)
+// serif = Newsreader, sans = Hanken Grotesk, mono = Spline Sans Mono.
+@OptIn(androidx.compose.ui.text.ExperimentalTextApi::class)
+private fun wght(resId: Int, w: FontWeight, style: FontStyle = FontStyle.Normal) =
+    Font(resId, weight = w, style = style,
+        variationSettings = FontVariation.Settings(FontVariation.weight(w.weight)))
+
 object Fonts {
-    val serif = FontFamily.Serif
-    val sans = FontFamily.Default
-    val mono = FontFamily.Monospace
+    val serif = FontFamily(
+        wght(R.font.newsreader, FontWeight.Normal),
+        wght(R.font.newsreader, FontWeight.Medium),
+        wght(R.font.newsreader, FontWeight.SemiBold),
+        wght(R.font.newsreader_italic, FontWeight.Normal, FontStyle.Italic),
+        wght(R.font.newsreader_italic, FontWeight.Medium, FontStyle.Italic),
+    )
+    val sans = FontFamily(
+        wght(R.font.hanken_grotesk, FontWeight.Normal),
+        wght(R.font.hanken_grotesk, FontWeight.Medium),
+        wght(R.font.hanken_grotesk, FontWeight.SemiBold),
+        wght(R.font.hanken_grotesk, FontWeight.Bold),
+    )
+    val mono = FontFamily(
+        wght(R.font.spline_sans_mono, FontWeight.Normal),
+        wght(R.font.spline_sans_mono, FontWeight.Medium),
+        wght(R.font.spline_sans_mono, FontWeight.SemiBold),
+    )
 }
 
 @Composable

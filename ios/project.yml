@@ -24,6 +24,11 @@ targets:
       path: App/Info.plist
       properties:
         UILaunchScreen: {}
+        UIAppFonts:                          # bundled Lexica design fonts (variable)
+          - Newsreader.ttf
+          - Newsreader-Italic.ttf
+          - HankenGrotesk.ttf
+          - SplineSansMono.ttf
         CFBundleURLTypes:
           - CFBundleURLSchemes: [smartwords]   # deep link from the widget tap
     entitlements:
@@ -44,12 +49,19 @@ targets:
     sources:
       - Shared
       - path: Widget/SmartWordsWidget.swift
+      - path: App/Fonts                   # same design fonts, for the widget
+        buildPhase: resources
       - path: ../shared/seed-words.json   # bundled into the widget; read at render
         buildPhase: resources
     info:
       path: Widget/Info.plist
       properties:
         CFBundleDisplayName: SmartWords
+        UIAppFonts:
+          - Newsreader.ttf
+          - Newsreader-Italic.ttf
+          - HankenGrotesk.ttf
+          - SplineSansMono.ttf
         NSExtension:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
     entitlements:

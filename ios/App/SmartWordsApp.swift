@@ -57,14 +57,19 @@ enum Speaker {
     }
 }
 
-// MARK: - Fonts (system equivalents of the design's Google fonts)
+// MARK: - Fonts (bundled Lexica design fonts — variable; weight drives the wght axis)
+// serif = Newsreader, sans = Hanken Grotesk, mono = Spline Sans Mono.
 
 private func serif(_ size: CGFloat, _ weight: Font.Weight = .medium, italic: Bool = false) -> Font {
-    let f = Font.system(size: size, weight: weight, design: .serif)
+    let f = Font.custom("Newsreader", size: size).weight(weight)
     return italic ? f.italic() : f
 }
+// Signature mirrors Font.system(size:weight:) so call sites read the same.
+private func sans(size: CGFloat, weight: Font.Weight = .regular) -> Font {
+    Font.custom("Hanken Grotesk", size: size).weight(weight)
+}
 private func mono(_ size: CGFloat, _ weight: Font.Weight = .regular) -> Font {
-    .system(size: size, weight: weight, design: .monospaced)
+    Font.custom("Spline Sans Mono", size: size).weight(weight)
 }
 
 // Accent-washed background (color-mix(accent 13%, surface)).
@@ -151,7 +156,7 @@ struct SearchView: View {
                 HStack(spacing: 10) {
                     Image(systemName: "magnifyingglass").foregroundStyle(theme.palette.muted)
                     TextField("Search words", text: $query)
-                        .font(.system(size: 16)).foregroundStyle(theme.palette.fg)
+                        .font(sans(size: 16)).foregroundStyle(theme.palette.fg)
                         .autocorrectionDisabled().textInputAutocapitalization(.never)
                     if !query.isEmpty {
                         Button { query = "" } label: {
@@ -190,7 +195,7 @@ struct SearchView: View {
     private func resultRow(_ w: Word) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(w.word).font(serif(19, .semibold)).foregroundStyle(theme.palette.fg)
-            Text(w.short ?? w.definition).font(.system(size: 13)).foregroundStyle(theme.palette.muted)
+            Text(w.short ?? w.definition).font(sans(size: 13)).foregroundStyle(theme.palette.muted)
                 .lineLimit(1)
         }
         .padding(.vertical, 12).padding(.horizontal, 20)
@@ -238,7 +243,7 @@ private struct Chip: View {
     @Environment(\.theme) private var theme
     var body: some View {
         Text(text)
-            .font(.system(size: 12.5))
+            .font(sans(size: 12.5))
             .foregroundStyle(theme.palette.fg)
             .opacity(dim ? 0.7 : 1)
             .padding(.vertical, 6).padding(.horizontal, 13)
@@ -337,7 +342,7 @@ struct TodayView: View {
 
                     // Definition (detail content)
                     Text(word.definition)
-                        .font(.system(size: 16.5)).lineSpacing(4)
+                        .font(sans(size: 16.5)).lineSpacing(4)
                         .foregroundStyle(theme.palette.fg).padding(.top, 22)
 
                     // Synonyms / antonyms
@@ -360,7 +365,7 @@ struct TodayView: View {
                     if let origin = word.origin, !origin.isEmpty {
                         divider
                         SectionLabel(text: "ORIGIN")
-                        Text(origin).font(.system(size: 14)).lineSpacing(4)
+                        Text(origin).font(sans(size: 14)).lineSpacing(4)
                             .foregroundStyle(theme.palette.muted).padding(.top, 10)
                     }
 
@@ -451,9 +456,9 @@ struct SettingsView: View {
 
                 SectionLabel(text: "ACCENT COLOR").padding(.top, 30)
                 HStack {
-                    Text("Selected").font(.system(size: 14)).foregroundStyle(theme.palette.muted)
+                    Text("Selected").font(sans(size: 14)).foregroundStyle(theme.palette.muted)
                     Spacer()
-                    Text(settings.accent.name).font(.system(size: 14, weight: .semibold))
+                    Text(settings.accent.name).font(sans(size: 14, weight: .semibold))
                         .foregroundStyle(theme.accent)
                 }.padding(.top, 8)
                 HStack {
@@ -486,7 +491,7 @@ struct SettingsView: View {
         let on = settings.mode == mode
         return Button { withAnimation(.easeOut(duration: 0.15)) { settings.mode = mode } } label: {
             Text(label)
-                .font(.system(size: 13, weight: .semibold))
+                .font(sans(size: 13, weight: .semibold))
                 .foregroundStyle(on ? theme.palette.fg : theme.palette.muted)
                 .frame(maxWidth: .infinity).padding(.vertical, 10)
                 .background(RoundedRectangle(cornerRadius: 10).fill(on ? theme.palette.surface : .clear)
@@ -512,9 +517,9 @@ struct SettingsView: View {
     private var notifRow: some View {
         HStack {
             VStack(alignment: .leading, spacing: 3) {
-                Text("Daily notification").font(.system(size: 15, weight: .medium))
+                Text("Daily notification").font(sans(size: 15, weight: .medium))
                     .foregroundStyle(theme.palette.fg)
-                Text("Delivered at 9:00 AM").font(.system(size: 12.5)).foregroundStyle(theme.palette.muted)
+                Text("Delivered at 9:00 AM").font(sans(size: 12.5)).foregroundStyle(theme.palette.muted)
             }
             Spacer()
             ToggleSwitch(on: $settings.notifications)
@@ -525,8 +530,8 @@ struct SettingsView: View {
     private var cycleRow: some View {
         HStack {
             VStack(alignment: .leading, spacing: 3) {
-                Text("New word").font(.system(size: 15, weight: .medium)).foregroundStyle(theme.palette.fg)
-                Text("How often the widget advances").font(.system(size: 12.5)).foregroundStyle(theme.palette.muted)
+                Text("New word").font(sans(size: 15, weight: .medium)).foregroundStyle(theme.palette.fg)
+                Text("How often the widget advances").font(sans(size: 12.5)).foregroundStyle(theme.palette.muted)
             }
             Spacer()
             Menu {
@@ -535,7 +540,7 @@ struct SettingsView: View {
                 }
             } label: {
                 Text(WordStore.rotationHours == 24 ? "Daily" : "\(WordStore.rotationHours)h")
-                    .font(.system(size: 14, weight: .semibold)).foregroundStyle(theme.accent)
+                    .font(sans(size: 14, weight: .semibold)).foregroundStyle(theme.accent)
             }
         }.padding(.vertical, 15)
     }
@@ -543,8 +548,8 @@ struct SettingsView: View {
     private var widgetRow: some View {
         HStack {
             VStack(alignment: .leading, spacing: 3) {
-                Text("Widgets").font(.system(size: 15, weight: .medium)).foregroundStyle(theme.palette.fg)
-                Text("Small & Medium · on Home").font(.system(size: 12.5)).foregroundStyle(theme.palette.muted)
+                Text("Widgets").font(sans(size: 15, weight: .medium)).foregroundStyle(theme.palette.fg)
+                Text("Small & Medium · on Home").font(sans(size: 12.5)).foregroundStyle(theme.palette.muted)
             }
             Spacer()
             VStack(alignment: .leading, spacing: 4) {
@@ -594,7 +599,7 @@ struct SavedView: View {
 
                 if saved.isEmpty {
                     Text("Words you save will appear here.")
-                        .font(.system(size: 14)).foregroundStyle(theme.palette.muted).padding(.top, 14)
+                        .font(sans(size: 14)).foregroundStyle(theme.palette.muted).padding(.top, 14)
                 } else {
                     ForEach(saved, id: \.self) { i in
                         savedRow(words[i], index: i)
@@ -618,7 +623,7 @@ struct SavedView: View {
                         Text(pos.uppercased()).font(mono(9.5)).tracking(1.2).foregroundStyle(theme.accent)
                     }
                     if let s = w.short, !s.isEmpty {
-                        Text(s).font(.system(size: 13)).foregroundStyle(theme.palette.muted)
+                        Text(s).font(sans(size: 13)).foregroundStyle(theme.palette.muted)
                     }
                 }
             }

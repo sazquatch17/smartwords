@@ -6,6 +6,7 @@ package com.example.smartwords.data
 
 import android.content.Context
 import org.json.JSONObject
+import java.io.File
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
@@ -26,19 +27,33 @@ data class Word(
 object WordStore {
     const val DEFAULT_ROTATION_HOURS = 3
 
-    // Cached so the seed (831 entries) is parsed once per process.
+    // Cached so the word list is parsed once per process.
     @Volatile private var cached: List<Word>? = null
 
-    /** Today's words: the bundled seed asset. Never empty. */
+    /** Drop the in-process cache so the next read re-parses (after a batch fetch). */
+    fun invalidate() { cached = null }
+
+    /** Today's words: the fetched daily batch if cached, else the bundled seed. Never empty. */
     fun words(ctx: Context): List<Word> {
         cached?.let { return it }
-        val parsed = runCatching { parse(readAsset(ctx)) }
-            .getOrNull()
-            ?.takeIf { it.isNotEmpty() }
+        val parsed = cachedBatch(ctx)
+            ?: runCatching { parse(readAsset(ctx)) }.getOrNull()?.takeIf { it.isNotEmpty() }
             ?: listOf(Word("smartwords", "a word a day, on your home screen.", short = "word a day", pos = "noun"))
         cached = parsed
         return parsed
     }
+
+    /** The daily batch written by [BatchWorker], or null if absent/invalid. */
+    private fun cachedBatch(ctx: Context): List<Word>? {
+        val f = File(ctx.filesDir, "batch.json")
+        if (!f.exists()) return null
+        return runCatching { parse(f.readText()) }.getOrNull()?.takeIf { it.isNotEmpty() }
+    }
+
+    /** Parse a batch/seed JSON string into words, or empty on any failure. Used by the worker to validate. */
+    fun parseOrEmpty(json: String): List<Word> = runCatching { parse(json) }.getOrDefault(emptyList())
+
+    fun batchFile(ctx: Context): File = File(ctx.filesDir, "batch.json")
 
     /**
      * Index of the word for a given moment — pure function of clock + rotation.

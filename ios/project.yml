@@ -24,6 +24,9 @@ targets:
       path: App/Info.plist
       properties:
         UILaunchScreen: {}
+        UIBackgroundModes: [fetch]             # daily batch refresh
+        BGTaskSchedulerPermittedIdentifiers:
+          - com.example.smartwords.refresh
         UIAppFonts:                          # bundled Lexica design fonts (variable)
           - Newsreader.ttf
           - Newsreader-Italic.ttf

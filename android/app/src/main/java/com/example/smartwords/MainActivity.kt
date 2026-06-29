@@ -32,6 +32,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.example.smartwords.data.AppSettingsState
+import com.example.smartwords.data.BatchConfig
 import com.example.smartwords.data.SettingsRepository
 import com.example.smartwords.data.ThemeMode
 import com.example.smartwords.data.WordStore
@@ -58,6 +59,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        BatchConfig.schedule(this)   // arm the daily batch fetch
         deepLinkIndex = parseDeepLink(intent)
         setContent { RootApp(deepLinkIndex) { deepLinkIndex = -1 } }
     }

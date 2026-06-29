@@ -39,6 +39,13 @@ enum WordStore {
     }
     static func setRotationHours(_ hours: Int) { shared?.set(hours, forKey: "rotationHours") }
 
+    /// Cache a fetched daily batch (validated JSON) for the widget + app to read.
+    static func cache(batchData: Data) { shared?.set(batchData, forKey: "batch") }
+    static var cachedBatchDate: String? {
+        guard let data = shared?.data(forKey: "batch") else { return nil }
+        return (try? JSONDecoder().decode(Batch.self, from: data))?.date
+    }
+
     /// Today's words: cached batch if present, else bundled seed. Never empty.
     static func words() -> [Word] {
         if let data = shared?.data(forKey: "batch"),

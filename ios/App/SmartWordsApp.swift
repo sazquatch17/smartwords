@@ -8,7 +8,14 @@ import UserNotifications
 
 @main
 struct SmartWordsApp: App {
-    var body: some Scene { WindowGroup { RootView() } }
+    var body: some Scene {
+        WindowGroup { RootView() }
+            // OS runs this ~daily; refresh the cached batch, then re-arm.
+            .backgroundTask(.appRefresh(BatchFetcher.taskID)) {
+                await BatchFetcher.refresh()
+                BatchFetcher.schedule()
+            }
+    }
 }
 
 // Daily 9 AM word-of-the-day notifications. Schedules a rolling 14-day window,
@@ -126,7 +133,11 @@ struct RootView: View {
             if url.scheme == "smartwords", url.host == "word" { tab = .today }
         }
         .onChange(of: settings.notifications) { _, on in Notifier.apply(enabled: on) }
-        .task { if settings.notifications { Notifier.apply(enabled: true) } }
+        .task {
+            if settings.notifications { Notifier.apply(enabled: true) }
+            await BatchFetcher.refresh()   // best-effort foreground refresh
+            BatchFetcher.schedule()        // arm the daily background task
+        }
     }
 }
 

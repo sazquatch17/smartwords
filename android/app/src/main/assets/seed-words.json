@@ -266,7 +266,8 @@
         "braggart"
       ],
       "antonyms": [],
-      "origin": "Late 17th century: coined by Jonathan Swift from Latin Aeolus, god of the winds, + -ist."
+      "origin": "Late 17th century: coined by Jonathan Swift from Latin Aeolus, god of the winds, + -ist.",
+      "pos": "noun"
     },
     {
       "word": "Affray",
@@ -298,7 +299,8 @@
         "sourpuss"
       ],
       "antonyms": [],
-      "origin": "Mid 19th century: from Greek agelastos 'not laughing', from a- 'not' + gelan 'to laugh'."
+      "origin": "Mid 19th century: from Greek agelastos 'not laughing', from a- 'not' + gelan 'to laugh'.",
+      "pos": "noun"
     },
     {
       "word": "Aglifft",
@@ -317,14 +319,15 @@
         "unafraid",
         "composed"
       ],
-      "origin": "Scots and Northern English dialect: probably from a- + a variant related to 'gliff' meaning a sudden fright."
+      "origin": "Scots and Northern English dialect: probably from a- + a variant related to 'gliff' meaning a sudden fright.",
+      "pos": "adjective"
     },
     {
       "word": "Agog",
       "definition": "Full of intense interest or excitement.",
       "short": "Eagerly excited",
       "example": "Timmy was agog as he stepped into the theme park and saw all his favorite cartoon characters walking around, shaking hands.",
-      "pos": "adverb",
+      "pos": "adjective",
       "ipa": "/əˈɡɒɡ/",
       "synonyms": [
         "eager",
@@ -384,7 +387,7 @@
       "definition": "Walk or move at a slow, relaxed pace.",
       "short": "Stroll",
       "example": "With nowhere to be, he spent the afternoon ambling down the quaint streets of his hometown.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˈamb(ə)l/",
       "synonyms": [
         "stroll",
@@ -413,7 +416,8 @@
         "love",
         "devotion"
       ],
-      "origin": "Modern coinage: from Greek ana- 'back, again' + agapesis 'affection, love'."
+      "origin": "Modern coinage: from Greek ana- 'back, again' + agapesis 'affection, love'.",
+      "pos": "noun"
     },
     {
       "word": "Anathema",
@@ -447,7 +451,8 @@
         "dialogue",
         "discussion"
       ],
-      "origin": "Modern coinage: a blend of anecdote and synecdoche, coined in The Dictionary of Obscure Sorrows."
+      "origin": "Modern coinage: a blend of anecdote and synecdoche, coined in The Dictionary of Obscure Sorrows.",
+      "pos": "noun"
     },
     {
       "word": "Anemoia",
@@ -461,7 +466,8 @@
         "yearning"
       ],
       "antonyms": [],
-      "origin": "Modern coinage: from Greek anemos 'wind' + noos 'mind', coined in The Dictionary of Obscure Sorrows."
+      "origin": "Modern coinage: from Greek anemos 'wind' + noos 'mind', coined in The Dictionary of Obscure Sorrows.",
+      "pos": "noun"
     },
     {
       "word": "Anfractuous",
@@ -526,7 +532,7 @@
       "definition": "Not likely to provoke dissent or offense; inoffensive, often deliberately so.",
       "short": "Inoffensive",
       "example": "Tim rolled his eyes as his wife read the latest anodyne essay from \"Chicken Soup for the Soul.\"",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˈanədʌɪn/",
       "synonyms": [
         "inoffensive",
@@ -546,7 +552,7 @@
       "definition": "Very old, old-fashioned, out of date, antiquated, primitive. Literally \"before the flood,\" referring by implication to the Biblical tale of Noah.",
       "short": "Antiquated",
       "example": "\"This company's vacation policy is positively antediluvian, so I'm giving you four weeks off during the coming year.\"",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˌantɪdɪˈluːvɪən/",
       "synonyms": [
         "antiquated",
@@ -752,7 +758,8 @@
         "sunbathe"
       ],
       "antonyms": [],
-      "origin": "Mid 17th century: from Latin apricari 'to bask in the sun', from apricus 'exposed to the sun'."
+      "origin": "Mid 17th century: from Latin apricari 'to bask in the sun', from apricus 'exposed to the sun'.",
+      "pos": "verb"
     },
     {
       "word": "Arcadian",
@@ -879,7 +886,8 @@
         "mortality",
         "death"
       ],
-      "origin": "Early 18th century: from Greek athanasia 'immortality', from a- 'without' + thanatos 'death'."
+      "origin": "Early 18th century: from Greek athanasia 'immortality', from a- 'without' + thanatos 'death'.",
+      "pos": "noun"
     },
     {
       "word": "August",
@@ -1138,7 +1146,8 @@
       "antonyms": [
         "dry-eyed"
       ],
-      "origin": "Scots dialect: past participle of greet 'to weep', from Old English grētan 'to weep'."
+      "origin": "Scots dialect: past participle of greet 'to weep', from Old English grētan 'to weep'.",
+      "pos": "adjective"
     },
     {
       "word": "Bellibone",
@@ -1151,7 +1160,8 @@
         "belle"
       ],
       "antonyms": [],
-      "origin": "Late 16th century: from French belle et bonne 'fair and good'."
+      "origin": "Late 16th century: from French belle et bonne 'fair and good'.",
+      "pos": "noun"
     },
     {
       "word": "Bellicose",
@@ -1213,7 +1223,7 @@
       "definition": "The person to whom one is engaged.",
       "short": "Fiance",
       "example": "The father and mother came into the room and gave the betrothed couple their blessing.",
-      "pos": "verb",
+      "pos": "noun",
       "ipa": "/bɪˈtrəʊðd/",
       "synonyms": [
         "fiance",
@@ -1320,7 +1330,8 @@
         "boaster"
       ],
       "antonyms": [],
-      "origin": "Early 17th century: from Italian blatterone, from Latin blaterare 'to babble'."
+      "origin": "Early 17th century: from Italian blatterone, from Latin blaterare 'to babble'.",
+      "pos": "noun"
     },
     {
       "word": "Blithe",
@@ -1347,7 +1358,7 @@
       "definition": "Senselessly talkative, babbling; used chiefly as an intensive to express annoyance or contempt.",
       "short": "Babble senselessly",
       "example": "His Facebook posts were the confused ramblings of a blithering fool.",
-      "pos": "verb",
+      "pos": "adjective",
       "ipa": "/ˈblɪðərɪŋ/",
       "synonyms": [
         "babbling",
@@ -1406,7 +1417,8 @@
         "bugbear"
       ],
       "antonyms": [],
-      "origin": "From Scottish Gaelic and Irish bodach 'old man, churl, spectre'."
+      "origin": "From Scottish Gaelic and Irish bodach 'old man, churl, spectre'.",
+      "pos": "noun"
     },
     {
       "word": "Boisterous",
@@ -1528,7 +1540,8 @@
         "agree",
         "concur"
       ],
-      "origin": "Late 15th century: probably from Dutch brabbelen 'to quarrel, jabber'."
+      "origin": "Late 15th century: probably from Dutch brabbelen 'to quarrel, jabber'.",
+      "pos": "verb"
     },
     {
       "word": "Braggadocio",
@@ -1580,7 +1593,8 @@
         "boom"
       ],
       "antonyms": [],
-      "origin": "Late 19th century: from Greek brontē 'thunder'."
+      "origin": "Late 19th century: from Greek brontē 'thunder'.",
+      "pos": "noun"
     },
     {
       "word": "Brouhaha",
@@ -1698,7 +1712,8 @@
         "excuse"
       ],
       "antonyms": [],
-      "origin": "Late 19th century: from the fictitious invalid Bunbury in Oscar Wilde's The Importance of Being Earnest (1895)."
+      "origin": "Late 19th century: from the fictitious invalid Bunbury in Oscar Wilde's The Importance of Being Earnest (1895).",
+      "pos": "verb"
     },
     {
       "word": "Buncombe",
@@ -1751,7 +1766,8 @@
         "bunch"
       ],
       "antonyms": [],
-      "origin": "Mid 19th century (US): probably from the phrase the whole kit and boodle, from boodle 'lot, pile'."
+      "origin": "Mid 19th century (US): probably from the phrase the whole kit and boodle, from boodle 'lot, pile'.",
+      "pos": "noun"
     },
     {
       "word": "Cachinnate",
@@ -1813,7 +1829,8 @@
         "conspiracy"
       ],
       "antonyms": [],
-      "origin": "Early 19th century (US): perhaps from French cahute 'cabin, hut'."
+      "origin": "Early 19th century (US): perhaps from French cahute 'cabin, hut'.",
+      "pos": "noun"
     },
     {
       "word": "Callithump",
@@ -1827,7 +1844,8 @@
         "din"
       ],
       "antonyms": [],
-      "origin": "Early 19th century (US): a fanciful formation, perhaps influenced by dialect gallithumpian 'disturber of order'."
+      "origin": "Early 19th century (US): a fanciful formation, perhaps influenced by dialect gallithumpian 'disturber of order'.",
+      "pos": "noun"
     },
     {
       "word": "Callow",
@@ -1929,7 +1947,7 @@
       "definition": "Causing distress or worry.",
       "short": "Distressing",
       "example": "His carking thoughts crept in and kept him awake all night.",
-      "pos": "verb",
+      "pos": "adjective",
       "ipa": "/ˈkɑːkɪŋ/",
       "synonyms": [
         "distressing",
@@ -1955,7 +1973,8 @@
         "pun"
       ],
       "antonyms": [],
-      "origin": "Early 17th century: of unknown origin, originally meaning a quibble or absurd question."
+      "origin": "Early 17th century: of unknown origin, originally meaning a quibble or absurd question.",
+      "pos": "noun"
     },
     {
       "word": "Catawampus",
@@ -1974,14 +1993,15 @@
         "aligned",
         "even"
       ],
-      "origin": "Mid 19th century (US): a fanciful formation, perhaps from cater 'diagonally' + an arbitrary ending."
+      "origin": "Mid 19th century (US): a fanciful formation, perhaps from cater 'diagonally' + an arbitrary ending.",
+      "pos": "adjective"
     },
     {
       "word": "Caterwaul",
       "definition": "A shrill howling or wailing noise.",
       "short": "Howl shrilly",
       "example": "As the storm raged on, the caterwaul from the wind as it whipped through the trees kept me from getting any sleep.",
-      "pos": "verb",
+      "pos": "noun",
       "ipa": "/ˈkætəwɔːl/",
       "synonyms": [
         "howl",
@@ -1997,7 +2017,7 @@
       "definition": "Make petty or unnecessary objections.",
       "short": "Quibble",
       "example": "Tara always cringed when going into a meeting with Margaret, who would likely cavil for hours over every suggestion she brought up.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˈkævl/",
       "synonyms": [
         "quibble",
@@ -2021,8 +2041,7 @@
       "ipa": "/səˈruːliən/",
       "synonyms": [
         "azure",
-        "sky-blue",
-        "cerulean"
+        "sky-blue"
       ],
       "antonyms": [],
       "origin": "Mid 17th century: from Latin caeruleus 'sky-blue', from caelum 'sky'."
@@ -2080,7 +2099,8 @@
         "lavish",
         "extravagant"
       ],
-      "origin": "Late 16th century: from cheese + paring, alluding to the meanness of saving parings of cheese rind."
+      "origin": "Late 16th century: from cheese + paring, alluding to the meanness of saving parings of cheese rind.",
+      "pos": "noun"
     },
     {
       "word": "Chelonian",
@@ -2139,7 +2159,7 @@
       "definition": "Laugh in a breathy, gleeful way; chuckle.",
       "short": "Chuckle",
       "example": "He was the king of dad jokes, and chortled at every pun he encountered.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˈtʃɔːrtl/",
       "synonyms": [
         "chuckle",
@@ -2290,7 +2310,8 @@
         "division",
         "disunion"
       ],
-      "origin": "Early 17th century: from Latin coadunatio, from coadunare 'to unite', from co- 'together' and adunare 'to join into one'."
+      "origin": "Early 17th century: from Latin coadunatio, from coadunare 'to unite', from co- 'together' and adunare 'to join into one'.",
+      "pos": "noun"
     },
     {
       "word": "Coddiwomple",
@@ -2305,7 +2326,8 @@
         "roam"
       ],
       "antonyms": [],
-      "origin": "A modern coinage of uncertain origin, often described as old English slang for travelling purposefully toward a vague destination."
+      "origin": "A modern coinage of uncertain origin, often described as old English slang for travelling purposefully toward a vague destination.",
+      "pos": "verb"
     },
     {
       "word": "Codswallop",
@@ -2900,7 +2922,7 @@
       "definition": "Exceptionally good.",
       "short": "Excellent thing",
       "example": "He avoided being late only because he found a crackerjack cabbie able to get him to the airport in record time.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˈkrækərdʒæk/",
       "synonyms": [
         "ace",
@@ -3017,7 +3039,8 @@
         "aquamarine"
       ],
       "antonyms": [],
-      "origin": "From Latin cymaticus, relating to waves, ultimately from Greek kuma 'wave'."
+      "origin": "From Latin cymaticus, relating to waves, ultimately from Greek kuma 'wave'.",
+      "pos": "adjective"
     },
     {
       "word": "Cupidity",
@@ -3067,7 +3090,8 @@
         "shiver"
       ],
       "antonyms": [],
-      "origin": "18th century Scots dialect word for the shock of cold water on the skin."
+      "origin": "18th century Scots dialect word for the shock of cold water on the skin.",
+      "pos": "noun"
     },
     {
       "word": "Cynosure",
@@ -3126,7 +3150,7 @@
       "definition": "Cowardly; meanly base; sneaking.",
       "short": "Cowardly",
       "example": "\"I ask that the Congress declare that since the unprovoked and dastardly attack by Japan on Sunday, December 7th, 1941, a state of war has existed between the United States and the Japanese empire.\" (President Franklin D. Roosevelt)",
-      "pos": "adverb",
+      "pos": "adjective",
       "ipa": "/ˈdæstərdli/",
       "synonyms": [
         "cowardly",
@@ -3512,7 +3536,8 @@
         "ambiguity",
         "obfuscation"
       ],
-      "origin": "Early 19th century: from dis- (expressing reversal) + ambiguity, from Latin ambiguus 'doubtful'."
+      "origin": "Early 19th century: from dis- (expressing reversal) + ambiguity, from Latin ambiguus 'doubtful'.",
+      "pos": "noun"
     },
     {
       "word": "Discombobulate",
@@ -3560,7 +3585,7 @@
       "definition": "To be indecisive.",
       "short": "Indecisiveness",
       "example": "I hated going out to eat with Jack, who would spend a half hour dithering over what to order.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˈdɪðər/",
       "synonyms": [
         "vacillate",
@@ -3642,7 +3667,7 @@
       "definition": "Brave and persistent.",
       "short": "Brave",
       "example": "Despite the obstacles, the doughty explorers kept on and eventually reached the summit.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˈdaʊti/",
       "synonyms": [
         "brave",
@@ -3750,7 +3775,8 @@
         "drowsiness"
       ],
       "antonyms": [],
-      "origin": "Modern coinage, from Greek dys- 'difficulty' + anistasthai 'to rise'."
+      "origin": "Modern coinage, from Greek dys- 'difficulty' + anistasthai 'to rise'.",
+      "pos": "noun"
     },
     {
       "word": "Ebullient",
@@ -3875,7 +3901,7 @@
       "definition": "Manage to support oneself or make a living with difficulty.",
       "short": "Barely survive",
       "example": "He eked out enough of a living through delivery and other gigs to barely pay his rent.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/iːk/",
       "synonyms": [
         "scrape",
@@ -3929,7 +3955,7 @@
       "definition": "Charitable.",
       "short": "Charitable",
       "example": "Ebenezer Scrooge was transformed from a \"tight-fisted hand to the grindstone\" into an eleemosynary gentleman that kept Christmas in his heart all year round.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˌelɪˈmɒsɪnəri/",
       "synonyms": [
         "charitable",
@@ -3972,7 +3998,8 @@
         "snarl"
       ],
       "antonyms": [],
-      "origin": "Late 16th century: from elf + lock, from the belief that elves tangled the hair of sleepers."
+      "origin": "Late 16th century: from elf + lock, from the belief that elves tangled the hair of sleepers.",
+      "pos": "noun"
     },
     {
       "word": "Enervate",
@@ -4020,7 +4047,7 @@
       "definition": "Heinous, horrible or monstrous in quality or character; extremely wicked.",
       "short": "Monstrous wickedness",
       "example": "Jefferson's apparent acceptance of the enormity of the French Revolution's excesses greatly widened the gulf between him and Hamilton.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ɪˈnɔːrməti/",
       "synonyms": [
         "wickedness",
@@ -4148,7 +4175,8 @@
         "ergophobe",
         "sluggard"
       ],
-      "origin": "Modern coinage, from Greek ergon 'work' + -phile 'lover of'."
+      "origin": "Modern coinage, from Greek ergon 'work' + -phile 'lover of'.",
+      "pos": "noun"
     },
     {
       "word": "Erratum",
@@ -4380,7 +4408,8 @@
         "mediocre",
         "inferior"
       ],
-      "origin": "Mid 16th century: from Latin eximius 'select, distinguished' (from eximere 'take out') + -ous."
+      "origin": "Mid 16th century: from Latin eximius 'select, distinguished' (from eximere 'take out') + -ous.",
+      "pos": "adjective"
     },
     {
       "word": "Expergefactor",
@@ -4393,7 +4422,8 @@
         "rouser"
       ],
       "antonyms": [],
-      "origin": "From Latin expergefacere 'to awaken', from expergisci 'to wake up' and facere 'to make'."
+      "origin": "From Latin expergefacere 'to awaken', from expergisci 'to wake up' and facere 'to make'.",
+      "pos": "noun"
     },
     {
       "word": "Expiation",
@@ -4669,7 +4699,8 @@
         "haymaker"
       ],
       "antonyms": [],
-      "origin": "19th-century British dialect term of uncertain origin, possibly an alteration of an Italian phrase."
+      "origin": "19th-century British dialect term of uncertain origin, possibly an alteration of an Italian phrase.",
+      "pos": "noun"
     },
     {
       "word": "Festinate",
@@ -4688,14 +4719,15 @@
         "leisurely",
         "unhurried"
       ],
-      "origin": "Early 17th century: from Latin festinatus, past participle of festinare 'to hasten'."
+      "origin": "Early 17th century: from Latin festinatus, past participle of festinare 'to hasten'.",
+      "pos": "adjective"
     },
     {
       "word": "Festoon",
       "definition": "To adorn or decorate, principally in a loop between two points.",
       "short": "Decorate",
       "example": "After lunch we decided to festoon the tree with garlands of electric loons, moons, spoons, puccoons, cocoons, bassoons, baboons and vinegaroons.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/fɛˈstuːn/",
       "synonyms": [
         "adorn",
@@ -4736,7 +4768,7 @@
       "definition": "Smelling extremely unpleasant.",
       "short": "Foul-smelling",
       "example": "They crept into the basement, the fetid odor of mildew and rot growing stronger as they went.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˈfɛtɪd/",
       "synonyms": [
         "stinking",
@@ -4861,7 +4893,8 @@
         "dejection",
         "discouragement"
       ],
-      "origin": "Late 16th century: from flesh (in the sense 'to make eager for combat') and -ment; used by Shakespeare in King Lear."
+      "origin": "Late 16th century: from flesh (in the sense 'to make eager for combat') and -ment; used by Shakespeare in King Lear.",
+      "pos": "noun"
     },
     {
       "word": "Flibbertigibbet",
@@ -4898,25 +4931,6 @@
       "origin": "Mid 18th century: a jocular coinage combining Latin flocci, nauci, nihili, and pili (all meaning 'of little value') with -fication."
     },
     {
-      "word": "Floccinaucinihilipilification",
-      "definition": "The action or habit of estimating something as worthless.",
-      "short": "Deeming worthless",
-      "example": "\"So let me, Mr. Deputy Speaker, be rude about them! Let my indulge in the floccinaucinihilipilification of judges in the European Union.\" - Jacob Rees-Mogg, British politician, addressing the House of Commons in 2012.",
-      "pos": "noun",
-      "ipa": "/ˌflɒksɪˌnɔːsɪˌnɪhɪlɪˌpɪlɪfɪˈkeɪʃən/",
-      "synonyms": [
-        "belittlement",
-        "disparagement",
-        "dismissal"
-      ],
-      "antonyms": [
-        "esteem",
-        "appreciation",
-        "valuation"
-      ],
-      "origin": "Mid 18th century: a jocular coinage combining Latin flocci, nauci, nihili, and pili (all meaning 'of little value') with -fication."
-    },
-    {
       "word": "Fluckadrift",
       "definition": "Excessive speed or urgency of movement or action.",
       "short": "Reckless haste",
@@ -4933,7 +4947,8 @@
         "slowness",
         "delay"
       ],
-      "origin": "Regional dialect term of uncertain origin."
+      "origin": "Regional dialect term of uncertain origin.",
+      "pos": "noun"
     },
     {
       "word": "Flummox",
@@ -4991,22 +5006,6 @@
       "origin": "Early 18th century: originally a refrain in old songs, of nonsensical origin."
     },
     {
-      "word": "Folderol",
-      "definition": "A useless ornament or accessory.",
-      "short": "Useless trinket",
-      "example": "As she wrote the check to the bridal salon, she wished she could just have a simple wedding without all the folderol.",
-      "pos": "noun",
-      "ipa": "/ˈfɒldərɒl/",
-      "synonyms": [
-        "trinket",
-        "bauble",
-        "trifle",
-        "knickknack"
-      ],
-      "antonyms": [],
-      "origin": "Early 18th century: originally a refrain in old songs, of nonsensical origin."
-    },
-    {
       "word": "Foment",
       "definition": "Instigate or stir up (an undesirable or violent sentiment or course of action).",
       "short": "Stir up",
@@ -5032,7 +5031,7 @@
       "definition": "Engage in fruitless activity; mess about.",
       "short": "Mess about",
       "example": "He footled around the house aimlessly, ignoring the checklist of chores his wife had left on the fridge.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˈfuːtəl/",
       "synonyms": [
         "dawdle",
@@ -5104,7 +5103,7 @@
       "definition": "Fragile; brittle.",
       "short": "Brittle",
       "example": "He picked up the frangible remains of the stained-glass display, which promptly fell apart in his hands.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˈfrændʒɪbəl/",
       "synonyms": [
         "fragile",
@@ -5217,7 +5216,8 @@
         "toil",
         "labor"
       ],
-      "origin": "18th-century English dialect term of uncertain origin."
+      "origin": "18th-century English dialect term of uncertain origin.",
+      "pos": "verb"
     },
     {
       "word": "Fug",
@@ -5264,7 +5264,7 @@
       "definition": "To condemn or denounce. Usually followed by \"against.\"",
       "short": "Denounce",
       "example": "Beth regularly fulminated against sex education in public schools, yet saw nothing strange in her equal contempt for teen pregnancy.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˈfʌlmɪneɪt/",
       "synonyms": [
         "denounce",
@@ -5551,7 +5551,7 @@
       "definition": "Run or jump about playfully.",
       "short": "Frolic",
       "example": "After a winter cooped inside the house, the kids gambolled around the park for hours to celebrate spring's return.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˈɡambəl/",
       "synonyms": [
         "frolic",
@@ -5591,7 +5591,7 @@
       "definition": "Boast extravagantly.",
       "short": "Boast extravagantly",
       "example": "As soon as he received his test scores, he began to gasconade about the results across his social media channels.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˌɡaskəˈneɪd/",
       "synonyms": [
         "boast",
@@ -5642,7 +5642,8 @@
         "paradise",
         "heaven"
       ],
-      "origin": "From Hebrew 'gē-hinnōm' 'valley of Hinnom', a place near Jerusalem associated with refuse-burning and torment."
+      "origin": "From Hebrew 'gē-hinnōm' 'valley of Hinnom', a place near Jerusalem associated with refuse-burning and torment.",
+      "pos": "noun"
     },
     {
       "word": "Genteel",
@@ -5725,7 +5726,8 @@
       "ipa": "/ˈɡɪɡəlmʌɡ/",
       "synonyms": [],
       "antonyms": [],
-      "origin": "19th-century British slang, from 'giggle' and 'mug' (slang for face)."
+      "origin": "19th-century British slang, from 'giggle' and 'mug' (slang for face).",
+      "pos": "noun"
     },
     {
       "word": "Gimcrack",
@@ -5780,7 +5782,8 @@
         "gibe"
       ],
       "antonyms": [],
-      "origin": "Late Middle English: from Old French 'glic', name of a card game, of Germanic origin."
+      "origin": "Late Middle English: from Old French 'glic', name of a card game, of Germanic origin.",
+      "pos": "verb"
     },
     {
       "word": "Glower",
@@ -5819,7 +5822,8 @@
         "jovial",
         "sunny"
       ],
-      "origin": "From 'glump' 'to look sullen', of imitative origin, related to 'glum'."
+      "origin": "From 'glump' 'to look sullen', of imitative origin, related to 'glum'.",
+      "pos": "adjective"
     },
     {
       "word": "Gobbet",
@@ -5884,7 +5888,8 @@
         "animate",
         "rouse"
       ],
-      "origin": "From 'Gorgon', the snake-haired creatures of Greek mythology whose gaze turned onlookers to stone."
+      "origin": "From 'Gorgon', the snake-haired creatures of Greek mythology whose gaze turned onlookers to stone.",
+      "pos": "verb"
     },
     {
       "word": "Grandiloquent",
@@ -5919,7 +5924,8 @@
         "legalese"
       ],
       "antonyms": [],
-      "origin": "17th century: of unknown origin, perhaps a fanciful coinage mimicking obscure legal speech."
+      "origin": "17th century: of unknown origin, perhaps a fanciful coinage mimicking obscure legal speech.",
+      "pos": "noun"
     },
     {
       "word": "Groak",
@@ -5933,7 +5939,8 @@
         "ogle"
       ],
       "antonyms": [],
-      "origin": "Of uncertain Scots dialect origin."
+      "origin": "Of uncertain Scots dialect origin.",
+      "pos": "verb"
     },
     {
       "word": "Grubble",
@@ -5947,7 +5954,8 @@
         "feel"
       ],
       "antonyms": [],
-      "origin": "17th century: frequentative of 'grub', meaning to dig or search."
+      "origin": "17th century: frequentative of 'grub', meaning to dig or search.",
+      "pos": "verb"
     },
     {
       "word": "Grufeling",
@@ -5961,7 +5969,8 @@
         "huddle"
       ],
       "antonyms": [],
-      "origin": "18th-century Scots dialect, of obscure origin."
+      "origin": "18th-century Scots dialect, of obscure origin.",
+      "pos": "verb"
     },
     {
       "word": "Gudgeon",
@@ -6015,7 +6024,8 @@
         "nibble",
         "sip"
       ],
-      "origin": "17th century: from 'gut', on the pattern of 'guzzle'."
+      "origin": "17th century: from 'gut', on the pattern of 'guzzle'.",
+      "pos": "verb"
     },
     {
       "word": "Haberdasher",
@@ -6072,7 +6082,7 @@
       "definition": "To clear the throat in a pompous way.",
       "short": "Pompous throat-clearing",
       "example": "The councilman harrumphed whenever he disagreed with his fellow board members' comments.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/həˈrʌmf/",
       "synonyms": [
         "snort",
@@ -6147,7 +6157,7 @@
       "definition": "In a disordered manner; helter-skelter.",
       "short": "Disordered",
       "example": "When the school bell rang, a throng of shrieking children ran higgledy-piggledy down the hill to the Piggly-Wiggly for snacks and sodas.",
-      "pos": "noun",
+      "pos": "adverb",
       "ipa": "/ˌhɪɡ(ə)ldiˈpɪɡ(ə)ldi/",
       "synonyms": [
         "disorder",
@@ -6233,7 +6243,8 @@
         "swindle"
       ],
       "antonyms": [],
-      "origin": "19th-century US: of uncertain origin, perhaps related to dialect 'coney-fugle' 'to dupe by flattery'."
+      "origin": "19th-century US: of uncertain origin, perhaps related to dialect 'coney-fugle' 'to dupe by flattery'.",
+      "pos": "verb"
     },
     {
       "word": "Hootenanny",
@@ -6278,7 +6289,8 @@
         "overgarment"
       ],
       "antonyms": [],
-      "origin": "From Old French 'houppelande', of uncertain origin."
+      "origin": "From Old French 'houppelande', of uncertain origin.",
+      "pos": "noun"
     },
     {
       "word": "Hullabaloo",
@@ -6349,7 +6361,8 @@
         "hypochondria"
       ],
       "antonyms": [],
-      "origin": "18th century: probably a fanciful formation from 'humbug' and 'dudgeon'."
+      "origin": "18th century: probably a fanciful formation from 'humbug' and 'dudgeon'.",
+      "pos": "noun"
     },
     {
       "word": "Hurkle-durkle",
@@ -6363,7 +6376,8 @@
         "loll"
       ],
       "antonyms": [],
-      "origin": "18th-century Scots dialect, of obscure imitative origin."
+      "origin": "18th-century Scots dialect, of obscure imitative origin.",
+      "pos": "verb"
     },
     {
       "word": "Hurly-burly",
@@ -6482,7 +6496,8 @@
         "repulsive",
         "off-putting"
       ],
-      "origin": "From Latin 'illecebrosus', from 'illecebra' 'allurement', from 'illicere' 'to entice'."
+      "origin": "From Latin 'illecebrosus', from 'illecebra' 'allurement', from 'illicere' 'to entice'.",
+      "pos": "adjective"
     },
     {
       "word": "Imbroglio",
@@ -6811,27 +6826,6 @@
       "origin": "Late Middle English: from Old French, or from Latin ineffabilis, from in- 'not' + effabilis 'able to be expressed'."
     },
     {
-      "word": "Ineffable",
-      "definition": "Indescribable; inexpressible.",
-      "short": "Inexpressible",
-      "example": "His description of the event was an ineffable muddle.",
-      "pos": "adjective",
-      "ipa": "/ɪnˈɛfəb(ə)l/",
-      "synonyms": [
-        "indescribable",
-        "inexpressible",
-        "unutterable",
-        "unspeakable"
-      ],
-      "antonyms": [
-        "describable",
-        "expressible",
-        "articulable",
-        "definable"
-      ],
-      "origin": "Late Middle English: from Old French, or from Latin ineffabilis, from in- 'not' + effabilis 'able to be expressed'."
-    },
-    {
       "word": "Ineluctable",
       "definition": "Unavoidable; inevitable; inescapable.",
       "short": "Inevitable",
@@ -6920,7 +6914,7 @@
       "definition": "Lacking sense or understanding.",
       "short": "Senseless",
       "example": "His blog was thousands of words of insensate gibberish.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ɪnˈsɛnseɪt/",
       "synonyms": [
         "unfeeling",
@@ -7103,7 +7097,7 @@
       "definition": "Endless (often used hyperbolically).",
       "short": "Endless",
       "example": "The meeting was an interminable marathon of pointless PowerPoint slides and insipid anecdotes.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ɪnˈtɜːmɪnəb(ə)l/",
       "synonyms": [
         "endless",
@@ -7326,7 +7320,8 @@
         "organize",
         "order"
       ],
-      "origin": "Late 17th century: of uncertain origin, possibly related to 'jargon'."
+      "origin": "Late 17th century: of uncertain origin, possibly related to 'jargon'.",
+      "pos": "verb"
     },
     {
       "word": "Jaunt",
@@ -7376,7 +7371,8 @@
         "morning"
       ],
       "antonyms": [],
-      "origin": "17th century: from Latin jentaculum 'a breakfast taken immediately on getting up'."
+      "origin": "17th century: from Latin jentaculum 'a breakfast taken immediately on getting up'.",
+      "pos": "adjective"
     },
     {
       "word": "Jeremiad",
@@ -7403,7 +7399,7 @@
       "definition": "Abandon or discard (someone or something that is no longer wanted).",
       "short": "Discard",
       "example": "My first positive action after my ex moved out was to jettison the clutter that she had collected.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˈdʒɛtɪs(ə)n/",
       "synonyms": [
         "discard",
@@ -7452,7 +7448,8 @@
         "slosh"
       ],
       "antonyms": [],
-      "origin": "18th century: of Scots origin, of uncertain derivation."
+      "origin": "18th century: of Scots origin, of uncertain derivation.",
+      "pos": "verb"
     },
     {
       "word": "Jouska",
@@ -7466,7 +7463,8 @@
         "reverie"
       ],
       "antonyms": [],
-      "origin": "Coined by John Koenig in The Dictionary of Obscure Sorrows."
+      "origin": "Coined by John Koenig in The Dictionary of Obscure Sorrows.",
+      "pos": "noun"
     },
     {
       "word": "Kaffeeklatsch",
@@ -7497,7 +7495,8 @@
         "guffaw"
       ],
       "antonyms": [],
-      "origin": "Of Scots and Northern English dialect origin, imitative of a shrill cry."
+      "origin": "Of Scots and Northern English dialect origin, imitative of a shrill cry.",
+      "pos": "verb"
     },
     {
       "word": "Kerfuffle",
@@ -7537,7 +7536,8 @@
         "integrity",
         "virtue"
       ],
-      "origin": "Late 15th century: from knave (from Old English cnafa 'boy, servant') + -ery."
+      "origin": "Late 15th century: from knave (from Old English cnafa 'boy, servant') + -ery.",
+      "pos": "noun"
     },
     {
       "word": "Kyoodle",
@@ -7552,7 +7552,8 @@
         "howl"
       ],
       "antonyms": [],
-      "origin": "Early 20th century (originally US dialect): imitative of a dog's yelping."
+      "origin": "Early 20th century (originally US dialect): imitative of a dog's yelping.",
+      "pos": "verb"
     },
     {
       "word": "Lachrymose",
@@ -7599,7 +7600,7 @@
       "definition": "Moving slowly; sluggish; snail-paced; dilatory.",
       "short": "Slowpoke",
       "example": "Driven to dyspepsia by the restaurant's laggard service, Jeremy ostentatiously threw his napkin on the table and left.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˈlaɡəd/",
       "synonyms": [
         "straggler",
@@ -7647,7 +7648,8 @@
         "amateur",
         "novice"
       ],
-      "origin": "Of obscure origin, recorded as a dialectal or whimsical term."
+      "origin": "Of obscure origin, recorded as a dialectal or whimsical term.",
+      "pos": "noun"
     },
     {
       "word": "Lambast/Lambaste",
@@ -7667,7 +7669,8 @@
         "compliment",
         "laud"
       ],
-      "origin": "Late 16th century: probably from lam 'to beat' + baste 'to beat'."
+      "origin": "Late 16th century: probably from lam 'to beat' + baste 'to beat'.",
+      "pos": "verb"
     },
     {
       "word": "Lament",
@@ -7779,7 +7782,8 @@
         "drain"
       ],
       "antonyms": [],
-      "origin": "Late Middle English: from 'lick' + 'penny', denoting something that consumes money."
+      "origin": "Late Middle English: from 'lick' + 'penny', denoting something that consumes money.",
+      "pos": "noun"
     },
     {
       "word": "Lickspittle",
@@ -7802,7 +7806,7 @@
       "definition": "Very small. From Lilliput, a country of teeny-weeny people in Jonathan Swift's \"Gulliver's Travels.\"",
       "short": "Tiny",
       "example": "He looked absolutely lilliputian when standing next to the basketball players.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˌlɪlɪˈpjuːʃ(ə)n/",
       "synonyms": [
         "tiny",
@@ -7874,7 +7878,8 @@
         "lively",
         "brisk"
       ],
-      "origin": "Early 19th century: perhaps related to 'log', suggesting heaviness or inertness."
+      "origin": "Early 19th century: perhaps related to 'log', suggesting heaviness or inertness.",
+      "pos": "adjective"
     },
     {
       "word": "Logorrhea",
@@ -8031,7 +8036,8 @@
         "respectable",
         "serious"
       ],
-      "origin": "Early 17th century: from Latin ludibrium 'mockery', from ludere 'to play'."
+      "origin": "Early 17th century: from Latin ludibrium 'mockery', from ludere 'to play'.",
+      "pos": "adjective"
     },
     {
       "word": "Ludic",
@@ -8117,7 +8123,8 @@
         "gastronomic"
       ],
       "antonyms": [],
-      "origin": "From Greek mageiros 'cook'."
+      "origin": "From Greek mageiros 'cook'.",
+      "pos": "adjective"
     },
     {
       "word": "Magnanimous",
@@ -8178,7 +8185,8 @@
         "happy",
         "bright"
       ],
-      "origin": "19th century: of uncertain origin, perhaps Scots dialect."
+      "origin": "19th century: of uncertain origin, perhaps Scots dialect.",
+      "pos": "adjective"
     },
     {
       "word": "Malapert",
@@ -8271,7 +8279,8 @@
         "aromatic",
         "sweet-smelling"
       ],
-      "origin": "From Latin male 'badly' + olere 'to smell'."
+      "origin": "From Latin male 'badly' + olere 'to smell'.",
+      "pos": "adjective"
     },
     {
       "word": "Malfeasance",
@@ -8306,7 +8315,8 @@
         "busybody"
       ],
       "antonyms": [],
-      "origin": "Early 18th century: from a character named Marplot in Susanna Centlivre's play 'The Busie Body' (1709)."
+      "origin": "Early 18th century: from a character named Marplot in Susanna Centlivre's play 'The Busie Body' (1709).",
+      "pos": "noun"
     },
     {
       "word": "Martinet",
@@ -8368,7 +8378,7 @@
       "definition": "Careful and calculated.",
       "short": "Calculated",
       "example": "After considering the import of the question, the witness gave a measured response.",
-      "pos": "verb",
+      "pos": "adjective",
       "ipa": "/ˈmɛʒəd/",
       "synonyms": [
         "careful",
@@ -8487,7 +8497,7 @@
       "definition": "Fickle; erratic.",
       "short": "Fickle",
       "example": "She said she needed a break from trying to anticipate my mercurial moods. I haven't seen her in five years.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/məˈkjʊəriəl/",
       "synonyms": [
         "volatile",
@@ -8555,7 +8565,8 @@
         "seemingly"
       ],
       "antonyms": [],
-      "origin": "Old English mē thyncth 'it seems to me', from thyncan 'to seem'."
+      "origin": "Old English mē thyncth 'it seems to me', from thyncan 'to seem'.",
+      "pos": "verb"
     },
     {
       "word": "Miasma",
@@ -8663,7 +8674,8 @@
       "antonyms": [
         "sunlight"
       ],
-      "origin": "Old English: a dialectal compound, perhaps from 'mock' or 'mug' + 'shade'."
+      "origin": "Old English: a dialectal compound, perhaps from 'mock' or 'mug' + 'shade'.",
+      "pos": "noun"
     },
     {
       "word": "Mollify",
@@ -8691,7 +8703,7 @@
       "definition": "Treat someone very indulgently or protectively.",
       "short": "Pamper",
       "example": "Henry might be more willing to step into the world if his parents didn't mollycoddle him so much, still making his lunch and washing his clothes at the age of 18.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˈmɒlɪkɒd(ə)l/",
       "synonyms": [
         "pamper",
@@ -8737,7 +8749,8 @@
         "unremarkable",
         "mundane"
       ],
-      "origin": "Early 19th century: from 'monster' in the sense 'huge, marvelous' + -ful."
+      "origin": "Early 19th century: from 'monster' in the sense 'huge, marvelous' + -ful.",
+      "pos": "adjective"
     },
     {
       "word": "Moot",
@@ -8837,7 +8850,7 @@
       "definition": "Bring into a disordered or confusing state.",
       "short": "Confuse",
       "example": "The speaker got the facts right, but muddled the message with his delivery.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˈmʌd(ə)l/",
       "synonyms": [
         "confuse",
@@ -9055,7 +9068,8 @@
         "achiever",
         "go-getter"
       ],
-      "origin": "Early 18th century: from the phrase ne'er do well 'never do well', originally Scots."
+      "origin": "Early 18th century: from the phrase ne'er do well 'never do well', originally Scots.",
+      "pos": "noun"
     },
     {
       "word": "Nebbish",
@@ -9183,7 +9197,8 @@
         "harass"
       ],
       "antonyms": [],
-      "origin": "1960s: from Yiddish nudyen 'to bore, pester', of Slavic origin."
+      "origin": "1960s: from Yiddish nudyen 'to bore, pester', of Slavic origin.",
+      "pos": "verb"
     },
     {
       "word": "Nugatory",
@@ -9238,7 +9253,8 @@
         "ramble"
       ],
       "antonyms": [],
-      "origin": "Early 17th century: from Latin obambulat-, obambulare 'to walk about', from ob- 'towards' + ambulare 'to walk'."
+      "origin": "Early 17th century: from Latin obambulat-, obambulare 'to walk about', from ob- 'towards' + ambulare 'to walk'.",
+      "pos": "verb"
     },
     {
       "word": "Obdurate",
@@ -9368,7 +9384,7 @@
       "definition": "Dull. Slow on the uptake.",
       "short": "Dull-witted",
       "example": "If you weren't so obtuse, you would understand the problem.",
-      "pos": "verb",
+      "pos": "adjective",
       "ipa": "/əbˈtjuːs/",
       "synonyms": [
         "dull",
@@ -9685,7 +9701,8 @@
         "iteration"
       ],
       "antonyms": [],
-      "origin": "Late 16th century: from Greek palillogia, from palin 'again' + logos 'word'."
+      "origin": "Late 16th century: from Greek palillogia, from palin 'again' + logos 'word'.",
+      "pos": "noun"
     },
     {
       "word": "Palimpsest",
@@ -9844,7 +9861,8 @@
         "seasider"
       ],
       "antonyms": [],
-      "origin": "From Greek paralia 'seacoast', from para 'beside' + hals 'sea'."
+      "origin": "From Greek paralia 'seacoast', from para 'beside' + hals 'sea'.",
+      "pos": "noun"
     },
     {
       "word": "Paramount",
@@ -9880,7 +9898,8 @@
         "belongings"
       ],
       "antonyms": [],
-      "origin": "Mid 17th century: from medieval Latin paraphernalia (bona) '(goods) in a woman's personal possession', from late Latin parapherna, from Greek 'property apart from a dowry'."
+      "origin": "Mid 17th century: from medieval Latin paraphernalia (bona) '(goods) in a woman's personal possession', from late Latin parapherna, from Greek 'property apart from a dowry'.",
+      "pos": "noun"
     },
     {
       "word": "Paraprosdokian",
@@ -9893,14 +9912,15 @@
         "anticlimax"
       ],
       "antonyms": [],
-      "origin": "20th century: from Greek para 'against' + prosdokia 'expectation'."
+      "origin": "20th century: from Greek para 'against' + prosdokia 'expectation'.",
+      "pos": "noun"
     },
     {
       "word": "Parget",
       "definition": "Cover (a part of a building, especially an external brick wall) with plaster or mortar that typically bears an ornamental pattern.",
       "short": "Plaster",
       "example": "As he began to parget the restaurant's walls, his vision for the establishment came to life before his eyes.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˈpɑːdʒɪt/",
       "synonyms": [
         "plaster",
@@ -10002,7 +10022,8 @@
         "aristocrat",
         "blue blood"
       ],
-      "origin": "Early 19th century: from French, feminine of parvenu, past participle of parvenir 'arrive', from Latin pervenire 'come to, reach'."
+      "origin": "Early 19th century: from French, feminine of parvenu, past participle of parvenir 'arrive', from Latin pervenire 'come to, reach'.",
+      "pos": "noun"
     },
     {
       "word": "Pate",
@@ -10173,10 +10194,9 @@
       "definition": "Next to last.",
       "short": "Second-to-last",
       "example": "Everyone's heard of The Last Supper, but The Penultimate Supper has been largely forgotten.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/pɪˈnʌltɪmət/",
       "synonyms": [
-        "penultimate",
         "next-to-last"
       ],
       "antonyms": [
@@ -10299,7 +10319,8 @@
         "expedite",
         "hasten"
       ],
-      "origin": "Late 16th century: from Latin perendinare 'defer until the day after tomorrow', from perendie 'on the day after tomorrow'."
+      "origin": "Late 16th century: from Latin perendinare 'defer until the day after tomorrow', from perendie 'on the day after tomorrow'.",
+      "pos": "verb"
     },
     {
       "word": "Perfidy",
@@ -10348,7 +10369,7 @@
       "definition": "Nomadic, traveling from place to place (adj.). 2. Pedestrian, itinerant, one who walks about (n.).",
       "short": "Wanderer",
       "example": "The more he drank the more peripatetic he became, but his sense of direction routinely disengaged.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˌpɛrɪpəˈtɛtɪk/",
       "synonyms": [
         "wanderer",
@@ -10510,7 +10531,8 @@
         "settle",
         "pacify"
       ],
-      "origin": "Late Middle English: from Latin perturbat- 'thoroughly disturbed', from the verb perturbare, from per- 'completely' and turbare 'disturb'."
+      "origin": "Late Middle English: from Latin perturbat- 'thoroughly disturbed', from the verb perturbare, from per- 'completely' and turbare 'disturb'.",
+      "pos": "verb"
     },
     {
       "word": "Pestiferous",
@@ -10654,7 +10676,8 @@
       "antonyms": [
         "philistine"
       ],
-      "origin": "From Greek philos 'loving' and kallos 'beauty'."
+      "origin": "From Greek philos 'loving' and kallos 'beauty'.",
+      "pos": "noun"
     },
     {
       "word": "Phlegmatic",
@@ -10816,7 +10839,8 @@
         "insularity"
       ],
       "antonyms": [],
-      "origin": "Mid 19th century: from Mr Podsnap, a self-satisfied character in Dickens's Our Mutual Friend."
+      "origin": "Mid 19th century: from Mr Podsnap, a self-satisfied character in Dickens's Our Mutual Friend.",
+      "pos": "noun"
     },
     {
       "word": "Poltroon",
@@ -11021,7 +11045,6 @@
       "ipa": "/ˈprɪɡɪʃ/",
       "synonyms": [
         "prudish",
-        "priggish",
         "puritanical",
         "sanctimonious"
       ],
@@ -11098,7 +11121,7 @@
       "definition": "Recklessly wasteful; wildly extravagant (adj.).",
       "short": "Recklessly wasteful",
       "example": "The Congress' profligate habits have contributed to our current financial predicament.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˈprɒflɪɡət/",
       "synonyms": [
         "extravagant",
@@ -11203,7 +11226,8 @@
         "murmur"
       ],
       "antonyms": [],
-      "origin": "From Greek psithurisma 'a whispering', from psithurizein 'to whisper'."
+      "origin": "From Greek psithurisma 'a whispering', from psithurizein 'to whisper'.",
+      "pos": "noun"
     },
     {
       "word": "Puerile",
@@ -11381,7 +11405,8 @@
         "dry",
         "solid"
       ],
-      "origin": "Early 17th century: from quag (related to quagmire) and the adjectival suffix -y."
+      "origin": "Early 17th century: from quag (related to quagmire) and the adjectival suffix -y.",
+      "pos": "adjective"
     },
     {
       "word": "Quanked",
@@ -11400,7 +11425,8 @@
         "refreshed",
         "invigorated"
       ],
-      "origin": "English dialectal term of obscure origin, meaning overpowered by fatigue."
+      "origin": "English dialectal term of obscure origin, meaning overpowered by fatigue.",
+      "pos": "adjective"
     },
     {
       "word": "Quash",
@@ -11455,7 +11481,8 @@
         "hunter"
       ],
       "antonyms": [],
-      "origin": "Early 17th century: from quest, from Old French queste, from Latin quaerere 'seek'."
+      "origin": "Early 17th century: from quest, from Old French queste, from Latin quaerere 'seek'.",
+      "pos": "noun"
     },
     {
       "word": "Quibble",
@@ -11584,25 +11611,6 @@
       "origin": "1940s: from the name of Major Vidkun Quisling, the Norwegian army officer who collaborated with the Nazis."
     },
     {
-      "word": "Quisling",
-      "definition": "A traitor who collaborates with an enemy force occupying their country.",
-      "short": "Traitor",
-      "example": "Benedict Arnold is the United States' most infamous quisling.",
-      "pos": "noun",
-      "ipa": "/ˈkwɪzlɪŋ/",
-      "synonyms": [
-        "traitor",
-        "collaborator",
-        "turncoat",
-        "betrayer"
-      ],
-      "antonyms": [
-        "patriot",
-        "loyalist"
-      ],
-      "origin": "1940s: from the name of Major Vidkun Quisling, the Norwegian army officer who collaborated with the Nazis."
-    },
-    {
       "word": "Quixotic",
       "definition": "Excessively romantic; visionary but unrealistic. Like Cervantes' Don Quixote.",
       "short": "Idealistic but impractical",
@@ -11635,14 +11643,15 @@
         "tool"
       ],
       "antonyms": [],
-      "origin": "19th century: figurative use of quockerwodger, a wooden toy figure jerked into action by a string."
+      "origin": "19th century: figurative use of quockerwodger, a wooden toy figure jerked into action by a string.",
+      "pos": "noun"
     },
     {
       "word": "Quotidian",
       "definition": "Commonplace; occurring daily. Practically nobody uses this word nowadays except Gore Vidal.",
       "short": "Everyday",
       "example": "After the excitement of the inauguration, it was a relief to return to the quotidian affairs of ordinary life.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/kwɒˈtɪdɪən/",
       "synonyms": [
         "everyday",
@@ -11745,7 +11754,8 @@
         "ruffian"
       ],
       "antonyms": [],
-      "origin": "Late 17th century: of uncertain origin, perhaps from rant and an arbitrary second element."
+      "origin": "Late 17th century: of uncertain origin, perhaps from rant and an arbitrary second element.",
+      "pos": "noun"
     },
     {
       "word": "Rapscallion",
@@ -11776,7 +11786,8 @@
         "cogitation"
       ],
       "antonyms": [],
-      "origin": "Late 16th century: from Latin ratiocinatio(n-), from the verb ratiocinari 'to calculate, reason'."
+      "origin": "Late 16th century: from Latin ratiocinatio(n-), from the verb ratiocinari 'to calculate, reason'.",
+      "pos": "noun"
     },
     {
       "word": "Rawgabbit",
@@ -11790,7 +11801,8 @@
         "braggart"
       ],
       "antonyms": [],
-      "origin": "Obscure dialectal compound, from raw and gab 'idle talk'."
+      "origin": "Obscure dialectal compound, from raw and gab 'idle talk'.",
+      "pos": "noun"
     },
     {
       "word": "Recalcitrant",
@@ -11833,7 +11845,7 @@
       "definition": "(Of a subject or knowledge) little known; abstruse.",
       "short": "Obscure",
       "example": "He couldn't pass a history quiz to save his life, but the voracious reader was a repository of facts and recondite information.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˈrɛkəndʌɪt/",
       "synonyms": [
         "abstruse",
@@ -12003,7 +12015,8 @@
         "hopelessness",
         "desolation"
       ],
-      "origin": "Late Middle English: from re- 'again' and Old French espeir 'hope', from esperer, from Latin sperare 'to hope'."
+      "origin": "Late Middle English: from re- 'again' and Old French espeir 'hope', from esperer, from Latin sperare 'to hope'.",
+      "pos": "noun"
     },
     {
       "word": "Resplendent",
@@ -12034,7 +12047,6 @@
       "ipa": "/ˈrɛtɪs(ə)nt/",
       "synonyms": [
         "reserved",
-        "reticent",
         "taciturn",
         "guarded"
       ],
@@ -12067,7 +12079,7 @@
       "definition": "Coarsely or disrespectfully humorous; vulgar.",
       "short": "Vulgarly humorous",
       "example": "Stand-up comedy has become increasingly ribald since the '60s.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˈrɪb(ə)ld/",
       "synonyms": [
         "bawdy",
@@ -12131,14 +12143,15 @@
         "repose"
       ],
       "antonyms": [],
-      "origin": "English dialectal word of uncertain origin, meaning to relax and digest after a meal."
+      "origin": "English dialectal word of uncertain origin, meaning to relax and digest after a meal.",
+      "pos": "verb"
     },
     {
       "word": "Rococo",
       "definition": "Excessively ornate, elaborate or intricate; florid.",
       "short": "Overly ornate",
       "example": "\"He worked up a prose so rococo that one could have built grottoes out of it.\" (The New Yorker's Brendan Gill, describing 1930s newspaper columnist Lucius Beebe.)",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/rəˈkəʊkəʊ/",
       "synonyms": [
         "ornate",
@@ -12183,7 +12196,8 @@
         "foolishness",
         "stupidity"
       ],
-      "origin": "18th century Scots dialect: from rumble and gumption 'common sense, shrewdness'."
+      "origin": "18th century Scots dialect: from rumble and gumption 'common sense, shrewdness'.",
+      "pos": "noun"
     },
     {
       "word": "Rumpus",
@@ -12473,7 +12487,8 @@
         "poltroon"
       ],
       "antonyms": [],
-      "origin": "Mid 17th century: from Italian Scaramuccia, the name of a stock cowardly braggart character in commedia dell'arte."
+      "origin": "Mid 17th century: from Italian Scaramuccia, the name of a stock cowardly braggart character in commedia dell'arte.",
+      "pos": "noun"
     },
     {
       "word": "Schadenfreude",
@@ -12541,7 +12556,8 @@
         "graphomaniac"
       ],
       "antonyms": [],
-      "origin": "17th century: from Latin scripturire 'to desire to write', from scribere 'to write'."
+      "origin": "17th century: from Latin scripturire 'to desire to write', from scribere 'to write'.",
+      "pos": "adjective"
     },
     {
       "word": "Scrofulous",
@@ -12559,7 +12575,8 @@
         "virtuous",
         "upright"
       ],
-      "origin": "Mid 17th century: from medieval Latin scrofulosus, from scrofulae, the disease scrofula; later extended to mean morally corrupt."
+      "origin": "Mid 17th century: from medieval Latin scrofulosus, from scrofulae, the disease scrofula; later extended to mean morally corrupt.",
+      "pos": "adjective"
     },
     {
       "word": "Scurrilous",
@@ -12592,7 +12609,8 @@
         "scrub"
       ],
       "antonyms": [],
-      "origin": "19th-century dialectal English: of uncertain origin, perhaps from scurry plus dialectal funge."
+      "origin": "19th-century dialectal English: of uncertain origin, perhaps from scurry plus dialectal funge.",
+      "pos": "verb"
     },
     {
       "word": "Scuttle (verb)",
@@ -12610,7 +12628,8 @@
         "salvage",
         "raise"
       ],
-      "origin": "Mid 17th century: probably from obsolete skottle, from Spanish escotilla 'hatchway'."
+      "origin": "Mid 17th century: probably from obsolete skottle, from Spanish escotilla 'hatchway'.",
+      "pos": "verb"
     },
     {
       "word": "Sea lawyer",
@@ -12642,7 +12661,8 @@
         "migrant",
         "wanderer"
       ],
-      "origin": "From Latin sedens 'sitting, remaining', present participle of sedere 'to sit'."
+      "origin": "From Latin sedens 'sitting, remaining', present participle of sedere 'to sit'.",
+      "pos": "noun"
     },
     {
       "word": "Selcouth",
@@ -12660,7 +12680,8 @@
         "ordinary",
         "familiar"
       ],
-      "origin": "Old English selcūth, from seldan 'seldom' and cūth 'known'."
+      "origin": "Old English selcūth, from seldan 'seldom' and cūth 'known'.",
+      "pos": "adjective"
     },
     {
       "word": "Sententious",
@@ -12720,7 +12741,7 @@
       "definition": "Having many syllables.",
       "short": "Polysyllabic",
       "example": "The article's collection of sesquipedalian words couldn't hide the columnist's empty thoughts.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˌsɛskwɪpɪˈdeɪlɪən/",
       "synonyms": [
         "polysyllabic",
@@ -12748,7 +12769,8 @@
         "tidily",
         "orderly"
       ],
-      "origin": "Dialectal English: of uncertain origin, perhaps from shack 'to shake about' plus bagger."
+      "origin": "Dialectal English: of uncertain origin, perhaps from shack 'to shake about' plus bagger.",
+      "pos": "adverb"
     },
     {
       "word": "Shenanigans",
@@ -12780,7 +12802,8 @@
         "sibilation"
       ],
       "antonyms": [],
-      "origin": "From Latin sibilare 'to hiss, whistle', of imitative origin."
+      "origin": "From Latin sibilare 'to hiss, whistle', of imitative origin.",
+      "pos": "noun"
     },
     {
       "word": "Sinecure",
@@ -12828,7 +12851,8 @@
         "repel",
         "deter"
       ],
-      "origin": "From Siren, the sea nymphs of Greek mythology whose singing lured sailors to destruction, plus -ize."
+      "origin": "From Siren, the sea nymphs of Greek mythology whose singing lured sailors to destruction, plus -ize.",
+      "pos": "verb"
     },
     {
       "word": "Skedaddle",
@@ -12918,7 +12942,8 @@
         "demagogue"
       ],
       "antonyms": [],
-      "origin": "Early 19th century (originally US): from slang plus whang 'to beat noisily'."
+      "origin": "Early 19th century (originally US): from slang plus whang 'to beat noisily'.",
+      "pos": "noun"
     },
     {
       "word": "Slipshod",
@@ -12955,7 +12980,8 @@
         "sip",
         "nibble"
       ],
-      "origin": "Dialectal English: of imitative or uncertain origin."
+      "origin": "Dialectal English: of imitative or uncertain origin.",
+      "pos": "verb"
     },
     {
       "word": "Slubberdegullion",
@@ -12970,7 +12996,8 @@
         "villain"
       ],
       "antonyms": [],
-      "origin": "Early 17th century: from dialectal slubber 'to smear, do carelessly' plus a fanciful suffix."
+      "origin": "Early 17th century: from dialectal slubber 'to smear, do carelessly' plus a fanciful suffix.",
+      "pos": "noun"
     },
     {
       "word": "Slugabed",
@@ -13055,7 +13082,8 @@
         "opening"
       ],
       "antonyms": [],
-      "origin": "Dialectal English (southern counties): of uncertain origin, related to a hole made by the repeated passage of a small animal."
+      "origin": "Dialectal English (southern counties): of uncertain origin, related to a hole made by the repeated passage of a small animal.",
+      "pos": "noun"
     },
     {
       "word": "Smur",
@@ -13069,7 +13097,8 @@
         "mizzle"
       ],
       "antonyms": [],
-      "origin": "Scots and northern English dialect: of uncertain origin, perhaps imitative."
+      "origin": "Scots and northern English dialect: of uncertain origin, perhaps imitative.",
+      "pos": "noun"
     },
     {
       "word": "Snollygoster",
@@ -13102,7 +13131,8 @@
         "ugly",
         "plain"
       ],
-      "origin": "16th century: from snout plus fair 'beautiful', literally 'fair of face'."
+      "origin": "16th century: from snout plus fair 'beautiful', literally 'fair of face'.",
+      "pos": "adjective"
     },
     {
       "word": "Sobriquet",
@@ -13151,7 +13181,8 @@
         "alert",
         "wakeful"
       ],
-      "origin": "Early 19th century: from Latin somnus 'sleep' and ambulare 'to walk'."
+      "origin": "Early 19th century: from Latin somnus 'sleep' and ambulare 'to walk'.",
+      "pos": "adjective"
     },
     {
       "word": "Sonsy",
@@ -13188,7 +13219,8 @@
         "hurry",
         "rush"
       ],
-      "origin": "Dialectal English: of uncertain origin, perhaps a variant of saunter."
+      "origin": "Dialectal English: of uncertain origin, perhaps a variant of saunter.",
+      "pos": "verb"
     },
     {
       "word": "Sophistry",
@@ -13224,14 +13256,15 @@
         "corrupt",
         "deprave"
       ],
-      "origin": "From Greek sophronizein 'to make wise or moderate', from sophron 'of sound mind, prudent'."
+      "origin": "From Greek sophronizein 'to make wise or moderate', from sophron 'of sound mind, prudent'.",
+      "pos": "verb"
     },
     {
       "word": "Spatchcock",
       "definition": "To dress, split and butterfly a fowl for roasting or grilling.",
       "short": "Butterfly fowl",
       "example": "This year Mom spatchcocked her Thanksgiving turkey and cooked it in half the usual time. By the end of the Lions game, Brian had drunk so much that he was laid out like he'd been spatchcocked, too.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˈspatʃkɒk/",
       "synonyms": [
         "butterfly",
@@ -13301,26 +13334,6 @@
       "origin": "Early 17th century: from Latin spurius 'false', literally 'illegitimate child'."
     },
     {
-      "word": "Spurious",
-      "definition": "False. Specious.",
-      "short": "False",
-      "example": "Her claim to be a genie was spurious and she knew it.",
-      "pos": "adjective",
-      "ipa": "/ˈspjʊəriəs/",
-      "synonyms": [
-        "specious",
-        "false",
-        "misleading",
-        "fallacious"
-      ],
-      "antonyms": [
-        "valid",
-        "genuine",
-        "sound"
-      ],
-      "origin": "Early 17th century: from Latin spurius 'false', literally 'illegitimate child'."
-    },
-    {
       "word": "Squabble",
       "definition": "A noisy altercation or quarrel usually over petty matters.",
       "short": "Petty quarrel",
@@ -13365,7 +13378,7 @@
       "definition": "A soft sucking sound made when pressure is applied to liquid or mud.",
       "short": "Squish",
       "example": "They trudged through the woods, the squelch of their boots in the mud the only sound for miles.",
-      "pos": "verb",
+      "pos": "noun",
       "ipa": "/skwɛltʃ/",
       "synonyms": [
         "squish",
@@ -13401,7 +13414,7 @@
       "definition": "Restrain (a reaction) or stop oneself acting on (an emotion).",
       "short": "Suppress",
       "example": "He peeked at his phone during church and stifled a giggle when he saw his friend's text message.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˈstaɪfl̩/",
       "synonyms": [
         "suppress",
@@ -13477,7 +13490,7 @@
       "definition": "Prevent or hinder the progress of.",
       "short": "Hinder",
       "example": "The rain persisted all week and stymied my attempts to go for a run.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˈstaɪmi/",
       "synonyms": [
         "thwart",
@@ -13546,7 +13559,7 @@
       "definition": "Outmoded, old-fashioned.",
       "short": "Outmoded",
       "example": "Although he was popular in high school, his sense of style and grasp of trends made him superannuated by the time he hit 30.",
-      "pos": "verb",
+      "pos": "adjective",
       "ipa": "/ˌsuːpərˈænjueɪtɪd/",
       "synonyms": [
         "outdated",
@@ -13606,7 +13619,7 @@
       "definition": "Excess; overabundance.",
       "short": "Excess",
       "example": "Edmund lived on an attractive street, but a surfeit of yappy dogs in surrounding yards almost drove him crazy.",
-      "pos": "verb",
+      "pos": "noun",
       "ipa": "/ˈsɜːrfɪt/",
       "synonyms": [
         "excess",
@@ -13674,7 +13687,8 @@
         "crisp",
         "mild"
       ],
-      "origin": "English dialect (chiefly Sussex): related to 'swullock', perhaps imitative of close, oppressive heat."
+      "origin": "English dialect (chiefly Sussex): related to 'swullock', perhaps imitative of close, oppressive heat.",
+      "pos": "adjective"
     },
     {
       "word": "Sybaritic",
@@ -13733,7 +13747,7 @@
       "definition": "Consisting of or associated with woods; wooded.",
       "short": "Wooded",
       "example": "He stepped out of the tent and breathed deep, taking in the fresh air of the sylvan setting.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˈsɪlvən/",
       "synonyms": [
         "wooded",
@@ -13760,7 +13774,8 @@
         "opposition"
       ],
       "antonyms": [],
-      "origin": "Mid 17th century: via late Latin from Greek suzugia, from suzugos 'yoked, paired'."
+      "origin": "Mid 17th century: via late Latin from Greek suzugia, from suzugos 'yoked, paired'.",
+      "pos": "noun"
     },
     {
       "word": "Taciturn",
@@ -13867,7 +13882,8 @@
         "scold"
       ],
       "antonyms": [],
-      "origin": "Middle English: from Tervagant, the name of an imaginary deity in medieval mystery plays."
+      "origin": "Middle English: from Tervagant, the name of an imaginary deity in medieval mystery plays.",
+      "pos": "noun"
     },
     {
       "word": "Thrall",
@@ -13886,7 +13902,8 @@
         "liberty",
         "emancipation"
       ],
-      "origin": "Old English thrǣl 'slave', from Old Norse thrǣll."
+      "origin": "Old English thrǣl 'slave', from Old Norse thrǣll.",
+      "pos": "noun"
     },
     {
       "word": "Thunderplump",
@@ -13900,7 +13917,8 @@
         "deluge"
       ],
       "antonyms": [],
-      "origin": "Scots and northern English: from 'thunder' plus 'plump' (a sudden heavy fall)."
+      "origin": "Scots and northern English: from 'thunder' plus 'plump' (a sudden heavy fall).",
+      "pos": "noun"
     },
     {
       "word": "Tiffin",
@@ -13914,7 +13932,8 @@
         "snack"
       ],
       "antonyms": [],
-      "origin": "Early 19th century (Anglo-Indian): apparently from dialect tiffing 'sipping', of unknown origin."
+      "origin": "Early 19th century (Anglo-Indian): apparently from dialect tiffing 'sipping', of unknown origin.",
+      "pos": "noun"
     },
     {
       "word": "Tintinnabulation",
@@ -14246,7 +14265,8 @@
         "simplicity",
         "plainness"
       ],
-      "origin": "From turgid, from Latin turgidus, from turgere 'to swell'."
+      "origin": "From turgid, from Latin turgidus, from turgere 'to swell'.",
+      "pos": "noun"
     },
     {
       "word": "Turpitude",
@@ -14299,7 +14319,8 @@
         "pluck"
       ],
       "antonyms": [],
-      "origin": "English dialect: frequentative of 'twang', of imitative origin."
+      "origin": "English dialect: frequentative of 'twang', of imitative origin.",
+      "pos": "verb"
     },
     {
       "word": "Twee",
@@ -14358,7 +14379,8 @@
         "pleasant",
         "lovely"
       ],
-      "origin": "Late Middle English: from Old Norse ugga 'to dread' plus the suffix -some."
+      "origin": "Late Middle English: from Old Norse ugga 'to dread' plus the suffix -some.",
+      "pos": "adjective"
     },
     {
       "word": "Uhtceare",
@@ -14372,7 +14394,8 @@
         "worry"
       ],
       "antonyms": [],
-      "origin": "Old English: from uht 'period before dawn' and cearu 'care, sorrow'."
+      "origin": "Old English: from uht 'period before dawn' and cearu 'care, sorrow'.",
+      "pos": "noun"
     },
     {
       "word": "Ultracrepidarian",
@@ -14390,7 +14413,8 @@
         "qualified",
         "informed"
       ],
-      "origin": "Early 19th century: from Latin ultra crepidam 'beyond the sole', alluding to the painter Apelles' rebuke of a cobbler who criticized more than footwear."
+      "origin": "Early 19th century: from Latin ultra crepidam 'beyond the sole', alluding to the painter Apelles' rebuke of a cobbler who criticized more than footwear.",
+      "pos": "adjective"
     },
     {
       "word": "Umbrage",
@@ -14469,7 +14493,8 @@
         "reasonably",
         "fairly"
       ],
-      "origin": "From usurious, from medieval Latin usurarius, from Latin usura 'usury', plus the adverbial suffix -ly."
+      "origin": "From usurious, from medieval Latin usurarius, from Latin usura 'usury', plus the adverbial suffix -ly.",
+      "pos": "adverb"
     },
     {
       "word": "Usury",
@@ -14604,7 +14629,8 @@
         "rational",
         "sane"
       ],
-      "origin": "From Latin vecors, vecordis 'senseless, mad', from ve- 'without' and cor 'heart, mind'."
+      "origin": "From Latin vecors, vecordis 'senseless, mad', from ve- 'without' and cor 'heart, mind'.",
+      "pos": "adjective"
     },
     {
       "word": "Velleity",
@@ -14659,7 +14685,8 @@
         "rime"
       ],
       "antonyms": [],
-      "origin": "Late 19th century: from French verglas, from verre 'glass' and glas 'ice'."
+      "origin": "Late 19th century: from French verglas, from verre 'glass' and glas 'ice'.",
+      "pos": "noun"
     },
     {
       "word": "Verisimilitude",
@@ -14706,7 +14733,7 @@
       "definition": "A visible sign or trace remaining after something more important has disappeared. 2. In biology, surviving in a degenerate, atrophied or imperfect form.",
       "short": "Leftover trace",
       "example": "She occasionally glimpsed vestigial remnants of the grand Detroit that used to be. ... OR ... Some primitive snakes still bear signs of vestigial limbs.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/vɛˈstɪdʒɪəl/",
       "synonyms": [
         "remnant",
@@ -14726,7 +14753,7 @@
       "definition": "To make someone feel annoyed, frustrated or worried, especially with trivial matters.",
       "short": "Annoy",
       "example": "I'm fairly sure the process at the DMV was designed to vex even the most saintly of people.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/vɛks/",
       "synonyms": [
         "annoy",
@@ -14866,7 +14893,7 @@
       "definition": "Crafty, cunning.",
       "short": "Crafty",
       "example": "The salesman turned around, a vulpine gleam in his eye, and I could almost hear my bank account deflate.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˈvʌlpʌɪn/",
       "synonyms": [
         "crafty",
@@ -14887,7 +14914,7 @@
       "definition": "(Of a cruel or violent action) deliberate and unprovoked.",
       "short": "Gratuitously cruel",
       "example": "Every day, he had to endure the wanton taunts and threats of the school&#39;s bully.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˈwɒntən/",
       "synonyms": [
         "gratuitous",
@@ -14959,7 +14986,7 @@
       "definition": "Go in a specified direction, typically slowly or by an indirect route.",
       "short": "Meander",
       "example": "They wended their way downtown, pausing to look at the department store windows and buy coffee from local cafes.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/wɛnd/",
       "synonyms": [
         "meander",
@@ -14985,7 +15012,8 @@
         "uncover",
         "upright"
       ],
-      "origin": "Middle English: of obscure origin, probably related to dialectal whelm 'to turn over, cover'."
+      "origin": "Middle English: of obscure origin, probably related to dialectal whelm 'to turn over, cover'.",
+      "pos": "verb"
     },
     {
       "word": "Widdershins",
@@ -15053,7 +15081,7 @@
       "definition": "As a verb, to pry out or extract something. As in pulling the snail from a periwinkle.",
       "short": "Pry out",
       "example": "Ross showed no inclination to leave his seat next to Beth, but Jeremy was determined to winkle him out of that chair one way or another.",
-      "pos": "noun",
+      "pos": "verb",
       "ipa": "/ˈwɪŋk(ə)l/",
       "synonyms": [
         "extract",
@@ -15170,7 +15198,7 @@
       "definition": "A harsh or hoarse cry or yelp.",
       "short": "Harsh cry",
       "example": "The dog caught his tail in the sliding door, letting out a yawp of surprise.",
-      "pos": "verb",
+      "pos": "noun",
       "ipa": "/jɔːp/",
       "synonyms": [
         "yelp",
@@ -15275,7 +15303,8 @@
         "wakefulness",
         "vigor"
       ],
-      "origin": "English dialect (West Country): of obscure origin, perhaps related to Dutch zwadderen 'to splash, be sluggish'."
+      "origin": "English dialect (West Country): of obscure origin, perhaps related to Dutch zwadderen 'to splash, be sluggish'.",
+      "pos": "noun"
     },
     {
       "word": "Euphonious",
@@ -15303,7 +15332,7 @@
       "definition": "Ragged or disreputable in appearance.",
       "short": "Ragged",
       "example": "For hippies, the tatterdemalion dress was as much a statement as it was a style.",
-      "pos": "noun",
+      "pos": "adjective",
       "ipa": "/ˌtatədɪˈmeɪlɪən/",
       "synonyms": [
         "ragamuffin",

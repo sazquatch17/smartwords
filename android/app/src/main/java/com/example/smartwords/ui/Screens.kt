@@ -10,6 +10,12 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -94,7 +100,8 @@ private fun NavItem(tab: Tab, selected: Boolean, onClick: () -> Unit) {
             .width(80.dp)
             .clip(RoundedCornerShape(12.dp))
             .clickable(onClick = onClick)
-            .padding(vertical = 2.dp),
+            .padding(vertical = 2.dp)
+            .semantics { this.selected = selected; role = Role.Tab },
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(3.dp),
     ) {
@@ -216,14 +223,16 @@ fun TodayScreen(
                     }
                     if (onSearch != null) {
                         Box(
-                            modifier = Modifier.clip(RoundedCornerShape(6.dp)).clickable(onClick = onSearch).padding(4.dp),
+                            modifier = Modifier.clip(RoundedCornerShape(6.dp)).clickable(onClick = onSearch).padding(4.dp)
+                                .semantics { contentDescription = "Search words" },
                         ) { SearchIcon(theme.palette.muted) }
                     }
                     Box(
                         modifier = Modifier
                             .clip(RoundedCornerShape(6.dp))
                             .clickable(onClick = onToggleSave)
-                            .padding(4.dp),
+                            .padding(4.dp)
+                            .semantics { contentDescription = if (isSaved) "Saved" else "Save word" },
                     ) {
                         BookmarkIcon(filled = isSaved, tint = if (isSaved) theme.accent else theme.palette.muted)
                     }
@@ -250,7 +259,8 @@ fun TodayScreen(
                             .size(42.dp)
                             .clip(CircleShape)
                             .clickable { tts.speak(word.word, TextToSpeech.QUEUE_FLUSH, null, "word") }
-                            .background(theme.accent),
+                            .background(theme.accent)
+                            .clearAndSetSemantics { contentDescription = "Pronounce ${word.word}" },
                         contentAlignment = Alignment.Center,
                     ) {
                         Text("▶", fontSize = 13.sp, color = Color.White)
@@ -460,7 +470,8 @@ fun SearchScreen(words: List<Word>, onPick: (Int) -> Unit, onClose: () -> Unit) 
             if (query.isNotEmpty()) {
                 Text(
                     "✕", fontSize = 14.sp, color = theme.palette.muted,
-                    modifier = Modifier.clip(RoundedCornerShape(6.dp)).clickable { query = "" }.padding(2.dp),
+                    modifier = Modifier.clip(RoundedCornerShape(6.dp)).clickable { query = "" }.padding(2.dp)
+                        .clearAndSetSemantics { contentDescription = "Clear search" },
                 )
             }
         }
@@ -529,7 +540,8 @@ fun SavedScreen(saved: List<Pair<Int, Word>>, onRemove: (Int) -> Unit) {
                     }
                     Text(
                         "✕", fontSize = 14.sp, color = theme.palette.muted,
-                        modifier = Modifier.clip(RoundedCornerShape(6.dp)).clickable { onRemove(i) }.padding(4.dp),
+                        modifier = Modifier.clip(RoundedCornerShape(6.dp)).clickable { onRemove(i) }.padding(4.dp)
+                            .clearAndSetSemantics { contentDescription = "Remove ${w.word}" },
                     )
                 }
                 Box(Modifier.fillMaxWidth().height(1.dp).background(theme.palette.line))

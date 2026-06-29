@@ -60,16 +60,18 @@ enum Speaker {
 // MARK: - Fonts (bundled Lexica design fonts — variable; weight drives the wght axis)
 // serif = Newsreader, sans = Hanken Grotesk, mono = Spline Sans Mono.
 
-private func serif(_ size: CGFloat, _ weight: Font.Weight = .medium, italic: Bool = false) -> Font {
-    let f = Font.custom("Newsreader", size: size).weight(weight)
+// relativeTo: ties each font to a text style so it scales with Dynamic Type.
+private func serif(_ size: CGFloat, _ weight: Font.Weight = .medium, italic: Bool = false,
+                   relativeTo: Font.TextStyle = .body) -> Font {
+    let f = Font.custom("Newsreader", size: size, relativeTo: relativeTo).weight(weight)
     return italic ? f.italic() : f
 }
 // Signature mirrors Font.system(size:weight:) so call sites read the same.
-private func sans(size: CGFloat, weight: Font.Weight = .regular) -> Font {
-    Font.custom("Hanken Grotesk", size: size).weight(weight)
+private func sans(size: CGFloat, weight: Font.Weight = .regular, relativeTo: Font.TextStyle = .body) -> Font {
+    Font.custom("Hanken Grotesk", size: size, relativeTo: relativeTo).weight(weight)
 }
-private func mono(_ size: CGFloat, _ weight: Font.Weight = .regular) -> Font {
-    Font.custom("Spline Sans Mono", size: size).weight(weight)
+private func mono(_ size: CGFloat, _ weight: Font.Weight = .regular, relativeTo: Font.TextStyle = .body) -> Font {
+    Font.custom("Spline Sans Mono", size: size, relativeTo: relativeTo).weight(weight)
 }
 
 // Accent-washed background (color-mix(accent 13%, surface)).
@@ -377,6 +379,7 @@ struct TodayView: View {
                         VStack(alignment: .leading, spacing: 8) {
                             Text("\u{201C}").font(serif(46)).foregroundStyle(theme.accent)
                                 .frame(height: 22, alignment: .top)
+                                .accessibilityHidden(true)   // decorative quotation mark
                             Text(ex).font(serif(17, italic: true)).lineSpacing(3)
                                 .foregroundStyle(theme.palette.fg)
                         }

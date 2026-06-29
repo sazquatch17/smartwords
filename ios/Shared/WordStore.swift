@@ -71,12 +71,15 @@ enum WordStore {
     /// Index of the word for a given moment — pure function of clock + batch.
     /// Advances one slot every `rotationHours` and one full day's worth per day,
     /// so it walks the whole list and never repeats the same day's set.
+    /// rotation/calendar are injectable so the logic is unit-testable.
     /// ponytail: sequential walk; for non-repeating order, shuffle the batch server-side.
-    static func index(at date: Date, in words: [Word]) -> Int {
-        let cal = Calendar.current
-        let slotsPerDay = 24 / rotationHours
+    static func index(at date: Date, in words: [Word],
+                      rotationHours hours: Int = rotationHours,
+                      calendar cal: Calendar = .current) -> Int {
+        guard !words.isEmpty else { return 0 }
+        let slotsPerDay = 24 / hours
         let day = cal.ordinality(of: .day, in: .era, for: date) ?? 0
-        let slot = cal.component(.hour, from: date) / rotationHours
+        let slot = cal.component(.hour, from: date) / hours
         return (day * slotsPerDay + slot) % words.count
     }
 

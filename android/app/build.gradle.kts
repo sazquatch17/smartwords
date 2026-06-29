@@ -82,4 +82,8 @@ dependencies {
 
     // Debug tooling
     debugImplementation("androidx.compose.ui:ui-tooling")
+
+    // Unit tests (JVM) — rotation logic + batch parsing
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.json:json:20240303")   // real org.json for parse() in JVM tests
 }

@@ -75,3 +75,24 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.example.smartwords.widget
+
+  SmartWordsTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - Tests
+    dependencies:
+      - target: SmartWords
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.smartwords.tests
+        GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  SmartWords:
+    build:
+      targets:
+        SmartWords: all
+    test:
+      targets:
+        - SmartWordsTests
